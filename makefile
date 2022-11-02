@@ -43,10 +43,18 @@ COV     	:= .cov
 PRE  		:= .pre
 EXE     	:= main.exe
 
-#######################################
-# target compiler options # TODO: you have to add this yourself
-#######################################
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+																																														
 TARGET_CC = arm-none-eabi-gcc
 TARGET_AS = arm-none-eabi-gcc -x assembler-with-cpp
 TARGET_CP = arm-none-eabi-objcopy
@@ -59,7 +67,11 @@ PLATFORM_DIR = Platform
 PLATFORM_UNITTEST_DIR = unittest_platform
 X86_X64_UNITTEST_DIR = unittest_x86_x64
 
-BUILD_DIRS = 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #######################################
 # Flags
@@ -71,6 +83,18 @@ CFLAGS  	:= -g -Wall -MMD -fprofile-abs-path
 COVFLAGS	:= -fprofile-arcs -ftest-coverage -fPIC
 LDFLAGS 	:= -lgcov --coverage
 LDLIBS  	:= -lm
+
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # STM32F446RE flags
 
@@ -106,7 +130,11 @@ TARGET_LIBS 	:= -lc -lm -lnosys
 TARGET_LIBDIR 	:= 
 TARGET_LDFLAGS 	:= $(MCU) -specs=nano.specs -T$(TARGET_LDSCRIPT) $(TARGET_LIBDIR) $(TARGET_LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections -u _printf_float
 
-#TODO##############################################
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #######################################
 # Include folders
@@ -115,6 +143,25 @@ TARGET_LDFLAGS 	:= $(MCU) -specs=nano.specs -T$(TARGET_LDSCRIPT) $(TARGET_LIBDIR
 # ${Unitname}/Unit/include folders
 UNIT_INCLUDE_FOLDERS 		= $(patsubst %,-I%/Unit/include,$(UNITLIST))
 
+#######################################
+# Source files
+#######################################
+
+UNIT_SOURCES_FOLDERS		=	$(patsubst %,%/Unit/src,$(UNITLIST))
+UNIT_SOURCES				=   $(foreach var,$(UNIT_SOURCES_FOLDERS),$(wildcard $(var)/*.c))
+
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Platform include folders # TODO: you have to add this yourself
 PLATFORM_INCLUDE_FOLDERS	= \
 -I$(PLATFORM_DIR)/Core/Inc \
@@ -122,14 +169,6 @@ PLATFORM_INCLUDE_FOLDERS	= \
 -I$(PLATFORM_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -I$(PLATFORM_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
 -I$(PLATFORM_DIR)/Drivers/CMSIS/Include
-
-
-#######################################
-# Source files
-#######################################
-
-UNIT_SOURCES_FOLDERS		=	$(patsubst %,%/Unit/src,$(UNITLIST))
-UNIT_SOURCES				=   $(foreach var,$(UNIT_SOURCES_FOLDERS),$(wildcard $(var)/*.c))
 
 PLATFORM_SOURCES 	=   \
 $(PLATFORM_DIR)/Core/Src/gpio.c \
@@ -208,6 +247,12 @@ vpath %.S $(PLATFORM_DIR)/Core/Src/
 
 endif
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # x86_x64 unittest build dependencies
 ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS)) $(findstring coverage,$(MAKECMDGOALS)) )
 
@@ -229,9 +274,18 @@ endif
 
 .PHONY: unittest_platform_build unittest_x86_x64_build all flash coverage coverage-html
 
-#######################################
-# x86_64 Rules
-#######################################
+
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 STUBGEN_PLATFORM_INCLUDES = \
 -IC:\Python310\Lib\site-packages\pycparser\utils\fake_libc_include \
@@ -253,6 +307,12 @@ STUBGEN_DEFINES = 	-D'__attribute__(x)=' \
 					-D'__packed' \
 					-D'__weak' \
 					-D'UNUSED(X)'
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 stubgen: $(UNIT)/$(PRE)/$(UNIT).i
 	@$(PYTHON) $(UNITSTUBGEN) $(UNIT)/$(PRE)/$(UNIT).i $(UNITTESTPATH)
@@ -288,6 +348,18 @@ coverage-html: unittest_x86_x64_build | $(UNITPATH)/$(COV)
 	@echo "Running coverage analysis with html output"
 	@.\.obj\unittest_x86_x64\main.exe
 	@gcovr -r . --html --html-details -o $(UNITPATH)/$(COV)/index.html
+
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #######################################
 # Platform UnitTest Rules
@@ -355,6 +427,12 @@ $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR
 $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV) $(UNIT)/$(PRE):
 	@$(MKDIR) -p $@
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #######################################
 # clean up
 #######################################
@@ -366,6 +444,18 @@ clean:
 # dependencies
 #######################################
 
+#    ████████  ██████  ██████   ██████
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██    ██    ██ ██   ██ ██    ██
+#       ██     ██████  ██████   ██████
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # whole software build dependencies
 ifneq (,$(findstring all, $(MAKECMDGOALS)) $(findstring flash, $(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(PLATFORM_DIR)/*.d)
@@ -375,6 +465,12 @@ endif
 ifneq (,$(findstring unittest_platform_build,$(MAKECMDGOALS)) $(findstring unittest_platform_flash,$(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/*.d)
 endif
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Target specific rules - THIS IS UP TO THE USER TO ADD!												
+#																										
+# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # x86_x64 unittest build dependencies
 ifneq (,$(findstring unittest_x86_x64_build,$(MAKECMDGOALS)) $(findstring unittest_x86_x64_run,$(MAKECMDGOALS)))
