@@ -1,0 +1,128 @@
+{
+    "configurations": [
+        {
+            "name": "LCD_Driver UnitTest",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/ADC_Driver/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include",
+                "${workspaceFolder}/LCD_Driver/UnitTest/include",
+                "${workspaceFolder}/LCD_Driver/UnitTest/include/stubs"
+            ],
+            "defines": [
+                "UNITTEST=1",
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "customConfigurationVariables": {
+                "UNIT": "LCD_Driver"
+            },
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "Complementary_Filter UnitTest",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/ADC_Driver/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include",
+                "${workspaceFolder}/Complementary_Filter/UnitTest/include",
+                "${workspaceFolder}/Complementary_Filter/UnitTest/include/stubs"
+            ],
+            "defines": [
+                "UNITTEST=1",
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "customConfigurationVariables": {
+                "UNIT": "Complementary_Filter"
+            },
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "ADC_Driver UnitTest",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/ADC_Driver/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include",
+                "${workspaceFolder}/ADC_Driver/UnitTest/include",
+                "${workspaceFolder}/ADC_Driver/UnitTest/include/stubs"
+            ],
+            "defines": [
+                "UNITTEST=1",
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "customConfigurationVariables": {
+                "UNIT": "ADC_Driver"
+            },
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "sample_project",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/ADC_Driver/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mfpu=fpv4-sp-d16",
+                "-mfloat-abi=hard",
+                "-mthumb"
+            ],
+            "cStandard": "gnu99",
+            "intelliSenseMode": "windows-gcc-arm"
+        }
+    ],
+    "version": 4
+}

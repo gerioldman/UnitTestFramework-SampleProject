@@ -1,0 +1,7 @@
+{
+    "taskExplorer.pathToMake": "make",
+    "gcovViewer.highlightMissedLines": true,
+    "gcovViewer.buildDirectories": [
+        "${workspaceFolder}/.obj"
+    ]
+}

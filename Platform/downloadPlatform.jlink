@@ -1,0 +1,8 @@
+device STM32F446RE
+si 1
+speed 4000
+erase
+loadbin C:\Users\kgerg\Desktop\Egyetem\7.felev\BigProject\.obj\Platform\platform.bin, 0x08000000
+r
+g
+exit

@@ -1,0 +1,116 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "x86_x64 Build UnitTest",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "unittest_x86_x64_build",
+                "UNIT=${input:UNIT}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "x86_x64 Run UnitTest",
+            "command": ".\\.obj\\unittest_x86_x64\\main.exe",
+            "args": [
+                "--colour",
+                "-a",
+                "-s"
+            ],
+            "type": "shell",
+            "dependsOn": "x86_x64 Build UnitTest"
+        },
+        {
+            "label": "Target Build UnitTest",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "unittest_platform_build",
+                "UNIT=${input:UNIT}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Target Run UnitTest",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "unittest_platform_flash",
+                "UNIT=${input:UNIT}"
+            ],
+            "dependsOn": "Target Build UnitTest"
+        },
+        {
+            "label": "Software build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "all"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Software flash",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "flash"
+            ],
+            "dependsOn": "Software build"
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        },
+        {
+            "label": "Unit stub generation",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "stubgen",
+                "UNIT=${input:UNIT}"
+            ]
+        },
+        {
+            "label": "Generate Coverage",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "coverage",
+                "UNIT=${input:UNIT}"
+            ]
+        },
+        {
+            "label": "Generate Coverage HTML",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "coverage-html",
+                "UNIT=${input:UNIT}"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "UNIT",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "UNIT"
+        }
+    ]
+}
