@@ -26,3 +26,7 @@ void DoNothing(void){
     i--;
 }
 
+static void doSomething(void){
+    int b = 0;
+    b++;
+}

@@ -21,17 +21,14 @@ include UnitTestRunner/UnitTestRunner.mk
 # Default settings
 #######################################
 
-TESTAPPARGS ?= --colour -a -s
-TARGET ?= x86_x64
-# debug build?
-DEBUG 	?= 1
-# optimization
-OPT 	?= -Og
-
+# By default, colour is enabled, and things are printed to the screen only. 
+TESTAPPARGS ?= --colour -s
 
 #######################################
 # x86_x64 compiler options
 #######################################
+
+# command, and compiler variables
 
 MKDIR   	:= mkdir
 RMDIR   	:= rm -rf
@@ -43,6 +40,17 @@ COV     	:= .cov
 PRE  		:= .pre
 EXE     	:= main.exe
 
+# directories inside .obj folder:
+# 	- Platform: object files are created here for the whole software build
+# 
+# 	- unittest_platform: object files are created here for the unit test on the used platform
+#
+# 	- unittest_x86_x64: object files are created here for the unit test on PC
+
+PLATFORM_DIR = Platform
+PLATFORM_UNITTEST_DIR = unittest_platform
+X86_X64_UNITTEST_DIR = unittest_x86_x64
+
 #    ████████  ██████  ██████   ██████
 #       ██    ██    ██ ██   ██ ██    ██
 #       ██    ██    ██ ██   ██ ██    ██
@@ -53,8 +61,14 @@ EXE     	:= main.exe
 # Target specific rules - THIS IS UP TO THE USER TO ADD!												
 #																										
 # The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-																																														
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------																																													
+
+# debug build?
+DEBUG 	?= 1
+# optimization
+OPT 	?= -Og
+
+# Target Compiler
 TARGET_CC = arm-none-eabi-gcc
 TARGET_AS = arm-none-eabi-gcc -x assembler-with-cpp
 TARGET_CP = arm-none-eabi-objcopy
@@ -63,9 +77,6 @@ TARGET_SZ = arm-none-eabi-size
 HEX = $(TARGET_CP) -O ihex
 BIN = $(TARGET_CP) -O binary -S 
 
-PLATFORM_DIR = Platform
-PLATFORM_UNITTEST_DIR = unittest_platform
-X86_X64_UNITTEST_DIR = unittest_x86_x64
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Target specific rules - THIS IS UP TO THE USER TO ADD!												
@@ -170,6 +181,7 @@ PLATFORM_INCLUDE_FOLDERS	= \
 -I$(PLATFORM_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
 -I$(PLATFORM_DIR)/Drivers/CMSIS/Include
 
+# Platform source files # TODO: you have to add this yourself
 PLATFORM_SOURCES 	=   \
 $(PLATFORM_DIR)/Core/Src/gpio.c \
 $(PLATFORM_DIR)/Core/Src/adc.c \
@@ -207,10 +219,15 @@ $(PLATFORM_DIR)/Core/Src/main.c
 PLATFORM_ASSEMBLY 	=	$(PLATFORM_DIR)/startup_stm32f446xx.s
 
 #######################################
+#
 # OBJS
+#
 #######################################
 
-# whole software build dependencies
+#######################################
+# whole software build objs # TODO: you have to add this yourself
+#######################################
+
 ifneq (,$(findstring all,$(MAKECMDGOALS)))
 
 OBJS_FOR_PLATFORM			=  $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(PLATFORM_SOURCES:.c=.o)))
@@ -223,20 +240,27 @@ vpath %.s $(sort $(dir $(PLATFORM_ASSEMBLY)))
 
 endif
 
-# platform unittest build dependencies
+#######################################
+# platform unittest build objs # TODO: you have to add this yourself
+#######################################
+
 ifneq (,$(findstring unittest_platform,$(MAKECMDGOALS)))
 
+# Minimal source files for target to work
 OBJS_FOR_PLATFORM_UNITTEST 	=  $(addprefix $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/,$(notdir $(PLATFORM_ASSEMBLY:.s=.o)))
+OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/system_stm32f4xx.o
+# UnitTest source files
 OBJS_FOR_PLATFORM_UNITTEST 	+= $(addprefix $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/,$(notdir $(UNITSOURCE:.c=.o)))
 OBJS_FOR_PLATFORM_UNITTEST 	+= $(addprefix $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/,$(notdir $(UNITTESTSOURCE:.c=.o)))
 OBJS_FOR_PLATFORM_UNITTEST 	+= $(addprefix $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/,$(notdir $(UNITTESTSTUBSOURCE:.c=.o)))
 OBJS_FOR_PLATFORM_UNITTEST 	+= $(addprefix $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/,$(notdir $(UNITTESTRUNNERSOURCE:.c=.o)))
-OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/system_stm32f4xx.o
+# RTT source files for J-Run unit testing
 OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/SEGGER_RTT.o
 OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/SEGGER_RTT_printf.o
 OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/SEGGER_RTT_Syscalls_GCC.o
 OBJS_FOR_PLATFORM_UNITTEST	+= .obj/unittest_platform/SEGGER_RTT_ASM_ARMv7M.o
 
+# Paths for these files are added to vpath, so make looks for source files in these paths as well
 vpath %.s $(sort $(dir $(PLATFORM_ASSEMBLY)))
 vpath %.c $(sort $(dir $(UNITSOURCE)))
 vpath %.c $(sort $(dir $(UNITTESTSOURCE)))
@@ -253,7 +277,10 @@ endif
 # The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# x86_x64 unittest build dependencies
+#######################################
+# x86_x64 unittest build objs
+#######################################
+
 ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS)) $(findstring coverage,$(MAKECMDGOALS)) )
 
 OBJS_FOR_X86_X64_UNITTEST 	 = $(addprefix $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/,$(notdir $(UNITSOURCE:.c=.o)))
@@ -272,7 +299,26 @@ endif
 # Rules
 #######################################
 
-.PHONY: unittest_platform_build unittest_x86_x64_build all flash coverage coverage-html
+.PHONY: unittest_platform_build unittest_platform_flash unittest_x86_x64_build all flash coverage coverage-html check
+
+# .PHONY: Rules: 
+# 	created tasks for VSCode expect a make targets under these names:
+#
+# 	- unittest_platform_build: build unittest for target platform 		# TODO: you have to add this yourself
+# 
+# 	- unittest_platform_flash: flash built platform unittest on target 	# TODO: you have to add this yourself
+#
+# 	- unittest_x86_x64_build: build unittest for target platform
+#
+#	- all: build whole software											# TODO: you have to add this yourself
+#
+#	- flash: flash whole software										# TODO: you have to add this yourself
+#
+#	- coverage: output coverage summary to the terminal
+#
+#	- coverage-html: create html representation of the coverage results
+#
+#	- check: you can check for dependencies of the framework like gcovr and so on...
 
 
 #    ████████  ██████  ██████   ██████
@@ -287,6 +333,9 @@ endif
 # The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Some headers might cause errors during stub generation, you can create fake headers, look up PyCParser fake include headers
+# Plus add include librarys from the platform here.
+
 STUBGEN_PLATFORM_INCLUDES = \
 -IC:\Python310\Lib\site-packages\pycparser\utils\fake_libc_include \
 -IC:\Python310\Lib\site-packages\pycparser\utils\fake_libc_include\arm \
@@ -294,6 +343,10 @@ STUBGEN_PLATFORM_INCLUDES = \
 -I$(PLATFORM_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc \
 -I$(PLATFORM_DIR)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -I$(PLATFORM_DIR)/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+# PyCParser doesn't support extensions to the C99 standard, add defines so GNU extensions like __attribute__(x) are thrown out by the preprocessor.
+# In the future, I might create an extension for the PyCParser module to be able to process GNU extensions, but for now this is the solution, 
+# recommended by the creator of the module. https://github.com/eliben/pycparser/wiki/FAQ#what-do-i-do-about-__attribute
 
 STUBGEN_DEFINES = 	-D'__attribute__(x)=' \
 					-D'__ASM=' \
@@ -314,6 +367,8 @@ STUBGEN_DEFINES = 	-D'__attribute__(x)=' \
 # The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# stub generation rules
+
 stubgen: $(UNIT)/$(PRE)/$(UNIT).i
 	@$(PYTHON) $(UNITSTUBGEN) $(UNIT)/$(PRE)/$(UNIT).i $(UNITTESTPATH)
 	@rm -fR $(UNIT)/$(PRE)
@@ -321,16 +376,31 @@ stubgen: $(UNIT)/$(PRE)/$(UNIT).i
 $(UNIT)/$(PRE)/$(UNIT).i: $(UNITPATH)/src/$(UNIT).c | $(UNIT)/$(PRE)
 	@$(TARGET_CC) -E -nostdinc $(C_DEFS) $(UNIT_INCLUDE_FOLDERS) $(STUBGEN_PLATFORM_INCLUDES) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 $(STUBGEN_DEFINES) -c $< -o $@ 
 
+# check rule, feel free to add more checks
+
+check:
+	@echo "Check for Compiler:"
+	@$(CC) --version
+	@echo "Check for Target Compiler:"
+	@$(TARGET_CC) --version
+	@echo "Check for Python:"
+	@$(PYTHON) --version
+	@echo
+	@echo "Check for gcovr:"
+	@gcovr --version
+
 #######################################
 # x86_64 Rules
 #######################################
 
 unittest_x86_x64_build:  $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/$(EXE)
 
+# Linking rule
 $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/$(EXE): $(OBJS_FOR_X86_X64_UNITTEST) | $(BUILD_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)
 	@echo "# Linking $@"
 	@$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
+# Compilation rule, for Unit source files tested, they are compiled with coverage flags, so coverage information is generated for only those files.
 $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV)
 	@echo Building file: $<
 	@if [ ! -z "$(findstring $(UNITSRC),$<)" ]; then \
@@ -339,11 +409,13 @@ $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(X86_
 		$(CC) $(CFLAGS) $(C_DEFS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -c $< -o $@; \
 	fi
 
+# Rule for printing coverage summary
 coverage: unittest_x86_x64_build
 	@echo "Running coverage analysis"
 	@.\.obj\unittest_x86_x64\main.exe
 	@gcovr -r . -s
 
+# Rule for generating coverage information in html format
 coverage-html: unittest_x86_x64_build | $(UNITPATH)/$(COV)
 	@echo "Running coverage analysis with html output"
 	@.\.obj\unittest_x86_x64\main.exe
@@ -367,63 +439,76 @@ coverage-html: unittest_x86_x64_build | $(UNITPATH)/$(COV)
 
 # target rules # TODO: User has to add this
 
+# binaries to be created
 unittest_platform_build: $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform.elf $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform.hex $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform.bin
 
+# flash rule: invoke Jlink with a jlink script to upload software
 unittest_platform_flash: unittest_platform_build
 	@JLink.exe -commanderscript .\Platform\downloadUnitTest.jlink
 
-# unittest build
+# unittest build rule
 
+# linking rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform.elf: $(OBJS_FOR_PLATFORM_UNITTEST) | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Linking target: $@
 	@$(TARGET_CC) $(OBJS_FOR_PLATFORM_UNITTEST) $(TARGET_LDFLAGS) -o $@
 	@echo Finished building target: $@
 	@$(TARGET_SZ) $@
 
+# *.c source file rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Building file: $<
 	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
+# *.s source file rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Building file: $<
 	@$(TARGET_AS) -c $(TARGET_ASFLAGS) -I$(PLATFORM_DIR)/Core/Inc $< -o $@
-
+# *.S source file rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.S | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Building file: $<
 	@$(TARGET_AS) -c $(TARGET_ASFLAGS) -I$(PLATFORM_DIR)/Core/Inc $< -o $@
 
 
-# whole project build
+#######################################
+# Platform software Rules
+#######################################
 
-
+# build whole software
 all: $(BUILD_DIR)/$(PLATFORM_DIR)/platform.elf $(BUILD_DIR)/$(PLATFORM_DIR)/platform.hex $(BUILD_DIR)/$(PLATFORM_DIR)/platform.bin
 
+# flash whole software
 flash: all
 	@JLink.exe -commanderscript .\Platform\downloadPlatform.jlink
 
+# linking rule
 $(BUILD_DIR)/$(PLATFORM_DIR)/platform.elf: $(OBJS_FOR_PLATFORM) | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
 	@echo Linking target: $@
 	@$(TARGET_CC) $(OBJS_FOR_PLATFORM) $(TARGET_LDFLAGS) -o $@
 	@echo Finished building target: $@
 	@$(TARGET_SZ) $@
 
+# *.c source file rule
 $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
 	@echo Building file: $<
 	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) -DUNITTEST=0 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
+# *.s source file rule
 $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
 	@echo Building file: $<
 	@$(TARGET_AS) -c $(TARGET_ASFLAGS) $< -o $@
 
-
-%.hex: %.elf | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
+# Rule for creating .hex binary
+%.hex: %.elf | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Creating HEX file: $@
 	@$(HEX) $< $@
-	
-%.bin: %.elf | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
+
+# Rule for creating .elf binary
+%.bin: %.elf | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Creating BIN file: $@
 	@$(BIN) $< $@
 
+# Rule for creating folders
 $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV) $(UNIT)/$(PRE):
 	@$(MKDIR) -p $@
 
@@ -444,35 +529,17 @@ clean:
 # dependencies
 #######################################
 
-#    ████████  ██████  ██████   ██████
-#       ██    ██    ██ ██   ██ ██    ██
-#       ██    ██    ██ ██   ██ ██    ██
-#       ██    ██    ██ ██   ██ ██    ██
-#       ██     ██████  ██████   ██████
-
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Target specific rules - THIS IS UP TO THE USER TO ADD!												
-#																										
-# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 # whole software build dependencies
 ifneq (,$(findstring all, $(MAKECMDGOALS)) $(findstring flash, $(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(PLATFORM_DIR)/*.d)
 endif
 
 # platform unittest build dependencies
-ifneq (,$(findstring unittest_platform_build,$(MAKECMDGOALS)) $(findstring unittest_platform_flash,$(MAKECMDGOALS)))
+ifneq (,$(findstring unittest_platform,$(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/*.d)
 endif
 
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Target specific rules - THIS IS UP TO THE USER TO ADD!												
-#																										
-# The following rules are just examples of how to add rules for a specific target based on a STM32CubeMX generated makefile.					
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 # x86_x64 unittest build dependencies
-ifneq (,$(findstring unittest_x86_x64_build,$(MAKECMDGOALS)) $(findstring unittest_x86_x64_run,$(MAKECMDGOALS)))
+ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/*.d)
 endif

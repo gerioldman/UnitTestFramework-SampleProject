@@ -159,7 +159,24 @@ def create_tasks(path : str, project : dict):
                 "coverage-html",
                 "UNIT=${input:UNIT}"
             ]
+        },
+        {
+            "label": "Toggle coverage",
+            "command": "${command:gcov-viewer.toggle}"
+        },
+        {
+            "label": "Reload coverage",
+            "command": "${command:gcov-viewer.reloadGcdaFiles}"
+        },
+        {
+            "label": "Check dependencies",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "check"
+            ]
         }
+
     ],
     "inputs": [
         {
