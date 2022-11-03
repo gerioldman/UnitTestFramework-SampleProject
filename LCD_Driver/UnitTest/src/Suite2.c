@@ -1,7 +1,7 @@
 /**
  * @file Suite2.c
  * @brief TODO
- * @date 2022-11-02-22:08:46
+ * @date 2022-11-03-22:28:40
 */
 #include "TestSuites.h"
 /* Private includes ----------------------------------------------------------*/
@@ -25,7 +25,6 @@
  */
 void TS2_Test1()
 {
-	
 }
 
 /**

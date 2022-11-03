@@ -79,6 +79,10 @@ def create_tasks(path : str, project : dict):
                 "-s"
             ],
             "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": True
+            },
             "dependsOn": "x86_x64 Build UnitTest"
         },
         {
@@ -95,14 +99,26 @@ def create_tasks(path : str, project : dict):
             }
         },
         {
-            "label": "Target Run UnitTest",
+            "label": "Target Flash UnitTest",
             "type": "shell",
             "command": "make",
             "args": [
                 "unittest_platform_flash",
                 "UNIT=${input:UNIT}"
+            ]
+        },
+        {
+            "label": "Target Run UnitTest",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "unittest_platform_run",
+                "UNIT=${input:UNIT}"
             ],
-            "dependsOn": "Target Build UnitTest"
+            "group": {
+                "kind": "test",
+                "isDefault": True
+            }
         },
         {
             "label": "Software build",
@@ -402,7 +418,6 @@ def create_unittest_source(path : str, name : str, testsuites : dict):
                 file.write("\t\t{\"" + testCase["name"] + "\"," + testCase["name"] + "},\n")
             file.write("\t\t{\"TEST_CASE_END\",TEST_CASE_END},\n")
             file.write("\t}\n};")
-
 
 def create_files(path : str, project : dict):
     # Create files for each component

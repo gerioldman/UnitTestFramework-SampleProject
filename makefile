@@ -299,7 +299,7 @@ endif
 # Rules
 #######################################
 
-.PHONY: unittest_platform_build unittest_platform_flash unittest_x86_x64_build all flash coverage coverage-html check
+.PHONY: unittest_platform_build unittest_platform_flash unittest_platform_run unittest_x86_x64_build all flash coverage coverage-html check
 
 # .PHONY: Rules: 
 # 	created tasks for VSCode expect a make targets under these names:
@@ -307,6 +307,8 @@ endif
 # 	- unittest_platform_build: build unittest for target platform 		# TODO: you have to add this yourself
 # 
 # 	- unittest_platform_flash: flash built platform unittest on target 	# TODO: you have to add this yourself
+#
+# 	- unittest_platform_run: run platform unittest on target 			# TODO: you have to add this yourself
 #
 # 	- unittest_x86_x64_build: build unittest for target platform
 #
@@ -404,9 +406,9 @@ $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/$(EXE): $(OBJS_FOR_X86_X64_UNITTEST) | $(BU
 $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV)
 	@echo Building file: $<
 	@if [ ! -z "$(findstring $(UNITSRC),$<)" ]; then \
-		$(CC) $(CFLAGS) $(C_DEFS) $(COVFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -c $< -o $@; \
+		$(CC) $(CFLAGS) $(C_DEFS) $(COVFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -DPLATFORM=0 -c $< -o $@; \
 	else \
-		$(CC) $(CFLAGS) $(C_DEFS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -c $< -o $@; \
+		$(CC) $(CFLAGS) $(C_DEFS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -DPLATFORM=0 -c $< -o $@; \
 	fi
 
 # Rule for printing coverage summary
@@ -446,6 +448,10 @@ unittest_platform_build: $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform
 unittest_platform_flash: unittest_platform_build
 	@JLink.exe -commanderscript .\Platform\downloadUnitTest.jlink
 
+# run rule: invoke jrun to run Unit Test on target
+unittest_platform_run: unittest_platform_flash
+	@jrun -device STM32F446RE -if SWD -speed 4000 --quit --verbose .\.obj\unittest_platform\unittest_platform.elf
+
 # unittest build rule
 
 # linking rule
@@ -458,7 +464,7 @@ $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/unittest_platform.elf: $(OBJS_FOR_PLATFORM
 # *.c source file rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Building file: $<
-	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -DPLATFORM=1 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 # *.s source file rule
 $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
@@ -491,7 +497,7 @@ $(BUILD_DIR)/$(PLATFORM_DIR)/platform.elf: $(OBJS_FOR_PLATFORM) | $(BUILD_DIR) $
 # *.c source file rule
 $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)
 	@echo Building file: $<
-	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) -DUNITTEST=0 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@$(TARGET_CC) -c $(TARGET_CFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) -DUNITTEST=0 -DPLATFORM=1 -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(PLATFORM_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 # *.s source file rule
 $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR)

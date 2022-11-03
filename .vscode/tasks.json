@@ -23,6 +23,10 @@
                 "-s"
             ],
             "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "dependsOn": "x86_x64 Build UnitTest"
         },
         {
@@ -39,14 +43,26 @@
             }
         },
         {
-            "label": "Target Run UnitTest",
+            "label": "Target Flash UnitTest",
             "type": "shell",
             "command": "make",
             "args": [
                 "unittest_platform_flash",
                 "UNIT=${input:UNIT}"
+            ]
+        },
+        {
+            "label": "Target Run UnitTest",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "unittest_platform_run",
+                "UNIT=${input:UNIT}"
             ],
-            "dependsOn": "Target Build UnitTest"
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         },
         {
             "label": "Software build",
