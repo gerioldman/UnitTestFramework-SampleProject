@@ -1,11 +1,14 @@
 /**
  * @file Suite1.c
  * @brief TODO
- * @date 2022-11-03-22:28:40
+ * @date 2022-11-10-22:45:14
 */
-#include "TestSuites.h"
+
 /* Private includes ----------------------------------------------------------*/
 
+#include "TestSuites.h"
+#include "UnitTestAssert.h"
+#include "stub.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -25,6 +28,7 @@
  */
 void TS1_Test1()
 {
+	ASSERT_INT8_EQUAL(0,1);
 }
 
 /**
@@ -39,8 +43,8 @@ TestSuite Suite1 = {
 	.name = "Suite1",
 	.TestCases = 
 	{
-		{"TS1_Test1",TS1_Test1},
-		{"TS1_Test2",TS1_Test2},
-		{"TEST_CASE_END",TEST_CASE_END},
+		TEST_CASE_ENTRY(TS1_Test1),
+		TEST_CASE_ENTRY(TS1_Test2),
+		TEST_CASE_ENTRY(TEST_CASE_END),
 	}
 };

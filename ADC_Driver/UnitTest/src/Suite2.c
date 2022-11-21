@@ -1,11 +1,13 @@
 /**
  * @file Suite2.c
  * @brief TODO
- * @date 2022-11-03-22:28:40
+ * @date 2022-11-10-22:45:14
 */
-#include "TestSuites.h"
+
 /* Private includes ----------------------------------------------------------*/
 
+#include "TestSuites.h"
+#include "stub.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -39,8 +41,8 @@ TestSuite Suite2 = {
 	.name = "Suite2",
 	.TestCases = 
 	{
-		{"TS2_Test1",TS2_Test1},
-		{"TS2_Test2",TS2_Test2},
-		{"TEST_CASE_END",TEST_CASE_END},
+		TEST_CASE_ENTRY(TS2_Test1),
+		TEST_CASE_ENTRY(TS2_Test2),
+		TEST_CASE_ENTRY(TEST_CASE_END),
 	}
 };

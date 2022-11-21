@@ -1,49 +1,12 @@
 /**
-* @file stub.c
-*
-* @brief This file contains the stubs for the functions
-*
-*/
+ * @file stub.c
+ *
+ * @brief This file contains the stubs for the functions
+ *
+ */
 #include "types.h"
 #include "stub.h"
 TEST_STUB_TYPE TEST_STUB = {0};
-extern void SystemInit(void)
-{
-  TEST_STUB.SystemInit.callcount++;
-  switch (TEST_STUB.SystemInit.stub_option)
-  {
-    case STUB_OPTION_VALUE:
-      break;
-
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.SystemInit.redirectFuncPtr();
-      break;
-
-    default:
-      break;
-
-  }
-
-}
-
-extern void SystemCoreClockUpdate(void)
-{
-  TEST_STUB.SystemCoreClockUpdate.callcount++;
-  switch (TEST_STUB.SystemCoreClockUpdate.stub_option)
-  {
-    case STUB_OPTION_VALUE:
-      break;
-
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.SystemCoreClockUpdate.redirectFuncPtr();
-      break;
-
-    default:
-      break;
-
-  }
-
-}
 
 HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkInit)
 {
@@ -51,9 +14,9 @@ HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkI
   TEST_STUB.HAL_RCCEx_PeriphCLKConfig.callcount++;
   switch (TEST_STUB.HAL_RCCEx_PeriphCLKConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_PeriphCLKConfig.returnValue;
-      if (TEST_STUB.HAL_RCCEx_PeriphCLKConfig.PeriphClkInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_PeriphCLKConfig.returnValue;
+    if (TEST_STUB.HAL_RCCEx_PeriphCLKConfig.PeriphClkInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *PeriphClkInit = TEST_STUB.HAL_RCCEx_PeriphCLKConfig.PeriphClkInit.value;
     }
@@ -64,15 +27,14 @@ HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkI
         TEST_STUB.HAL_RCCEx_PeriphCLKConfig.PeriphClkInit.value = *PeriphClkInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_PeriphCLKConfig.redirectFuncPtr(PeriphClkInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_PeriphCLKConfig.redirectFuncPtr(PeriphClkInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -83,8 +45,8 @@ void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkInit)
   TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.callcount++;
   switch (TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.PeriphClkInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.PeriphClkInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *PeriphClkInit = TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.PeriphClkInit.value;
     }
@@ -95,17 +57,15 @@ void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkInit)
         TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.PeriphClkInit.value = *PeriphClkInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.redirectFuncPtr(PeriphClkInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCCEx_GetPeriphCLKConfig.redirectFuncPtr(PeriphClkInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
@@ -114,18 +74,17 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
   TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.callcount++;
   switch (TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.returnValue;
-      TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.PeriphClk = PeriphClk;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.returnValue;
+    TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.PeriphClk = PeriphClk;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.redirectFuncPtr(PeriphClk);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_GetPeriphCLKFreq.redirectFuncPtr(PeriphClk);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -136,19 +95,17 @@ void HAL_RCCEx_SelectLSEMode(uint8_t Mode)
   TEST_STUB.HAL_RCCEx_SelectLSEMode.callcount++;
   switch (TEST_STUB.HAL_RCCEx_SelectLSEMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_RCCEx_SelectLSEMode.Mode = Mode;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_RCCEx_SelectLSEMode.Mode = Mode;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCCEx_SelectLSEMode.redirectFuncPtr(Mode);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCCEx_SelectLSEMode.redirectFuncPtr(Mode);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_RCCEx_EnablePLLI2S(RCC_PLLI2SInitTypeDef *PLLI2SInit)
@@ -157,9 +114,9 @@ HAL_StatusTypeDef HAL_RCCEx_EnablePLLI2S(RCC_PLLI2SInitTypeDef *PLLI2SInit)
   TEST_STUB.HAL_RCCEx_EnablePLLI2S.callcount++;
   switch (TEST_STUB.HAL_RCCEx_EnablePLLI2S.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_EnablePLLI2S.returnValue;
-      if (TEST_STUB.HAL_RCCEx_EnablePLLI2S.PLLI2SInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_EnablePLLI2S.returnValue;
+    if (TEST_STUB.HAL_RCCEx_EnablePLLI2S.PLLI2SInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *PLLI2SInit = TEST_STUB.HAL_RCCEx_EnablePLLI2S.PLLI2SInit.value;
     }
@@ -170,15 +127,14 @@ HAL_StatusTypeDef HAL_RCCEx_EnablePLLI2S(RCC_PLLI2SInitTypeDef *PLLI2SInit)
         TEST_STUB.HAL_RCCEx_EnablePLLI2S.PLLI2SInit.value = *PLLI2SInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_EnablePLLI2S.redirectFuncPtr(PLLI2SInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_EnablePLLI2S.redirectFuncPtr(PLLI2SInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -190,17 +146,16 @@ HAL_StatusTypeDef HAL_RCCEx_DisablePLLI2S(void)
   TEST_STUB.HAL_RCCEx_DisablePLLI2S.callcount++;
   switch (TEST_STUB.HAL_RCCEx_DisablePLLI2S.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_DisablePLLI2S.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_DisablePLLI2S.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_DisablePLLI2S.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_DisablePLLI2S.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -212,9 +167,9 @@ HAL_StatusTypeDef HAL_RCCEx_EnablePLLSAI(RCC_PLLSAIInitTypeDef *PLLSAIInit)
   TEST_STUB.HAL_RCCEx_EnablePLLSAI.callcount++;
   switch (TEST_STUB.HAL_RCCEx_EnablePLLSAI.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_EnablePLLSAI.returnValue;
-      if (TEST_STUB.HAL_RCCEx_EnablePLLSAI.PLLSAIInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_EnablePLLSAI.returnValue;
+    if (TEST_STUB.HAL_RCCEx_EnablePLLSAI.PLLSAIInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *PLLSAIInit = TEST_STUB.HAL_RCCEx_EnablePLLSAI.PLLSAIInit.value;
     }
@@ -225,15 +180,14 @@ HAL_StatusTypeDef HAL_RCCEx_EnablePLLSAI(RCC_PLLSAIInitTypeDef *PLLSAIInit)
         TEST_STUB.HAL_RCCEx_EnablePLLSAI.PLLSAIInit.value = *PLLSAIInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_EnablePLLSAI.redirectFuncPtr(PLLSAIInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_EnablePLLSAI.redirectFuncPtr(PLLSAIInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -245,17 +199,16 @@ HAL_StatusTypeDef HAL_RCCEx_DisablePLLSAI(void)
   TEST_STUB.HAL_RCCEx_DisablePLLSAI.callcount++;
   switch (TEST_STUB.HAL_RCCEx_DisablePLLSAI.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCCEx_DisablePLLSAI.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCCEx_DisablePLLSAI.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCCEx_DisablePLLSAI.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCCEx_DisablePLLSAI.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -267,17 +220,16 @@ HAL_StatusTypeDef HAL_RCC_DeInit(void)
   TEST_STUB.HAL_RCC_DeInit.callcount++;
   switch (TEST_STUB.HAL_RCC_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_DeInit.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_DeInit.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_DeInit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_DeInit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -289,9 +241,9 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct)
   TEST_STUB.HAL_RCC_OscConfig.callcount++;
   switch (TEST_STUB.HAL_RCC_OscConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_OscConfig.returnValue;
-      if (TEST_STUB.HAL_RCC_OscConfig.RCC_OscInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_OscConfig.returnValue;
+    if (TEST_STUB.HAL_RCC_OscConfig.RCC_OscInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *RCC_OscInitStruct = TEST_STUB.HAL_RCC_OscConfig.RCC_OscInitStruct.value;
     }
@@ -302,15 +254,14 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct)
         TEST_STUB.HAL_RCC_OscConfig.RCC_OscInitStruct.value = *RCC_OscInitStruct;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_OscConfig.redirectFuncPtr(RCC_OscInitStruct);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_OscConfig.redirectFuncPtr(RCC_OscInitStruct);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -322,9 +273,9 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uin
   TEST_STUB.HAL_RCC_ClockConfig.callcount++;
   switch (TEST_STUB.HAL_RCC_ClockConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_ClockConfig.returnValue;
-      if (TEST_STUB.HAL_RCC_ClockConfig.RCC_ClkInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_ClockConfig.returnValue;
+    if (TEST_STUB.HAL_RCC_ClockConfig.RCC_ClkInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *RCC_ClkInitStruct = TEST_STUB.HAL_RCC_ClockConfig.RCC_ClkInitStruct.value;
     }
@@ -335,16 +286,15 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uin
         TEST_STUB.HAL_RCC_ClockConfig.RCC_ClkInitStruct.value = *RCC_ClkInitStruct;
       }
     }
-      TEST_STUB.HAL_RCC_ClockConfig.FLatency = FLatency;
-      break;
+    TEST_STUB.HAL_RCC_ClockConfig.FLatency = FLatency;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_ClockConfig.redirectFuncPtr(RCC_ClkInitStruct, FLatency);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_ClockConfig.redirectFuncPtr(RCC_ClkInitStruct, FLatency);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -355,21 +305,19 @@ void HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_M
   TEST_STUB.HAL_RCC_MCOConfig.callcount++;
   switch (TEST_STUB.HAL_RCC_MCOConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_RCC_MCOConfig.RCC_MCOx = RCC_MCOx;
-      TEST_STUB.HAL_RCC_MCOConfig.RCC_MCOSource = RCC_MCOSource;
-      TEST_STUB.HAL_RCC_MCOConfig.RCC_MCODiv = RCC_MCODiv;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_RCC_MCOConfig.RCC_MCOx = RCC_MCOx;
+    TEST_STUB.HAL_RCC_MCOConfig.RCC_MCOSource = RCC_MCOSource;
+    TEST_STUB.HAL_RCC_MCOConfig.RCC_MCODiv = RCC_MCODiv;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_MCOConfig.redirectFuncPtr(RCC_MCOx, RCC_MCOSource, RCC_MCODiv);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_MCOConfig.redirectFuncPtr(RCC_MCOx, RCC_MCOSource, RCC_MCODiv);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_RCC_EnableCSS(void)
@@ -377,18 +325,16 @@ void HAL_RCC_EnableCSS(void)
   TEST_STUB.HAL_RCC_EnableCSS.callcount++;
   switch (TEST_STUB.HAL_RCC_EnableCSS.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_EnableCSS.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_EnableCSS.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_RCC_DisableCSS(void)
@@ -396,18 +342,16 @@ void HAL_RCC_DisableCSS(void)
   TEST_STUB.HAL_RCC_DisableCSS.callcount++;
   switch (TEST_STUB.HAL_RCC_DisableCSS.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_DisableCSS.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_DisableCSS.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_RCC_GetSysClockFreq(void)
@@ -416,17 +360,16 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
   TEST_STUB.HAL_RCC_GetSysClockFreq.callcount++;
   switch (TEST_STUB.HAL_RCC_GetSysClockFreq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_GetSysClockFreq.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_GetSysClockFreq.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_GetSysClockFreq.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_GetSysClockFreq.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -438,17 +381,16 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
   TEST_STUB.HAL_RCC_GetHCLKFreq.callcount++;
   switch (TEST_STUB.HAL_RCC_GetHCLKFreq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_GetHCLKFreq.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_GetHCLKFreq.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_GetHCLKFreq.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_GetHCLKFreq.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -460,17 +402,16 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
   TEST_STUB.HAL_RCC_GetPCLK1Freq.callcount++;
   switch (TEST_STUB.HAL_RCC_GetPCLK1Freq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_GetPCLK1Freq.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_GetPCLK1Freq.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_GetPCLK1Freq.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_GetPCLK1Freq.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -482,17 +423,16 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
   TEST_STUB.HAL_RCC_GetPCLK2Freq.callcount++;
   switch (TEST_STUB.HAL_RCC_GetPCLK2Freq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_RCC_GetPCLK2Freq.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_RCC_GetPCLK2Freq.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_RCC_GetPCLK2Freq.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_RCC_GetPCLK2Freq.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -503,8 +443,8 @@ void HAL_RCC_GetOscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct)
   TEST_STUB.HAL_RCC_GetOscConfig.callcount++;
   switch (TEST_STUB.HAL_RCC_GetOscConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_RCC_GetOscConfig.RCC_OscInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_RCC_GetOscConfig.RCC_OscInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *RCC_OscInitStruct = TEST_STUB.HAL_RCC_GetOscConfig.RCC_OscInitStruct.value;
     }
@@ -515,17 +455,15 @@ void HAL_RCC_GetOscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct)
         TEST_STUB.HAL_RCC_GetOscConfig.RCC_OscInitStruct.value = *RCC_OscInitStruct;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_GetOscConfig.redirectFuncPtr(RCC_OscInitStruct);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_GetOscConfig.redirectFuncPtr(RCC_OscInitStruct);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFLatency)
@@ -533,8 +471,8 @@ void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFL
   TEST_STUB.HAL_RCC_GetClockConfig.callcount++;
   switch (TEST_STUB.HAL_RCC_GetClockConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_RCC_GetClockConfig.RCC_ClkInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_RCC_GetClockConfig.RCC_ClkInitStruct.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *RCC_ClkInitStruct = TEST_STUB.HAL_RCC_GetClockConfig.RCC_ClkInitStruct.value;
     }
@@ -545,7 +483,7 @@ void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFL
         TEST_STUB.HAL_RCC_GetClockConfig.RCC_ClkInitStruct.value = *RCC_ClkInitStruct;
       }
     }
-      if (TEST_STUB.HAL_RCC_GetClockConfig.pFLatency.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_RCC_GetClockConfig.pFLatency.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pFLatency = TEST_STUB.HAL_RCC_GetClockConfig.pFLatency.value;
     }
@@ -556,17 +494,15 @@ void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFL
         TEST_STUB.HAL_RCC_GetClockConfig.pFLatency.value = *pFLatency;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_GetClockConfig.redirectFuncPtr(RCC_ClkInitStruct, pFLatency);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_GetClockConfig.redirectFuncPtr(RCC_ClkInitStruct, pFLatency);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_RCC_NMI_IRQHandler(void)
@@ -574,18 +510,16 @@ void HAL_RCC_NMI_IRQHandler(void)
   TEST_STUB.HAL_RCC_NMI_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_RCC_NMI_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_NMI_IRQHandler.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_NMI_IRQHandler.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_RCC_CSSCallback(void)
@@ -593,18 +527,16 @@ void HAL_RCC_CSSCallback(void)
   TEST_STUB.HAL_RCC_CSSCallback.callcount++;
   switch (TEST_STUB.HAL_RCC_CSSCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_RCC_CSSCallback.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_RCC_CSSCallback.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
@@ -612,8 +544,8 @@ void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
   TEST_STUB.HAL_GPIO_Init.callcount++;
   switch (TEST_STUB.HAL_GPIO_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_GPIO_Init.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_GPIO_Init.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_Init.GPIOx.value;
     }
@@ -624,7 +556,7 @@ void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
         TEST_STUB.HAL_GPIO_Init.GPIOx.value = *GPIOx;
       }
     }
-      if (TEST_STUB.HAL_GPIO_Init.GPIO_Init.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_GPIO_Init.GPIO_Init.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIO_Init = TEST_STUB.HAL_GPIO_Init.GPIO_Init.value;
     }
@@ -635,17 +567,15 @@ void HAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
         TEST_STUB.HAL_GPIO_Init.GPIO_Init.value = *GPIO_Init;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_Init.redirectFuncPtr(GPIOx, GPIO_Init);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_Init.redirectFuncPtr(GPIOx, GPIO_Init);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin)
@@ -653,8 +583,8 @@ void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_DeInit.callcount++;
   switch (TEST_STUB.HAL_GPIO_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_GPIO_DeInit.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_GPIO_DeInit.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_DeInit.GPIOx.value;
     }
@@ -665,18 +595,16 @@ void HAL_GPIO_DeInit(GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin)
         TEST_STUB.HAL_GPIO_DeInit.GPIOx.value = *GPIOx;
       }
     }
-      TEST_STUB.HAL_GPIO_DeInit.GPIO_Pin = GPIO_Pin;
-      break;
+    TEST_STUB.HAL_GPIO_DeInit.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_DeInit.redirectFuncPtr(GPIOx, GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_DeInit.redirectFuncPtr(GPIOx, GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
@@ -685,9 +613,9 @@ GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_ReadPin.callcount++;
   switch (TEST_STUB.HAL_GPIO_ReadPin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GPIO_ReadPin.returnValue;
-      if (TEST_STUB.HAL_GPIO_ReadPin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GPIO_ReadPin.returnValue;
+    if (TEST_STUB.HAL_GPIO_ReadPin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_ReadPin.GPIOx.value;
     }
@@ -698,16 +626,15 @@ GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
         TEST_STUB.HAL_GPIO_ReadPin.GPIOx.value = *GPIOx;
       }
     }
-      TEST_STUB.HAL_GPIO_ReadPin.GPIO_Pin = GPIO_Pin;
-      break;
+    TEST_STUB.HAL_GPIO_ReadPin.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GPIO_ReadPin.redirectFuncPtr(GPIOx, GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GPIO_ReadPin.redirectFuncPtr(GPIOx, GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -718,8 +645,8 @@ void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState Pin
   TEST_STUB.HAL_GPIO_WritePin.callcount++;
   switch (TEST_STUB.HAL_GPIO_WritePin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_GPIO_WritePin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_GPIO_WritePin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_WritePin.GPIOx.value;
     }
@@ -730,19 +657,17 @@ void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState Pin
         TEST_STUB.HAL_GPIO_WritePin.GPIOx.value = *GPIOx;
       }
     }
-      TEST_STUB.HAL_GPIO_WritePin.GPIO_Pin = GPIO_Pin;
-      TEST_STUB.HAL_GPIO_WritePin.PinState = PinState;
-      break;
+    TEST_STUB.HAL_GPIO_WritePin.GPIO_Pin = GPIO_Pin;
+    TEST_STUB.HAL_GPIO_WritePin.PinState = PinState;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_WritePin.redirectFuncPtr(GPIOx, GPIO_Pin, PinState);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_WritePin.redirectFuncPtr(GPIOx, GPIO_Pin, PinState);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
@@ -750,8 +675,8 @@ void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_TogglePin.callcount++;
   switch (TEST_STUB.HAL_GPIO_TogglePin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_GPIO_TogglePin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_GPIO_TogglePin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_TogglePin.GPIOx.value;
     }
@@ -762,18 +687,16 @@ void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
         TEST_STUB.HAL_GPIO_TogglePin.GPIOx.value = *GPIOx;
       }
     }
-      TEST_STUB.HAL_GPIO_TogglePin.GPIO_Pin = GPIO_Pin;
-      break;
+    TEST_STUB.HAL_GPIO_TogglePin.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_TogglePin.redirectFuncPtr(GPIOx, GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_TogglePin.redirectFuncPtr(GPIOx, GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
@@ -782,9 +705,9 @@ HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_LockPin.callcount++;
   switch (TEST_STUB.HAL_GPIO_LockPin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GPIO_LockPin.returnValue;
-      if (TEST_STUB.HAL_GPIO_LockPin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GPIO_LockPin.returnValue;
+    if (TEST_STUB.HAL_GPIO_LockPin.GPIOx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *GPIOx = TEST_STUB.HAL_GPIO_LockPin.GPIOx.value;
     }
@@ -795,16 +718,15 @@ HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
         TEST_STUB.HAL_GPIO_LockPin.GPIOx.value = *GPIOx;
       }
     }
-      TEST_STUB.HAL_GPIO_LockPin.GPIO_Pin = GPIO_Pin;
-      break;
+    TEST_STUB.HAL_GPIO_LockPin.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GPIO_LockPin.redirectFuncPtr(GPIOx, GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GPIO_LockPin.redirectFuncPtr(GPIOx, GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -815,19 +737,17 @@ void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_EXTI_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_GPIO_EXTI_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_GPIO_EXTI_IRQHandler.GPIO_Pin = GPIO_Pin;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_GPIO_EXTI_IRQHandler.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_EXTI_IRQHandler.redirectFuncPtr(GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_EXTI_IRQHandler.redirectFuncPtr(GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -835,19 +755,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   TEST_STUB.HAL_GPIO_EXTI_Callback.callcount++;
   switch (TEST_STUB.HAL_GPIO_EXTI_Callback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_GPIO_EXTI_Callback.GPIO_Pin = GPIO_Pin;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_GPIO_EXTI_Callback.GPIO_Pin = GPIO_Pin;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_GPIO_EXTI_Callback.redirectFuncPtr(GPIO_Pin);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_GPIO_EXTI_Callback.redirectFuncPtr(GPIO_Pin);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigTypeDef *pExtiConfig)
@@ -856,9 +774,9 @@ HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
   TEST_STUB.HAL_EXTI_SetConfigLine.callcount++;
   switch (TEST_STUB.HAL_EXTI_SetConfigLine.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_SetConfigLine.returnValue;
-      if (TEST_STUB.HAL_EXTI_SetConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_SetConfigLine.returnValue;
+    if (TEST_STUB.HAL_EXTI_SetConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_SetConfigLine.hexti.value;
     }
@@ -869,7 +787,7 @@ HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
         TEST_STUB.HAL_EXTI_SetConfigLine.hexti.value = *hexti;
       }
     }
-      if (TEST_STUB.HAL_EXTI_SetConfigLine.pExtiConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_EXTI_SetConfigLine.pExtiConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pExtiConfig = TEST_STUB.HAL_EXTI_SetConfigLine.pExtiConfig.value;
     }
@@ -880,15 +798,14 @@ HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
         TEST_STUB.HAL_EXTI_SetConfigLine.pExtiConfig.value = *pExtiConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_SetConfigLine.redirectFuncPtr(hexti, pExtiConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_SetConfigLine.redirectFuncPtr(hexti, pExtiConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -900,9 +817,9 @@ HAL_StatusTypeDef HAL_EXTI_GetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
   TEST_STUB.HAL_EXTI_GetConfigLine.callcount++;
   switch (TEST_STUB.HAL_EXTI_GetConfigLine.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_GetConfigLine.returnValue;
-      if (TEST_STUB.HAL_EXTI_GetConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_GetConfigLine.returnValue;
+    if (TEST_STUB.HAL_EXTI_GetConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_GetConfigLine.hexti.value;
     }
@@ -913,7 +830,7 @@ HAL_StatusTypeDef HAL_EXTI_GetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
         TEST_STUB.HAL_EXTI_GetConfigLine.hexti.value = *hexti;
       }
     }
-      if (TEST_STUB.HAL_EXTI_GetConfigLine.pExtiConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_EXTI_GetConfigLine.pExtiConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pExtiConfig = TEST_STUB.HAL_EXTI_GetConfigLine.pExtiConfig.value;
     }
@@ -924,15 +841,14 @@ HAL_StatusTypeDef HAL_EXTI_GetConfigLine(EXTI_HandleTypeDef *hexti, EXTI_ConfigT
         TEST_STUB.HAL_EXTI_GetConfigLine.pExtiConfig.value = *pExtiConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_GetConfigLine.redirectFuncPtr(hexti, pExtiConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_GetConfigLine.redirectFuncPtr(hexti, pExtiConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -944,9 +860,9 @@ HAL_StatusTypeDef HAL_EXTI_ClearConfigLine(EXTI_HandleTypeDef *hexti)
   TEST_STUB.HAL_EXTI_ClearConfigLine.callcount++;
   switch (TEST_STUB.HAL_EXTI_ClearConfigLine.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_ClearConfigLine.returnValue;
-      if (TEST_STUB.HAL_EXTI_ClearConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_ClearConfigLine.returnValue;
+    if (TEST_STUB.HAL_EXTI_ClearConfigLine.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_ClearConfigLine.hexti.value;
     }
@@ -957,15 +873,14 @@ HAL_StatusTypeDef HAL_EXTI_ClearConfigLine(EXTI_HandleTypeDef *hexti)
         TEST_STUB.HAL_EXTI_ClearConfigLine.hexti.value = *hexti;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_ClearConfigLine.redirectFuncPtr(hexti);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_ClearConfigLine.redirectFuncPtr(hexti);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -977,9 +892,9 @@ HAL_StatusTypeDef HAL_EXTI_RegisterCallback(EXTI_HandleTypeDef *hexti, EXTI_Call
   TEST_STUB.HAL_EXTI_RegisterCallback.callcount++;
   switch (TEST_STUB.HAL_EXTI_RegisterCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_RegisterCallback.returnValue;
-      if (TEST_STUB.HAL_EXTI_RegisterCallback.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_RegisterCallback.returnValue;
+    if (TEST_STUB.HAL_EXTI_RegisterCallback.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_RegisterCallback.hexti.value;
     }
@@ -990,17 +905,16 @@ HAL_StatusTypeDef HAL_EXTI_RegisterCallback(EXTI_HandleTypeDef *hexti, EXTI_Call
         TEST_STUB.HAL_EXTI_RegisterCallback.hexti.value = *hexti;
       }
     }
-      TEST_STUB.HAL_EXTI_RegisterCallback.CallbackID = CallbackID;
-      TEST_STUB.HAL_EXTI_RegisterCallback.pPendingCbfn = pPendingCbfn;
-      break;
+    TEST_STUB.HAL_EXTI_RegisterCallback.CallbackID = CallbackID;
+    TEST_STUB.HAL_EXTI_RegisterCallback.pPendingCbfn = pPendingCbfn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_RegisterCallback.redirectFuncPtr(hexti, CallbackID, pPendingCbfn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_RegisterCallback.redirectFuncPtr(hexti, CallbackID, pPendingCbfn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1012,9 +926,9 @@ HAL_StatusTypeDef HAL_EXTI_GetHandle(EXTI_HandleTypeDef *hexti, uint32_t ExtiLin
   TEST_STUB.HAL_EXTI_GetHandle.callcount++;
   switch (TEST_STUB.HAL_EXTI_GetHandle.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_GetHandle.returnValue;
-      if (TEST_STUB.HAL_EXTI_GetHandle.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_GetHandle.returnValue;
+    if (TEST_STUB.HAL_EXTI_GetHandle.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_GetHandle.hexti.value;
     }
@@ -1025,16 +939,15 @@ HAL_StatusTypeDef HAL_EXTI_GetHandle(EXTI_HandleTypeDef *hexti, uint32_t ExtiLin
         TEST_STUB.HAL_EXTI_GetHandle.hexti.value = *hexti;
       }
     }
-      TEST_STUB.HAL_EXTI_GetHandle.ExtiLine = ExtiLine;
-      break;
+    TEST_STUB.HAL_EXTI_GetHandle.ExtiLine = ExtiLine;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_GetHandle.redirectFuncPtr(hexti, ExtiLine);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_GetHandle.redirectFuncPtr(hexti, ExtiLine);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1045,8 +958,8 @@ void HAL_EXTI_IRQHandler(EXTI_HandleTypeDef *hexti)
   TEST_STUB.HAL_EXTI_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_EXTI_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_EXTI_IRQHandler.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_EXTI_IRQHandler.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_IRQHandler.hexti.value;
     }
@@ -1057,17 +970,15 @@ void HAL_EXTI_IRQHandler(EXTI_HandleTypeDef *hexti)
         TEST_STUB.HAL_EXTI_IRQHandler.hexti.value = *hexti;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_EXTI_IRQHandler.redirectFuncPtr(hexti);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_EXTI_IRQHandler.redirectFuncPtr(hexti);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
@@ -1076,9 +987,9 @@ uint32_t HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
   TEST_STUB.HAL_EXTI_GetPending.callcount++;
   switch (TEST_STUB.HAL_EXTI_GetPending.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_EXTI_GetPending.returnValue;
-      if (TEST_STUB.HAL_EXTI_GetPending.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_EXTI_GetPending.returnValue;
+    if (TEST_STUB.HAL_EXTI_GetPending.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_GetPending.hexti.value;
     }
@@ -1089,16 +1000,15 @@ uint32_t HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
         TEST_STUB.HAL_EXTI_GetPending.hexti.value = *hexti;
       }
     }
-      TEST_STUB.HAL_EXTI_GetPending.Edge = Edge;
-      break;
+    TEST_STUB.HAL_EXTI_GetPending.Edge = Edge;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_EXTI_GetPending.redirectFuncPtr(hexti, Edge);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_EXTI_GetPending.redirectFuncPtr(hexti, Edge);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1109,8 +1019,8 @@ void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
   TEST_STUB.HAL_EXTI_ClearPending.callcount++;
   switch (TEST_STUB.HAL_EXTI_ClearPending.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_EXTI_ClearPending.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_EXTI_ClearPending.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_ClearPending.hexti.value;
     }
@@ -1121,18 +1031,16 @@ void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
         TEST_STUB.HAL_EXTI_ClearPending.hexti.value = *hexti;
       }
     }
-      TEST_STUB.HAL_EXTI_ClearPending.Edge = Edge;
-      break;
+    TEST_STUB.HAL_EXTI_ClearPending.Edge = Edge;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_EXTI_ClearPending.redirectFuncPtr(hexti, Edge);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_EXTI_ClearPending.redirectFuncPtr(hexti, Edge);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_EXTI_GenerateSWI(EXTI_HandleTypeDef *hexti)
@@ -1140,8 +1048,8 @@ void HAL_EXTI_GenerateSWI(EXTI_HandleTypeDef *hexti)
   TEST_STUB.HAL_EXTI_GenerateSWI.callcount++;
   switch (TEST_STUB.HAL_EXTI_GenerateSWI.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_EXTI_GenerateSWI.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_EXTI_GenerateSWI.hexti.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hexti = TEST_STUB.HAL_EXTI_GenerateSWI.hexti.value;
     }
@@ -1152,17 +1060,15 @@ void HAL_EXTI_GenerateSWI(EXTI_HandleTypeDef *hexti)
         TEST_STUB.HAL_EXTI_GenerateSWI.hexti.value = *hexti;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_EXTI_GenerateSWI.redirectFuncPtr(hexti);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_EXTI_GenerateSWI.redirectFuncPtr(hexti);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t SecondMemAddress, uint32_t DataLength)
@@ -1171,9 +1077,9 @@ HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t S
   TEST_STUB.HAL_DMAEx_MultiBufferStart.callcount++;
   switch (TEST_STUB.HAL_DMAEx_MultiBufferStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart.returnValue;
-      if (TEST_STUB.HAL_DMAEx_MultiBufferStart.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart.returnValue;
+    if (TEST_STUB.HAL_DMAEx_MultiBufferStart.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMAEx_MultiBufferStart.hdma.value;
     }
@@ -1184,19 +1090,18 @@ HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t S
         TEST_STUB.HAL_DMAEx_MultiBufferStart.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMAEx_MultiBufferStart.SrcAddress = SrcAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart.DstAddress = DstAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart.SecondMemAddress = SecondMemAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart.SrcAddress = SrcAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart.DstAddress = DstAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart.SecondMemAddress = SecondMemAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart.redirectFuncPtr(hdma, SrcAddress, DstAddress, SecondMemAddress, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart.redirectFuncPtr(hdma, SrcAddress, DstAddress, SecondMemAddress, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1208,9 +1113,9 @@ HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart_IT(DMA_HandleTypeDef *hdma, uint32_
   TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.callcount++;
   switch (TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.returnValue;
-      if (TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.returnValue;
+    if (TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.hdma.value;
     }
@@ -1221,19 +1126,18 @@ HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart_IT(DMA_HandleTypeDef *hdma, uint32_
         TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.SrcAddress = SrcAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.DstAddress = DstAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.SecondMemAddress = SecondMemAddress;
-      TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.SrcAddress = SrcAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.DstAddress = DstAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.SecondMemAddress = SecondMemAddress;
+    TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.redirectFuncPtr(hdma, SrcAddress, DstAddress, SecondMemAddress, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMAEx_MultiBufferStart_IT.redirectFuncPtr(hdma, SrcAddress, DstAddress, SecondMemAddress, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1245,9 +1149,9 @@ HAL_StatusTypeDef HAL_DMAEx_ChangeMemory(DMA_HandleTypeDef *hdma, uint32_t Addre
   TEST_STUB.HAL_DMAEx_ChangeMemory.callcount++;
   switch (TEST_STUB.HAL_DMAEx_ChangeMemory.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMAEx_ChangeMemory.returnValue;
-      if (TEST_STUB.HAL_DMAEx_ChangeMemory.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMAEx_ChangeMemory.returnValue;
+    if (TEST_STUB.HAL_DMAEx_ChangeMemory.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMAEx_ChangeMemory.hdma.value;
     }
@@ -1258,17 +1162,16 @@ HAL_StatusTypeDef HAL_DMAEx_ChangeMemory(DMA_HandleTypeDef *hdma, uint32_t Addre
         TEST_STUB.HAL_DMAEx_ChangeMemory.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMAEx_ChangeMemory.Address = Address;
-      TEST_STUB.HAL_DMAEx_ChangeMemory.memory = memory;
-      break;
+    TEST_STUB.HAL_DMAEx_ChangeMemory.Address = Address;
+    TEST_STUB.HAL_DMAEx_ChangeMemory.memory = memory;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMAEx_ChangeMemory.redirectFuncPtr(hdma, Address, memory);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMAEx_ChangeMemory.redirectFuncPtr(hdma, Address, memory);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1280,9 +1183,9 @@ HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_Init.callcount++;
   switch (TEST_STUB.HAL_DMA_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_Init.returnValue;
-      if (TEST_STUB.HAL_DMA_Init.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_Init.returnValue;
+    if (TEST_STUB.HAL_DMA_Init.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_Init.hdma.value;
     }
@@ -1293,15 +1196,14 @@ HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_Init.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_Init.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_Init.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1313,9 +1215,9 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_DeInit.callcount++;
   switch (TEST_STUB.HAL_DMA_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_DeInit.returnValue;
-      if (TEST_STUB.HAL_DMA_DeInit.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_DeInit.returnValue;
+    if (TEST_STUB.HAL_DMA_DeInit.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_DeInit.hdma.value;
     }
@@ -1326,15 +1228,14 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_DeInit.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_DeInit.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_DeInit.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1346,9 +1247,9 @@ HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, ui
   TEST_STUB.HAL_DMA_Start.callcount++;
   switch (TEST_STUB.HAL_DMA_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_Start.returnValue;
-      if (TEST_STUB.HAL_DMA_Start.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_Start.returnValue;
+    if (TEST_STUB.HAL_DMA_Start.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_Start.hdma.value;
     }
@@ -1359,18 +1260,17 @@ HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, ui
         TEST_STUB.HAL_DMA_Start.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMA_Start.SrcAddress = SrcAddress;
-      TEST_STUB.HAL_DMA_Start.DstAddress = DstAddress;
-      TEST_STUB.HAL_DMA_Start.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_DMA_Start.SrcAddress = SrcAddress;
+    TEST_STUB.HAL_DMA_Start.DstAddress = DstAddress;
+    TEST_STUB.HAL_DMA_Start.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_Start.redirectFuncPtr(hdma, SrcAddress, DstAddress, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_Start.redirectFuncPtr(hdma, SrcAddress, DstAddress, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1382,9 +1282,9 @@ HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress,
   TEST_STUB.HAL_DMA_Start_IT.callcount++;
   switch (TEST_STUB.HAL_DMA_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_Start_IT.returnValue;
-      if (TEST_STUB.HAL_DMA_Start_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_Start_IT.returnValue;
+    if (TEST_STUB.HAL_DMA_Start_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_Start_IT.hdma.value;
     }
@@ -1395,18 +1295,17 @@ HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress,
         TEST_STUB.HAL_DMA_Start_IT.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMA_Start_IT.SrcAddress = SrcAddress;
-      TEST_STUB.HAL_DMA_Start_IT.DstAddress = DstAddress;
-      TEST_STUB.HAL_DMA_Start_IT.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_DMA_Start_IT.SrcAddress = SrcAddress;
+    TEST_STUB.HAL_DMA_Start_IT.DstAddress = DstAddress;
+    TEST_STUB.HAL_DMA_Start_IT.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_Start_IT.redirectFuncPtr(hdma, SrcAddress, DstAddress, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_Start_IT.redirectFuncPtr(hdma, SrcAddress, DstAddress, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1418,9 +1317,9 @@ HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_Abort.callcount++;
   switch (TEST_STUB.HAL_DMA_Abort.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_Abort.returnValue;
-      if (TEST_STUB.HAL_DMA_Abort.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_Abort.returnValue;
+    if (TEST_STUB.HAL_DMA_Abort.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_Abort.hdma.value;
     }
@@ -1431,15 +1330,14 @@ HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_Abort.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_Abort.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_Abort.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1451,9 +1349,9 @@ HAL_StatusTypeDef HAL_DMA_Abort_IT(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_Abort_IT.callcount++;
   switch (TEST_STUB.HAL_DMA_Abort_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_Abort_IT.returnValue;
-      if (TEST_STUB.HAL_DMA_Abort_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_Abort_IT.returnValue;
+    if (TEST_STUB.HAL_DMA_Abort_IT.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_Abort_IT.hdma.value;
     }
@@ -1464,15 +1362,14 @@ HAL_StatusTypeDef HAL_DMA_Abort_IT(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_Abort_IT.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_Abort_IT.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_Abort_IT.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1484,9 +1381,9 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, HAL_DMA_Level
   TEST_STUB.HAL_DMA_PollForTransfer.callcount++;
   switch (TEST_STUB.HAL_DMA_PollForTransfer.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_PollForTransfer.returnValue;
-      if (TEST_STUB.HAL_DMA_PollForTransfer.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_PollForTransfer.returnValue;
+    if (TEST_STUB.HAL_DMA_PollForTransfer.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_PollForTransfer.hdma.value;
     }
@@ -1497,17 +1394,16 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, HAL_DMA_Level
         TEST_STUB.HAL_DMA_PollForTransfer.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMA_PollForTransfer.CompleteLevel = CompleteLevel;
-      TEST_STUB.HAL_DMA_PollForTransfer.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_DMA_PollForTransfer.CompleteLevel = CompleteLevel;
+    TEST_STUB.HAL_DMA_PollForTransfer.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_PollForTransfer.redirectFuncPtr(hdma, CompleteLevel, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_PollForTransfer.redirectFuncPtr(hdma, CompleteLevel, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1518,8 +1414,8 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_DMA_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_DMA_IRQHandler.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_DMA_IRQHandler.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_IRQHandler.hdma.value;
     }
@@ -1530,17 +1426,15 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_IRQHandler.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DMA_IRQHandler.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DMA_IRQHandler.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_DMA_CleanCallbacks(DMA_HandleTypeDef *hdma)
@@ -1549,9 +1443,9 @@ HAL_StatusTypeDef HAL_DMA_CleanCallbacks(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_CleanCallbacks.callcount++;
   switch (TEST_STUB.HAL_DMA_CleanCallbacks.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_CleanCallbacks.returnValue;
-      if (TEST_STUB.HAL_DMA_CleanCallbacks.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_CleanCallbacks.returnValue;
+    if (TEST_STUB.HAL_DMA_CleanCallbacks.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_CleanCallbacks.hdma.value;
     }
@@ -1562,15 +1456,14 @@ HAL_StatusTypeDef HAL_DMA_CleanCallbacks(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_CleanCallbacks.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_CleanCallbacks.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_CleanCallbacks.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1582,9 +1475,9 @@ HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Call
   TEST_STUB.HAL_DMA_RegisterCallback.callcount++;
   switch (TEST_STUB.HAL_DMA_RegisterCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_RegisterCallback.returnValue;
-      if (TEST_STUB.HAL_DMA_RegisterCallback.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_RegisterCallback.returnValue;
+    if (TEST_STUB.HAL_DMA_RegisterCallback.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_RegisterCallback.hdma.value;
     }
@@ -1595,17 +1488,16 @@ HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Call
         TEST_STUB.HAL_DMA_RegisterCallback.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMA_RegisterCallback.CallbackID = CallbackID;
-      TEST_STUB.HAL_DMA_RegisterCallback.pCallback = pCallback;
-      break;
+    TEST_STUB.HAL_DMA_RegisterCallback.CallbackID = CallbackID;
+    TEST_STUB.HAL_DMA_RegisterCallback.pCallback = pCallback;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_RegisterCallback.redirectFuncPtr(hdma, CallbackID, pCallback);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_RegisterCallback.redirectFuncPtr(hdma, CallbackID, pCallback);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1617,9 +1509,9 @@ HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Ca
   TEST_STUB.HAL_DMA_UnRegisterCallback.callcount++;
   switch (TEST_STUB.HAL_DMA_UnRegisterCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_UnRegisterCallback.returnValue;
-      if (TEST_STUB.HAL_DMA_UnRegisterCallback.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_UnRegisterCallback.returnValue;
+    if (TEST_STUB.HAL_DMA_UnRegisterCallback.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_UnRegisterCallback.hdma.value;
     }
@@ -1630,16 +1522,15 @@ HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Ca
         TEST_STUB.HAL_DMA_UnRegisterCallback.hdma.value = *hdma;
       }
     }
-      TEST_STUB.HAL_DMA_UnRegisterCallback.CallbackID = CallbackID;
-      break;
+    TEST_STUB.HAL_DMA_UnRegisterCallback.CallbackID = CallbackID;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_UnRegisterCallback.redirectFuncPtr(hdma, CallbackID);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_UnRegisterCallback.redirectFuncPtr(hdma, CallbackID);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1651,9 +1542,9 @@ HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_GetState.callcount++;
   switch (TEST_STUB.HAL_DMA_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_GetState.returnValue;
-      if (TEST_STUB.HAL_DMA_GetState.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_GetState.returnValue;
+    if (TEST_STUB.HAL_DMA_GetState.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_GetState.hdma.value;
     }
@@ -1664,15 +1555,14 @@ HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_GetState.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_GetState.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_GetState.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1684,9 +1574,9 @@ uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)
   TEST_STUB.HAL_DMA_GetError.callcount++;
   switch (TEST_STUB.HAL_DMA_GetError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DMA_GetError.returnValue;
-      if (TEST_STUB.HAL_DMA_GetError.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DMA_GetError.returnValue;
+    if (TEST_STUB.HAL_DMA_GetError.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.HAL_DMA_GetError.hdma.value;
     }
@@ -1697,15 +1587,14 @@ uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)
         TEST_STUB.HAL_DMA_GetError.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DMA_GetError.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DMA_GetError.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1716,19 +1605,17 @@ void HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
   TEST_STUB.HAL_NVIC_SetPriorityGrouping.callcount++;
   switch (TEST_STUB.HAL_NVIC_SetPriorityGrouping.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_SetPriorityGrouping.PriorityGroup = PriorityGroup;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_SetPriorityGrouping.PriorityGroup = PriorityGroup;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_SetPriorityGrouping.redirectFuncPtr(PriorityGroup);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_SetPriorityGrouping.redirectFuncPtr(PriorityGroup);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)
@@ -1736,21 +1623,19 @@ void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t Sub
   TEST_STUB.HAL_NVIC_SetPriority.callcount++;
   switch (TEST_STUB.HAL_NVIC_SetPriority.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_SetPriority.IRQn = IRQn;
-      TEST_STUB.HAL_NVIC_SetPriority.PreemptPriority = PreemptPriority;
-      TEST_STUB.HAL_NVIC_SetPriority.SubPriority = SubPriority;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_SetPriority.IRQn = IRQn;
+    TEST_STUB.HAL_NVIC_SetPriority.PreemptPriority = PreemptPriority;
+    TEST_STUB.HAL_NVIC_SetPriority.SubPriority = SubPriority;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_SetPriority.redirectFuncPtr(IRQn, PreemptPriority, SubPriority);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_SetPriority.redirectFuncPtr(IRQn, PreemptPriority, SubPriority);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_NVIC_EnableIRQ(IRQn_Type IRQn)
@@ -1758,19 +1643,17 @@ void HAL_NVIC_EnableIRQ(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_EnableIRQ.callcount++;
   switch (TEST_STUB.HAL_NVIC_EnableIRQ.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_EnableIRQ.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_EnableIRQ.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_EnableIRQ.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_EnableIRQ.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)
@@ -1778,19 +1661,17 @@ void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_DisableIRQ.callcount++;
   switch (TEST_STUB.HAL_NVIC_DisableIRQ.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_DisableIRQ.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_DisableIRQ.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_DisableIRQ.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_DisableIRQ.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_NVIC_SystemReset(void)
@@ -1798,18 +1679,16 @@ void HAL_NVIC_SystemReset(void)
   TEST_STUB.HAL_NVIC_SystemReset.callcount++;
   switch (TEST_STUB.HAL_NVIC_SystemReset.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_SystemReset.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_SystemReset.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)
@@ -1818,18 +1697,17 @@ uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)
   TEST_STUB.HAL_SYSTICK_Config.callcount++;
   switch (TEST_STUB.HAL_SYSTICK_Config.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SYSTICK_Config.returnValue;
-      TEST_STUB.HAL_SYSTICK_Config.TicksNumb = TicksNumb;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SYSTICK_Config.returnValue;
+    TEST_STUB.HAL_SYSTICK_Config.TicksNumb = TicksNumb;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SYSTICK_Config.redirectFuncPtr(TicksNumb);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SYSTICK_Config.redirectFuncPtr(TicksNumb);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1841,17 +1719,16 @@ uint32_t HAL_NVIC_GetPriorityGrouping(void)
   TEST_STUB.HAL_NVIC_GetPriorityGrouping.callcount++;
   switch (TEST_STUB.HAL_NVIC_GetPriorityGrouping.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_NVIC_GetPriorityGrouping.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_NVIC_GetPriorityGrouping.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_NVIC_GetPriorityGrouping.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_NVIC_GetPriorityGrouping.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1862,10 +1739,10 @@ void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPre
   TEST_STUB.HAL_NVIC_GetPriority.callcount++;
   switch (TEST_STUB.HAL_NVIC_GetPriority.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_GetPriority.IRQn = IRQn;
-      TEST_STUB.HAL_NVIC_GetPriority.PriorityGroup = PriorityGroup;
-      if (TEST_STUB.HAL_NVIC_GetPriority.pPreemptPriority.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_GetPriority.IRQn = IRQn;
+    TEST_STUB.HAL_NVIC_GetPriority.PriorityGroup = PriorityGroup;
+    if (TEST_STUB.HAL_NVIC_GetPriority.pPreemptPriority.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pPreemptPriority = TEST_STUB.HAL_NVIC_GetPriority.pPreemptPriority.value;
     }
@@ -1876,7 +1753,7 @@ void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPre
         TEST_STUB.HAL_NVIC_GetPriority.pPreemptPriority.value = *pPreemptPriority;
       }
     }
-      if (TEST_STUB.HAL_NVIC_GetPriority.pSubPriority.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_NVIC_GetPriority.pSubPriority.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pSubPriority = TEST_STUB.HAL_NVIC_GetPriority.pSubPriority.value;
     }
@@ -1887,17 +1764,15 @@ void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPre
         TEST_STUB.HAL_NVIC_GetPriority.pSubPriority.value = *pSubPriority;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_GetPriority.redirectFuncPtr(IRQn, PriorityGroup, pPreemptPriority, pSubPriority);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_GetPriority.redirectFuncPtr(IRQn, PriorityGroup, pPreemptPriority, pSubPriority);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn)
@@ -1906,18 +1781,17 @@ uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_GetPendingIRQ.callcount++;
   switch (TEST_STUB.HAL_NVIC_GetPendingIRQ.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_NVIC_GetPendingIRQ.returnValue;
-      TEST_STUB.HAL_NVIC_GetPendingIRQ.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_NVIC_GetPendingIRQ.returnValue;
+    TEST_STUB.HAL_NVIC_GetPendingIRQ.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_NVIC_GetPendingIRQ.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_NVIC_GetPendingIRQ.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1928,19 +1802,17 @@ void HAL_NVIC_SetPendingIRQ(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_SetPendingIRQ.callcount++;
   switch (TEST_STUB.HAL_NVIC_SetPendingIRQ.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_SetPendingIRQ.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_SetPendingIRQ.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_SetPendingIRQ.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_SetPendingIRQ.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn)
@@ -1948,19 +1820,17 @@ void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_ClearPendingIRQ.callcount++;
   switch (TEST_STUB.HAL_NVIC_ClearPendingIRQ.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_NVIC_ClearPendingIRQ.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_NVIC_ClearPendingIRQ.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_NVIC_ClearPendingIRQ.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_NVIC_ClearPendingIRQ.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn)
@@ -1969,18 +1839,17 @@ uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn)
   TEST_STUB.HAL_NVIC_GetActive.callcount++;
   switch (TEST_STUB.HAL_NVIC_GetActive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_NVIC_GetActive.returnValue;
-      TEST_STUB.HAL_NVIC_GetActive.IRQn = IRQn;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_NVIC_GetActive.returnValue;
+    TEST_STUB.HAL_NVIC_GetActive.IRQn = IRQn;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_NVIC_GetActive.redirectFuncPtr(IRQn);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_NVIC_GetActive.redirectFuncPtr(IRQn);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -1991,19 +1860,17 @@ void HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)
   TEST_STUB.HAL_SYSTICK_CLKSourceConfig.callcount++;
   switch (TEST_STUB.HAL_SYSTICK_CLKSourceConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_SYSTICK_CLKSourceConfig.CLKSource = CLKSource;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_SYSTICK_CLKSourceConfig.CLKSource = CLKSource;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SYSTICK_CLKSourceConfig.redirectFuncPtr(CLKSource);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SYSTICK_CLKSourceConfig.redirectFuncPtr(CLKSource);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SYSTICK_IRQHandler(void)
@@ -2011,18 +1878,16 @@ void HAL_SYSTICK_IRQHandler(void)
   TEST_STUB.HAL_SYSTICK_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_SYSTICK_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SYSTICK_IRQHandler.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SYSTICK_IRQHandler.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SYSTICK_Callback(void)
@@ -2030,18 +1895,16 @@ void HAL_SYSTICK_Callback(void)
   TEST_STUB.HAL_SYSTICK_Callback.callcount++;
   switch (TEST_STUB.HAL_SYSTICK_Callback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SYSTICK_Callback.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SYSTICK_Callback.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_MPU_Enable(uint32_t MPU_Control)
@@ -2049,19 +1912,17 @@ void HAL_MPU_Enable(uint32_t MPU_Control)
   TEST_STUB.HAL_MPU_Enable.callcount++;
   switch (TEST_STUB.HAL_MPU_Enable.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_MPU_Enable.MPU_Control = MPU_Control;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_MPU_Enable.MPU_Control = MPU_Control;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_MPU_Enable.redirectFuncPtr(MPU_Control);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_MPU_Enable.redirectFuncPtr(MPU_Control);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_MPU_Disable(void)
@@ -2069,18 +1930,16 @@ void HAL_MPU_Disable(void)
   TEST_STUB.HAL_MPU_Disable.callcount++;
   switch (TEST_STUB.HAL_MPU_Disable.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_MPU_Disable.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_MPU_Disable.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
@@ -2088,8 +1947,8 @@ void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
   TEST_STUB.HAL_MPU_ConfigRegion.callcount++;
   switch (TEST_STUB.HAL_MPU_ConfigRegion.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_MPU_ConfigRegion.MPU_Init.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_MPU_ConfigRegion.MPU_Init.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *MPU_Init = TEST_STUB.HAL_MPU_ConfigRegion.MPU_Init.value;
     }
@@ -2100,17 +1959,15 @@ void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
         TEST_STUB.HAL_MPU_ConfigRegion.MPU_Init.value = *MPU_Init;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_MPU_ConfigRegion.redirectFuncPtr(MPU_Init);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_MPU_ConfigRegion.redirectFuncPtr(MPU_Init);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_ADCEx_InjectedStart(ADC_HandleTypeDef *hadc)
@@ -2119,9 +1976,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStart(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_InjectedStart.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStart.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedStart.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStart.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedStart.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedStart.hadc.value;
     }
@@ -2132,15 +1989,14 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStart(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_InjectedStart.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStart.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStart.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2152,9 +2008,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStop(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_InjectedStop.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedStop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStop.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedStop.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStop.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedStop.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedStop.hadc.value;
     }
@@ -2165,15 +2021,14 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStop(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_InjectedStop.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStop.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStop.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2185,9 +2040,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedPollForConversion(ADC_HandleTypeDef *hadc, u
   TEST_STUB.HAL_ADCEx_InjectedPollForConversion.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedPollForConversion.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedPollForConversion.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedPollForConversion.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedPollForConversion.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedPollForConversion.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedPollForConversion.hadc.value;
     }
@@ -2198,16 +2053,15 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedPollForConversion(ADC_HandleTypeDef *hadc, u
         TEST_STUB.HAL_ADCEx_InjectedPollForConversion.hadc.value = *hadc;
       }
     }
-      TEST_STUB.HAL_ADCEx_InjectedPollForConversion.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_ADCEx_InjectedPollForConversion.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedPollForConversion.redirectFuncPtr(hadc, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedPollForConversion.redirectFuncPtr(hadc, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2219,9 +2073,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStart_IT(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_InjectedStart_IT.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedStart_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStart_IT.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedStart_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStart_IT.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedStart_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedStart_IT.hadc.value;
     }
@@ -2232,15 +2086,14 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStart_IT(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_InjectedStart_IT.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStart_IT.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStart_IT.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2252,9 +2105,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStop_IT(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_InjectedStop_IT.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedStop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStop_IT.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedStop_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStop_IT.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedStop_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedStop_IT.hadc.value;
     }
@@ -2265,15 +2118,14 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedStop_IT(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_InjectedStop_IT.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedStop_IT.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedStop_IT.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2285,9 +2137,9 @@ uint32_t HAL_ADCEx_InjectedGetValue(ADC_HandleTypeDef *hadc, uint32_t InjectedRa
   TEST_STUB.HAL_ADCEx_InjectedGetValue.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedGetValue.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedGetValue.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedGetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedGetValue.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedGetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedGetValue.hadc.value;
     }
@@ -2298,16 +2150,15 @@ uint32_t HAL_ADCEx_InjectedGetValue(ADC_HandleTypeDef *hadc, uint32_t InjectedRa
         TEST_STUB.HAL_ADCEx_InjectedGetValue.hadc.value = *hadc;
       }
     }
-      TEST_STUB.HAL_ADCEx_InjectedGetValue.InjectedRank = InjectedRank;
-      break;
+    TEST_STUB.HAL_ADCEx_InjectedGetValue.InjectedRank = InjectedRank;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedGetValue.redirectFuncPtr(hadc, InjectedRank);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedGetValue.redirectFuncPtr(hadc, InjectedRank);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2319,9 +2170,9 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStart_DMA(ADC_HandleTypeDef *hadc, uint32_t
   TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.callcount++;
   switch (TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.returnValue;
-      if (TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.returnValue;
+    if (TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.hadc.value;
     }
@@ -2332,7 +2183,7 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStart_DMA(ADC_HandleTypeDef *hadc, uint32_t
         TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.pData.value;
     }
@@ -2343,16 +2194,15 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStart_DMA(ADC_HandleTypeDef *hadc, uint32_t
         TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.redirectFuncPtr(hadc, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeStart_DMA.redirectFuncPtr(hadc, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2364,9 +2214,9 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStop_DMA(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.callcount++;
   switch (TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.returnValue;
-      if (TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.returnValue;
+    if (TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.hadc.value;
     }
@@ -2377,15 +2227,14 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeStop_DMA(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeStop_DMA.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2397,9 +2246,9 @@ uint32_t HAL_ADCEx_MultiModeGetValue(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_MultiModeGetValue.callcount++;
   switch (TEST_STUB.HAL_ADCEx_MultiModeGetValue.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeGetValue.returnValue;
-      if (TEST_STUB.HAL_ADCEx_MultiModeGetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeGetValue.returnValue;
+    if (TEST_STUB.HAL_ADCEx_MultiModeGetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_MultiModeGetValue.hadc.value;
     }
@@ -2410,15 +2259,14 @@ uint32_t HAL_ADCEx_MultiModeGetValue(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_MultiModeGetValue.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeGetValue.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeGetValue.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2429,8 +2277,8 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.hadc.value;
     }
@@ -2441,17 +2289,15 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADCEx_InjectedConvCpltCallback.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_ADCEx_InjectedConfigChannel(ADC_HandleTypeDef *hadc, ADC_InjectionConfTypeDef *sConfigInjected)
@@ -2460,9 +2306,9 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedConfigChannel(ADC_HandleTypeDef *hadc, ADC_I
   TEST_STUB.HAL_ADCEx_InjectedConfigChannel.callcount++;
   switch (TEST_STUB.HAL_ADCEx_InjectedConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.returnValue;
-      if (TEST_STUB.HAL_ADCEx_InjectedConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.returnValue;
+    if (TEST_STUB.HAL_ADCEx_InjectedConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.hadc.value;
     }
@@ -2473,7 +2319,7 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedConfigChannel(ADC_HandleTypeDef *hadc, ADC_I
         TEST_STUB.HAL_ADCEx_InjectedConfigChannel.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADCEx_InjectedConfigChannel.sConfigInjected.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADCEx_InjectedConfigChannel.sConfigInjected.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfigInjected = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.sConfigInjected.value;
     }
@@ -2484,15 +2330,14 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedConfigChannel(ADC_HandleTypeDef *hadc, ADC_I
         TEST_STUB.HAL_ADCEx_InjectedConfigChannel.sConfigInjected.value = *sConfigInjected;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.redirectFuncPtr(hadc, sConfigInjected);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_InjectedConfigChannel.redirectFuncPtr(hadc, sConfigInjected);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2504,9 +2349,9 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeConfigChannel(ADC_HandleTypeDef *hadc, ADC_
   TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.callcount++;
   switch (TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.returnValue;
-      if (TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.returnValue;
+    if (TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.hadc.value;
     }
@@ -2517,7 +2362,7 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeConfigChannel(ADC_HandleTypeDef *hadc, ADC_
         TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.multimode.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.multimode.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *multimode = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.multimode.value;
     }
@@ -2528,15 +2373,14 @@ HAL_StatusTypeDef HAL_ADCEx_MultiModeConfigChannel(ADC_HandleTypeDef *hadc, ADC_
         TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.multimode.value = *multimode;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.redirectFuncPtr(hadc, multimode);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADCEx_MultiModeConfigChannel.redirectFuncPtr(hadc, multimode);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2548,9 +2392,9 @@ HAL_StatusTypeDef HAL_ADC_Init(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Init.callcount++;
   switch (TEST_STUB.HAL_ADC_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Init.returnValue;
-      if (TEST_STUB.HAL_ADC_Init.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Init.returnValue;
+    if (TEST_STUB.HAL_ADC_Init.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Init.hadc.value;
     }
@@ -2561,15 +2405,14 @@ HAL_StatusTypeDef HAL_ADC_Init(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Init.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Init.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Init.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2581,9 +2424,9 @@ HAL_StatusTypeDef HAL_ADC_DeInit(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_DeInit.callcount++;
   switch (TEST_STUB.HAL_ADC_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_DeInit.returnValue;
-      if (TEST_STUB.HAL_ADC_DeInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_DeInit.returnValue;
+    if (TEST_STUB.HAL_ADC_DeInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_DeInit.hadc.value;
     }
@@ -2594,15 +2437,14 @@ HAL_StatusTypeDef HAL_ADC_DeInit(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_DeInit.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_DeInit.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_DeInit.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2613,8 +2455,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_MspInit.callcount++;
   switch (TEST_STUB.HAL_ADC_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_MspInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_MspInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_MspInit.hadc.value;
     }
@@ -2625,17 +2467,15 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_MspInit.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_MspInit.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_MspInit.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_ADC_MspDeInit(ADC_HandleTypeDef *hadc)
@@ -2643,8 +2483,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_ADC_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_MspDeInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_MspDeInit.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_MspDeInit.hadc.value;
     }
@@ -2655,17 +2495,15 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_MspDeInit.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_MspDeInit.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_MspDeInit.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef *hadc)
@@ -2674,9 +2512,9 @@ HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Start.callcount++;
   switch (TEST_STUB.HAL_ADC_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Start.returnValue;
-      if (TEST_STUB.HAL_ADC_Start.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Start.returnValue;
+    if (TEST_STUB.HAL_ADC_Start.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Start.hadc.value;
     }
@@ -2687,15 +2525,14 @@ HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Start.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Start.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Start.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2707,9 +2544,9 @@ HAL_StatusTypeDef HAL_ADC_Stop(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Stop.callcount++;
   switch (TEST_STUB.HAL_ADC_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Stop.returnValue;
-      if (TEST_STUB.HAL_ADC_Stop.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Stop.returnValue;
+    if (TEST_STUB.HAL_ADC_Stop.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Stop.hadc.value;
     }
@@ -2720,15 +2557,14 @@ HAL_StatusTypeDef HAL_ADC_Stop(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Stop.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Stop.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Stop.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2740,9 +2576,9 @@ HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef *hadc, uint32_t Ti
   TEST_STUB.HAL_ADC_PollForConversion.callcount++;
   switch (TEST_STUB.HAL_ADC_PollForConversion.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_PollForConversion.returnValue;
-      if (TEST_STUB.HAL_ADC_PollForConversion.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_PollForConversion.returnValue;
+    if (TEST_STUB.HAL_ADC_PollForConversion.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_PollForConversion.hadc.value;
     }
@@ -2753,16 +2589,15 @@ HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef *hadc, uint32_t Ti
         TEST_STUB.HAL_ADC_PollForConversion.hadc.value = *hadc;
       }
     }
-      TEST_STUB.HAL_ADC_PollForConversion.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_ADC_PollForConversion.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_PollForConversion.redirectFuncPtr(hadc, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_PollForConversion.redirectFuncPtr(hadc, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2774,9 +2609,9 @@ HAL_StatusTypeDef HAL_ADC_PollForEvent(ADC_HandleTypeDef *hadc, uint32_t EventTy
   TEST_STUB.HAL_ADC_PollForEvent.callcount++;
   switch (TEST_STUB.HAL_ADC_PollForEvent.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_PollForEvent.returnValue;
-      if (TEST_STUB.HAL_ADC_PollForEvent.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_PollForEvent.returnValue;
+    if (TEST_STUB.HAL_ADC_PollForEvent.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_PollForEvent.hadc.value;
     }
@@ -2787,17 +2622,16 @@ HAL_StatusTypeDef HAL_ADC_PollForEvent(ADC_HandleTypeDef *hadc, uint32_t EventTy
         TEST_STUB.HAL_ADC_PollForEvent.hadc.value = *hadc;
       }
     }
-      TEST_STUB.HAL_ADC_PollForEvent.EventType = EventType;
-      TEST_STUB.HAL_ADC_PollForEvent.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_ADC_PollForEvent.EventType = EventType;
+    TEST_STUB.HAL_ADC_PollForEvent.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_PollForEvent.redirectFuncPtr(hadc, EventType, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_PollForEvent.redirectFuncPtr(hadc, EventType, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2809,9 +2643,9 @@ HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Start_IT.callcount++;
   switch (TEST_STUB.HAL_ADC_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Start_IT.returnValue;
-      if (TEST_STUB.HAL_ADC_Start_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Start_IT.returnValue;
+    if (TEST_STUB.HAL_ADC_Start_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Start_IT.hadc.value;
     }
@@ -2822,15 +2656,14 @@ HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Start_IT.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Start_IT.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Start_IT.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2842,9 +2675,9 @@ HAL_StatusTypeDef HAL_ADC_Stop_IT(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_ADC_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_ADC_Stop_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_ADC_Stop_IT.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Stop_IT.hadc.value;
     }
@@ -2855,15 +2688,14 @@ HAL_StatusTypeDef HAL_ADC_Stop_IT(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Stop_IT.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Stop_IT.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Stop_IT.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2874,8 +2706,8 @@ void HAL_ADC_IRQHandler(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_ADC_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_IRQHandler.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_IRQHandler.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_IRQHandler.hadc.value;
     }
@@ -2886,17 +2718,15 @@ void HAL_ADC_IRQHandler(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_IRQHandler.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_IRQHandler.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_IRQHandler.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length)
@@ -2905,9 +2735,9 @@ HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, ui
   TEST_STUB.HAL_ADC_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_ADC_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_ADC_Start_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_ADC_Start_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Start_DMA.hadc.value;
     }
@@ -2918,7 +2748,7 @@ HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, ui
         TEST_STUB.HAL_ADC_Start_DMA.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_ADC_Start_DMA.pData.value;
     }
@@ -2929,16 +2759,15 @@ HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, ui
         TEST_STUB.HAL_ADC_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_ADC_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_ADC_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Start_DMA.redirectFuncPtr(hadc, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Start_DMA.redirectFuncPtr(hadc, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2950,9 +2779,9 @@ HAL_StatusTypeDef HAL_ADC_Stop_DMA(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_ADC_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_ADC_Stop_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_ADC_Stop_DMA.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_Stop_DMA.hadc.value;
     }
@@ -2963,15 +2792,14 @@ HAL_StatusTypeDef HAL_ADC_Stop_DMA(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_Stop_DMA.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_Stop_DMA.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_Stop_DMA.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -2983,9 +2811,9 @@ uint32_t HAL_ADC_GetValue(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_GetValue.callcount++;
   switch (TEST_STUB.HAL_ADC_GetValue.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_GetValue.returnValue;
-      if (TEST_STUB.HAL_ADC_GetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_GetValue.returnValue;
+    if (TEST_STUB.HAL_ADC_GetValue.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_GetValue.hadc.value;
     }
@@ -2996,15 +2824,14 @@ uint32_t HAL_ADC_GetValue(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_GetValue.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_GetValue.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_GetValue.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3015,8 +2842,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_ConvCpltCallback.callcount++;
   switch (TEST_STUB.HAL_ADC_ConvCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_ConvCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_ConvCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_ConvCpltCallback.hadc.value;
     }
@@ -3027,17 +2854,15 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_ConvCpltCallback.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_ConvCpltCallback.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_ConvCpltCallback.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
@@ -3045,8 +2870,8 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_ConvHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_ADC_ConvHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_ConvHalfCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_ConvHalfCpltCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_ConvHalfCpltCallback.hadc.value;
     }
@@ -3057,17 +2882,15 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_ConvHalfCpltCallback.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_ConvHalfCpltCallback.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_ConvHalfCpltCallback.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_ADC_LevelOutOfWindowCallback(ADC_HandleTypeDef *hadc)
@@ -3075,8 +2898,8 @@ void HAL_ADC_LevelOutOfWindowCallback(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.callcount++;
   switch (TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.hadc.value;
     }
@@ -3087,17 +2910,15 @@ void HAL_ADC_LevelOutOfWindowCallback(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_LevelOutOfWindowCallback.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
@@ -3105,8 +2926,8 @@ void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_ErrorCallback.callcount++;
   switch (TEST_STUB.HAL_ADC_ErrorCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_ADC_ErrorCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_ADC_ErrorCallback.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_ErrorCallback.hadc.value;
     }
@@ -3117,17 +2938,15 @@ void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_ErrorCallback.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ADC_ErrorCallback.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ADC_ErrorCallback.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef *hadc, ADC_ChannelConfTypeDef *sConfig)
@@ -3136,9 +2955,9 @@ HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef *hadc, ADC_ChannelConf
   TEST_STUB.HAL_ADC_ConfigChannel.callcount++;
   switch (TEST_STUB.HAL_ADC_ConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_ConfigChannel.returnValue;
-      if (TEST_STUB.HAL_ADC_ConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_ConfigChannel.returnValue;
+    if (TEST_STUB.HAL_ADC_ConfigChannel.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_ConfigChannel.hadc.value;
     }
@@ -3149,7 +2968,7 @@ HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef *hadc, ADC_ChannelConf
         TEST_STUB.HAL_ADC_ConfigChannel.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_ADC_ConfigChannel.sConfig.value;
     }
@@ -3160,15 +2979,14 @@ HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef *hadc, ADC_ChannelConf
         TEST_STUB.HAL_ADC_ConfigChannel.sConfig.value = *sConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_ConfigChannel.redirectFuncPtr(hadc, sConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_ConfigChannel.redirectFuncPtr(hadc, sConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3180,9 +2998,9 @@ HAL_StatusTypeDef HAL_ADC_AnalogWDGConfig(ADC_HandleTypeDef *hadc, ADC_AnalogWDG
   TEST_STUB.HAL_ADC_AnalogWDGConfig.callcount++;
   switch (TEST_STUB.HAL_ADC_AnalogWDGConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_AnalogWDGConfig.returnValue;
-      if (TEST_STUB.HAL_ADC_AnalogWDGConfig.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_AnalogWDGConfig.returnValue;
+    if (TEST_STUB.HAL_ADC_AnalogWDGConfig.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_AnalogWDGConfig.hadc.value;
     }
@@ -3193,7 +3011,7 @@ HAL_StatusTypeDef HAL_ADC_AnalogWDGConfig(ADC_HandleTypeDef *hadc, ADC_AnalogWDG
         TEST_STUB.HAL_ADC_AnalogWDGConfig.hadc.value = *hadc;
       }
     }
-      if (TEST_STUB.HAL_ADC_AnalogWDGConfig.AnalogWDGConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_ADC_AnalogWDGConfig.AnalogWDGConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *AnalogWDGConfig = TEST_STUB.HAL_ADC_AnalogWDGConfig.AnalogWDGConfig.value;
     }
@@ -3204,15 +3022,14 @@ HAL_StatusTypeDef HAL_ADC_AnalogWDGConfig(ADC_HandleTypeDef *hadc, ADC_AnalogWDG
         TEST_STUB.HAL_ADC_AnalogWDGConfig.AnalogWDGConfig.value = *AnalogWDGConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_AnalogWDGConfig.redirectFuncPtr(hadc, AnalogWDGConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_AnalogWDGConfig.redirectFuncPtr(hadc, AnalogWDGConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3224,9 +3041,9 @@ uint32_t HAL_ADC_GetState(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_GetState.callcount++;
   switch (TEST_STUB.HAL_ADC_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_GetState.returnValue;
-      if (TEST_STUB.HAL_ADC_GetState.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_GetState.returnValue;
+    if (TEST_STUB.HAL_ADC_GetState.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_GetState.hadc.value;
     }
@@ -3237,15 +3054,14 @@ uint32_t HAL_ADC_GetState(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_GetState.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_GetState.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_GetState.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3257,9 +3073,9 @@ uint32_t HAL_ADC_GetError(ADC_HandleTypeDef *hadc)
   TEST_STUB.HAL_ADC_GetError.callcount++;
   switch (TEST_STUB.HAL_ADC_GetError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_ADC_GetError.returnValue;
-      if (TEST_STUB.HAL_ADC_GetError.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_ADC_GetError.returnValue;
+    if (TEST_STUB.HAL_ADC_GetError.hadc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hadc = TEST_STUB.HAL_ADC_GetError.hadc.value;
     }
@@ -3270,15 +3086,14 @@ uint32_t HAL_ADC_GetError(ADC_HandleTypeDef *hadc)
         TEST_STUB.HAL_ADC_GetError.hadc.value = *hadc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_ADC_GetError.redirectFuncPtr(hadc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_ADC_GetError.redirectFuncPtr(hadc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3290,9 +3105,9 @@ HAL_StatusTypeDef HAL_CRC_Init(CRC_HandleTypeDef *hcrc)
   TEST_STUB.HAL_CRC_Init.callcount++;
   switch (TEST_STUB.HAL_CRC_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_CRC_Init.returnValue;
-      if (TEST_STUB.HAL_CRC_Init.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_CRC_Init.returnValue;
+    if (TEST_STUB.HAL_CRC_Init.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_Init.hcrc.value;
     }
@@ -3303,15 +3118,14 @@ HAL_StatusTypeDef HAL_CRC_Init(CRC_HandleTypeDef *hcrc)
         TEST_STUB.HAL_CRC_Init.hcrc.value = *hcrc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_CRC_Init.redirectFuncPtr(hcrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_CRC_Init.redirectFuncPtr(hcrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3323,9 +3137,9 @@ HAL_StatusTypeDef HAL_CRC_DeInit(CRC_HandleTypeDef *hcrc)
   TEST_STUB.HAL_CRC_DeInit.callcount++;
   switch (TEST_STUB.HAL_CRC_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_CRC_DeInit.returnValue;
-      if (TEST_STUB.HAL_CRC_DeInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_CRC_DeInit.returnValue;
+    if (TEST_STUB.HAL_CRC_DeInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_DeInit.hcrc.value;
     }
@@ -3336,15 +3150,14 @@ HAL_StatusTypeDef HAL_CRC_DeInit(CRC_HandleTypeDef *hcrc)
         TEST_STUB.HAL_CRC_DeInit.hcrc.value = *hcrc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_CRC_DeInit.redirectFuncPtr(hcrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_CRC_DeInit.redirectFuncPtr(hcrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3355,8 +3168,8 @@ void HAL_CRC_MspInit(CRC_HandleTypeDef *hcrc)
   TEST_STUB.HAL_CRC_MspInit.callcount++;
   switch (TEST_STUB.HAL_CRC_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_CRC_MspInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_CRC_MspInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_MspInit.hcrc.value;
     }
@@ -3367,17 +3180,15 @@ void HAL_CRC_MspInit(CRC_HandleTypeDef *hcrc)
         TEST_STUB.HAL_CRC_MspInit.hcrc.value = *hcrc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_CRC_MspInit.redirectFuncPtr(hcrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_CRC_MspInit.redirectFuncPtr(hcrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc)
@@ -3385,8 +3196,8 @@ void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc)
   TEST_STUB.HAL_CRC_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_CRC_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_CRC_MspDeInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_CRC_MspDeInit.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_MspDeInit.hcrc.value;
     }
@@ -3397,17 +3208,15 @@ void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc)
         TEST_STUB.HAL_CRC_MspDeInit.hcrc.value = *hcrc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_CRC_MspDeInit.redirectFuncPtr(hcrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_CRC_MspDeInit.redirectFuncPtr(hcrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_CRC_Accumulate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_t BufferLength)
@@ -3416,9 +3225,9 @@ uint32_t HAL_CRC_Accumulate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_
   TEST_STUB.HAL_CRC_Accumulate.callcount++;
   switch (TEST_STUB.HAL_CRC_Accumulate.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_CRC_Accumulate.returnValue;
-      if (TEST_STUB.HAL_CRC_Accumulate.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_CRC_Accumulate.returnValue;
+    if (TEST_STUB.HAL_CRC_Accumulate.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_Accumulate.hcrc.value;
     }
@@ -3429,13 +3238,12 @@ uint32_t HAL_CRC_Accumulate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_
         TEST_STUB.HAL_CRC_Accumulate.hcrc.value = *hcrc;
       }
     }
-      if (TEST_STUB.HAL_CRC_Accumulate.pBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_CRC_Accumulate.pBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       for (int i = 0; i < 1; ++i)
       {
         pBuffer[i] = TEST_STUB.HAL_CRC_Accumulate.pBuffer.value[i];
       }
-
     }
     else
     {
@@ -3445,19 +3253,17 @@ uint32_t HAL_CRC_Accumulate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_
         {
           TEST_STUB.HAL_CRC_Accumulate.pBuffer.value[i] = pBuffer[i];
         }
-
       }
     }
-      TEST_STUB.HAL_CRC_Accumulate.BufferLength = BufferLength;
-      break;
+    TEST_STUB.HAL_CRC_Accumulate.BufferLength = BufferLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_CRC_Accumulate.redirectFuncPtr(hcrc, pBuffer, BufferLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_CRC_Accumulate.redirectFuncPtr(hcrc, pBuffer, BufferLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3469,9 +3275,9 @@ uint32_t HAL_CRC_Calculate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_t
   TEST_STUB.HAL_CRC_Calculate.callcount++;
   switch (TEST_STUB.HAL_CRC_Calculate.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_CRC_Calculate.returnValue;
-      if (TEST_STUB.HAL_CRC_Calculate.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_CRC_Calculate.returnValue;
+    if (TEST_STUB.HAL_CRC_Calculate.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_Calculate.hcrc.value;
     }
@@ -3482,13 +3288,12 @@ uint32_t HAL_CRC_Calculate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_t
         TEST_STUB.HAL_CRC_Calculate.hcrc.value = *hcrc;
       }
     }
-      if (TEST_STUB.HAL_CRC_Calculate.pBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_CRC_Calculate.pBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       for (int i = 0; i < 1; ++i)
       {
         pBuffer[i] = TEST_STUB.HAL_CRC_Calculate.pBuffer.value[i];
       }
-
     }
     else
     {
@@ -3498,19 +3303,17 @@ uint32_t HAL_CRC_Calculate(CRC_HandleTypeDef *hcrc, uint32_t pBuffer[], uint32_t
         {
           TEST_STUB.HAL_CRC_Calculate.pBuffer.value[i] = pBuffer[i];
         }
-
       }
     }
-      TEST_STUB.HAL_CRC_Calculate.BufferLength = BufferLength;
-      break;
+    TEST_STUB.HAL_CRC_Calculate.BufferLength = BufferLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_CRC_Calculate.redirectFuncPtr(hcrc, pBuffer, BufferLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_CRC_Calculate.redirectFuncPtr(hcrc, pBuffer, BufferLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3522,9 +3325,9 @@ HAL_CRC_StateTypeDef HAL_CRC_GetState(CRC_HandleTypeDef *hcrc)
   TEST_STUB.HAL_CRC_GetState.callcount++;
   switch (TEST_STUB.HAL_CRC_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_CRC_GetState.returnValue;
-      if (TEST_STUB.HAL_CRC_GetState.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_CRC_GetState.returnValue;
+    if (TEST_STUB.HAL_CRC_GetState.hcrc.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hcrc = TEST_STUB.HAL_CRC_GetState.hcrc.value;
     }
@@ -3535,15 +3338,14 @@ HAL_CRC_StateTypeDef HAL_CRC_GetState(CRC_HandleTypeDef *hcrc)
         TEST_STUB.HAL_CRC_GetState.hcrc.value = *hcrc;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_CRC_GetState.redirectFuncPtr(hcrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_CRC_GetState.redirectFuncPtr(hcrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3555,9 +3357,9 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t
   TEST_STUB.HAL_FLASHEx_Erase.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_Erase.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_Erase.returnValue;
-      if (TEST_STUB.HAL_FLASHEx_Erase.pEraseInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_Erase.returnValue;
+    if (TEST_STUB.HAL_FLASHEx_Erase.pEraseInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pEraseInit = TEST_STUB.HAL_FLASHEx_Erase.pEraseInit.value;
     }
@@ -3568,7 +3370,7 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t
         TEST_STUB.HAL_FLASHEx_Erase.pEraseInit.value = *pEraseInit;
       }
     }
-      if (TEST_STUB.HAL_FLASHEx_Erase.SectorError.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_FLASHEx_Erase.SectorError.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *SectorError = TEST_STUB.HAL_FLASHEx_Erase.SectorError.value;
     }
@@ -3579,15 +3381,14 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t
         TEST_STUB.HAL_FLASHEx_Erase.SectorError.value = *SectorError;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_Erase.redirectFuncPtr(pEraseInit, SectorError);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_Erase.redirectFuncPtr(pEraseInit, SectorError);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3599,9 +3400,9 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit)
   TEST_STUB.HAL_FLASHEx_Erase_IT.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_Erase_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_Erase_IT.returnValue;
-      if (TEST_STUB.HAL_FLASHEx_Erase_IT.pEraseInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_Erase_IT.returnValue;
+    if (TEST_STUB.HAL_FLASHEx_Erase_IT.pEraseInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pEraseInit = TEST_STUB.HAL_FLASHEx_Erase_IT.pEraseInit.value;
     }
@@ -3612,15 +3413,14 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit)
         TEST_STUB.HAL_FLASHEx_Erase_IT.pEraseInit.value = *pEraseInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_Erase_IT.redirectFuncPtr(pEraseInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_Erase_IT.redirectFuncPtr(pEraseInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3632,9 +3432,9 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
   TEST_STUB.HAL_FLASHEx_OBProgram.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_OBProgram.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_OBProgram.returnValue;
-      if (TEST_STUB.HAL_FLASHEx_OBProgram.pOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_OBProgram.returnValue;
+    if (TEST_STUB.HAL_FLASHEx_OBProgram.pOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pOBInit = TEST_STUB.HAL_FLASHEx_OBProgram.pOBInit.value;
     }
@@ -3645,15 +3445,14 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
         TEST_STUB.HAL_FLASHEx_OBProgram.pOBInit.value = *pOBInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_OBProgram.redirectFuncPtr(pOBInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_OBProgram.redirectFuncPtr(pOBInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3664,8 +3463,8 @@ void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit)
   TEST_STUB.HAL_FLASHEx_OBGetConfig.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_OBGetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_FLASHEx_OBGetConfig.pOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_FLASHEx_OBGetConfig.pOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pOBInit = TEST_STUB.HAL_FLASHEx_OBGetConfig.pOBInit.value;
     }
@@ -3676,17 +3475,15 @@ void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit)
         TEST_STUB.HAL_FLASHEx_OBGetConfig.pOBInit.value = *pOBInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_FLASHEx_OBGetConfig.redirectFuncPtr(pOBInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_FLASHEx_OBGetConfig.redirectFuncPtr(pOBInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_FLASHEx_AdvOBProgram(FLASH_AdvOBProgramInitTypeDef *pAdvOBInit)
@@ -3695,9 +3492,9 @@ HAL_StatusTypeDef HAL_FLASHEx_AdvOBProgram(FLASH_AdvOBProgramInitTypeDef *pAdvOB
   TEST_STUB.HAL_FLASHEx_AdvOBProgram.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_AdvOBProgram.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_AdvOBProgram.returnValue;
-      if (TEST_STUB.HAL_FLASHEx_AdvOBProgram.pAdvOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_AdvOBProgram.returnValue;
+    if (TEST_STUB.HAL_FLASHEx_AdvOBProgram.pAdvOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pAdvOBInit = TEST_STUB.HAL_FLASHEx_AdvOBProgram.pAdvOBInit.value;
     }
@@ -3708,15 +3505,14 @@ HAL_StatusTypeDef HAL_FLASHEx_AdvOBProgram(FLASH_AdvOBProgramInitTypeDef *pAdvOB
         TEST_STUB.HAL_FLASHEx_AdvOBProgram.pAdvOBInit.value = *pAdvOBInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_AdvOBProgram.redirectFuncPtr(pAdvOBInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_AdvOBProgram.redirectFuncPtr(pAdvOBInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3727,8 +3523,8 @@ void HAL_FLASHEx_AdvOBGetConfig(FLASH_AdvOBProgramInitTypeDef *pAdvOBInit)
   TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.pAdvOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.pAdvOBInit.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pAdvOBInit = TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.pAdvOBInit.value;
     }
@@ -3739,17 +3535,15 @@ void HAL_FLASHEx_AdvOBGetConfig(FLASH_AdvOBProgramInitTypeDef *pAdvOBInit)
         TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.pAdvOBInit.value = *pAdvOBInit;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.redirectFuncPtr(pAdvOBInit);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_FLASHEx_AdvOBGetConfig.redirectFuncPtr(pAdvOBInit);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_FLASHEx_OB_SelectPCROP(void)
@@ -3758,17 +3552,16 @@ HAL_StatusTypeDef HAL_FLASHEx_OB_SelectPCROP(void)
   TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_OB_SelectPCROP.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3780,17 +3573,16 @@ HAL_StatusTypeDef HAL_FLASHEx_OB_DeSelectPCROP(void)
   TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_OB_DeSelectPCROP.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3801,20 +3593,18 @@ void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange)
   TEST_STUB.FLASH_Erase_Sector.callcount++;
   switch (TEST_STUB.FLASH_Erase_Sector.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.FLASH_Erase_Sector.Sector = Sector;
-      TEST_STUB.FLASH_Erase_Sector.VoltageRange = VoltageRange;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.FLASH_Erase_Sector.Sector = Sector;
+    TEST_STUB.FLASH_Erase_Sector.VoltageRange = VoltageRange;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.FLASH_Erase_Sector.redirectFuncPtr(Sector, VoltageRange);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.FLASH_Erase_Sector.redirectFuncPtr(Sector, VoltageRange);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void FLASH_FlushCaches(void)
@@ -3822,18 +3612,16 @@ void FLASH_FlushCaches(void)
   TEST_STUB.FLASH_FlushCaches.callcount++;
   switch (TEST_STUB.FLASH_FlushCaches.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.FLASH_FlushCaches.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.FLASH_FlushCaches.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_FLASHEx_StopFlashInterfaceClk(void)
@@ -3842,17 +3630,16 @@ HAL_StatusTypeDef HAL_FLASHEx_StopFlashInterfaceClk(void)
   TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_StopFlashInterfaceClk.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3864,17 +3651,16 @@ HAL_StatusTypeDef HAL_FLASHEx_StartFlashInterfaceClk(void)
   TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_StartFlashInterfaceClk.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3886,17 +3672,16 @@ HAL_StatusTypeDef HAL_FLASHEx_EnableFlashSleepMode(void)
   TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_EnableFlashSleepMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3908,17 +3693,16 @@ HAL_StatusTypeDef HAL_FLASHEx_DisableFlashSleepMode(void)
   TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.callcount++;
   switch (TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASHEx_DisableFlashSleepMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3930,20 +3714,19 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
   TEST_STUB.HAL_FLASH_Program.callcount++;
   switch (TEST_STUB.HAL_FLASH_Program.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_Program.returnValue;
-      TEST_STUB.HAL_FLASH_Program.TypeProgram = TypeProgram;
-      TEST_STUB.HAL_FLASH_Program.Address = Address;
-      TEST_STUB.HAL_FLASH_Program.Data = Data;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_Program.returnValue;
+    TEST_STUB.HAL_FLASH_Program.TypeProgram = TypeProgram;
+    TEST_STUB.HAL_FLASH_Program.Address = Address;
+    TEST_STUB.HAL_FLASH_Program.Data = Data;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_Program.redirectFuncPtr(TypeProgram, Address, Data);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_Program.redirectFuncPtr(TypeProgram, Address, Data);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3955,20 +3738,19 @@ HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, u
   TEST_STUB.HAL_FLASH_Program_IT.callcount++;
   switch (TEST_STUB.HAL_FLASH_Program_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_Program_IT.returnValue;
-      TEST_STUB.HAL_FLASH_Program_IT.TypeProgram = TypeProgram;
-      TEST_STUB.HAL_FLASH_Program_IT.Address = Address;
-      TEST_STUB.HAL_FLASH_Program_IT.Data = Data;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_Program_IT.returnValue;
+    TEST_STUB.HAL_FLASH_Program_IT.TypeProgram = TypeProgram;
+    TEST_STUB.HAL_FLASH_Program_IT.Address = Address;
+    TEST_STUB.HAL_FLASH_Program_IT.Data = Data;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_Program_IT.redirectFuncPtr(TypeProgram, Address, Data);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_Program_IT.redirectFuncPtr(TypeProgram, Address, Data);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -3979,18 +3761,16 @@ void HAL_FLASH_IRQHandler(void)
   TEST_STUB.HAL_FLASH_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_FLASH_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_FLASH_IRQHandler.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_FLASH_IRQHandler.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
@@ -3998,19 +3778,17 @@ void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
   TEST_STUB.HAL_FLASH_EndOfOperationCallback.callcount++;
   switch (TEST_STUB.HAL_FLASH_EndOfOperationCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_FLASH_EndOfOperationCallback.ReturnValue = ReturnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_FLASH_EndOfOperationCallback.ReturnValue = ReturnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_FLASH_EndOfOperationCallback.redirectFuncPtr(ReturnValue);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_FLASH_EndOfOperationCallback.redirectFuncPtr(ReturnValue);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
@@ -4018,19 +3796,17 @@ void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
   TEST_STUB.HAL_FLASH_OperationErrorCallback.callcount++;
   switch (TEST_STUB.HAL_FLASH_OperationErrorCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_FLASH_OperationErrorCallback.ReturnValue = ReturnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_FLASH_OperationErrorCallback.ReturnValue = ReturnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_FLASH_OperationErrorCallback.redirectFuncPtr(ReturnValue);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_FLASH_OperationErrorCallback.redirectFuncPtr(ReturnValue);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_FLASH_Unlock(void)
@@ -4039,17 +3815,16 @@ HAL_StatusTypeDef HAL_FLASH_Unlock(void)
   TEST_STUB.HAL_FLASH_Unlock.callcount++;
   switch (TEST_STUB.HAL_FLASH_Unlock.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_Unlock.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_Unlock.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_Unlock.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_Unlock.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4061,17 +3836,16 @@ HAL_StatusTypeDef HAL_FLASH_Lock(void)
   TEST_STUB.HAL_FLASH_Lock.callcount++;
   switch (TEST_STUB.HAL_FLASH_Lock.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_Lock.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_Lock.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_Lock.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_Lock.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4083,17 +3857,16 @@ HAL_StatusTypeDef HAL_FLASH_OB_Unlock(void)
   TEST_STUB.HAL_FLASH_OB_Unlock.callcount++;
   switch (TEST_STUB.HAL_FLASH_OB_Unlock.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Unlock.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Unlock.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Unlock.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Unlock.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4105,17 +3878,16 @@ HAL_StatusTypeDef HAL_FLASH_OB_Lock(void)
   TEST_STUB.HAL_FLASH_OB_Lock.callcount++;
   switch (TEST_STUB.HAL_FLASH_OB_Lock.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Lock.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Lock.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Lock.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Lock.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4127,17 +3899,16 @@ HAL_StatusTypeDef HAL_FLASH_OB_Launch(void)
   TEST_STUB.HAL_FLASH_OB_Launch.callcount++;
   switch (TEST_STUB.HAL_FLASH_OB_Launch.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Launch.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Launch.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_OB_Launch.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_OB_Launch.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4149,17 +3920,16 @@ uint32_t HAL_FLASH_GetError(void)
   TEST_STUB.HAL_FLASH_GetError.callcount++;
   switch (TEST_STUB.HAL_FLASH_GetError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_FLASH_GetError.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_FLASH_GetError.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_FLASH_GetError.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_FLASH_GetError.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4171,18 +3941,17 @@ HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout)
   TEST_STUB.FLASH_WaitForLastOperation.callcount++;
   switch (TEST_STUB.FLASH_WaitForLastOperation.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.FLASH_WaitForLastOperation.returnValue;
-      TEST_STUB.FLASH_WaitForLastOperation.Timeout = Timeout;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.FLASH_WaitForLastOperation.returnValue;
+    TEST_STUB.FLASH_WaitForLastOperation.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.FLASH_WaitForLastOperation.redirectFuncPtr(Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.FLASH_WaitForLastOperation.redirectFuncPtr(Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4193,18 +3962,16 @@ void HAL_PWREx_EnableFlashPowerDown(void)
   TEST_STUB.HAL_PWREx_EnableFlashPowerDown.callcount++;
   switch (TEST_STUB.HAL_PWREx_EnableFlashPowerDown.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWREx_EnableFlashPowerDown.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWREx_EnableFlashPowerDown.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWREx_DisableFlashPowerDown(void)
@@ -4212,18 +3979,16 @@ void HAL_PWREx_DisableFlashPowerDown(void)
   TEST_STUB.HAL_PWREx_DisableFlashPowerDown.callcount++;
   switch (TEST_STUB.HAL_PWREx_DisableFlashPowerDown.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWREx_DisableFlashPowerDown.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWREx_DisableFlashPowerDown.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void)
@@ -4232,17 +3997,16 @@ HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void)
   TEST_STUB.HAL_PWREx_EnableBkUpReg.callcount++;
   switch (TEST_STUB.HAL_PWREx_EnableBkUpReg.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_EnableBkUpReg.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_EnableBkUpReg.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_EnableBkUpReg.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_EnableBkUpReg.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4254,17 +4018,16 @@ HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void)
   TEST_STUB.HAL_PWREx_DisableBkUpReg.callcount++;
   switch (TEST_STUB.HAL_PWREx_DisableBkUpReg.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_DisableBkUpReg.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_DisableBkUpReg.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_DisableBkUpReg.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_DisableBkUpReg.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4276,17 +4039,16 @@ uint32_t HAL_PWREx_GetVoltageRange(void)
   TEST_STUB.HAL_PWREx_GetVoltageRange.callcount++;
   switch (TEST_STUB.HAL_PWREx_GetVoltageRange.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_GetVoltageRange.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_GetVoltageRange.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_GetVoltageRange.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_GetVoltageRange.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4298,18 +4060,17 @@ HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling)
   TEST_STUB.HAL_PWREx_ControlVoltageScaling.callcount++;
   switch (TEST_STUB.HAL_PWREx_ControlVoltageScaling.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_ControlVoltageScaling.returnValue;
-      TEST_STUB.HAL_PWREx_ControlVoltageScaling.VoltageScaling = VoltageScaling;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_ControlVoltageScaling.returnValue;
+    TEST_STUB.HAL_PWREx_ControlVoltageScaling.VoltageScaling = VoltageScaling;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_ControlVoltageScaling.redirectFuncPtr(VoltageScaling);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_ControlVoltageScaling.redirectFuncPtr(VoltageScaling);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4321,17 +4082,16 @@ HAL_StatusTypeDef HAL_PWREx_EnableOverDrive(void)
   TEST_STUB.HAL_PWREx_EnableOverDrive.callcount++;
   switch (TEST_STUB.HAL_PWREx_EnableOverDrive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_EnableOverDrive.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_EnableOverDrive.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_EnableOverDrive.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_EnableOverDrive.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4343,17 +4103,16 @@ HAL_StatusTypeDef HAL_PWREx_DisableOverDrive(void)
   TEST_STUB.HAL_PWREx_DisableOverDrive.callcount++;
   switch (TEST_STUB.HAL_PWREx_DisableOverDrive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_DisableOverDrive.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_DisableOverDrive.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_DisableOverDrive.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_DisableOverDrive.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4365,19 +4124,18 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
   TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.callcount++;
   switch (TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.returnValue;
-      TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.Regulator = Regulator;
-      TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.STOPEntry = STOPEntry;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.returnValue;
+    TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.Regulator = Regulator;
+    TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.STOPEntry = STOPEntry;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.redirectFuncPtr(Regulator, STOPEntry);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_PWREx_EnterUnderDriveSTOPMode.redirectFuncPtr(Regulator, STOPEntry);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4388,18 +4146,16 @@ void HAL_PWR_DeInit(void)
   TEST_STUB.HAL_PWR_DeInit.callcount++;
   switch (TEST_STUB.HAL_PWR_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DeInit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DeInit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnableBkUpAccess(void)
@@ -4407,18 +4163,16 @@ void HAL_PWR_EnableBkUpAccess(void)
   TEST_STUB.HAL_PWR_EnableBkUpAccess.callcount++;
   switch (TEST_STUB.HAL_PWR_EnableBkUpAccess.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnableBkUpAccess.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnableBkUpAccess.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_DisableBkUpAccess(void)
@@ -4426,18 +4180,16 @@ void HAL_PWR_DisableBkUpAccess(void)
   TEST_STUB.HAL_PWR_DisableBkUpAccess.callcount++;
   switch (TEST_STUB.HAL_PWR_DisableBkUpAccess.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DisableBkUpAccess.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DisableBkUpAccess.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
@@ -4445,8 +4197,8 @@ void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
   TEST_STUB.HAL_PWR_ConfigPVD.callcount++;
   switch (TEST_STUB.HAL_PWR_ConfigPVD.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_PWR_ConfigPVD.sConfigPVD.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_PWR_ConfigPVD.sConfigPVD.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfigPVD = TEST_STUB.HAL_PWR_ConfigPVD.sConfigPVD.value;
     }
@@ -4457,17 +4209,15 @@ void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
         TEST_STUB.HAL_PWR_ConfigPVD.sConfigPVD.value = *sConfigPVD;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_ConfigPVD.redirectFuncPtr(sConfigPVD);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_ConfigPVD.redirectFuncPtr(sConfigPVD);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnablePVD(void)
@@ -4475,18 +4225,16 @@ void HAL_PWR_EnablePVD(void)
   TEST_STUB.HAL_PWR_EnablePVD.callcount++;
   switch (TEST_STUB.HAL_PWR_EnablePVD.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnablePVD.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnablePVD.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_DisablePVD(void)
@@ -4494,18 +4242,16 @@ void HAL_PWR_DisablePVD(void)
   TEST_STUB.HAL_PWR_DisablePVD.callcount++;
   switch (TEST_STUB.HAL_PWR_DisablePVD.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DisablePVD.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DisablePVD.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
@@ -4513,19 +4259,17 @@ void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
   TEST_STUB.HAL_PWR_EnableWakeUpPin.callcount++;
   switch (TEST_STUB.HAL_PWR_EnableWakeUpPin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_PWR_EnableWakeUpPin.WakeUpPinx = WakeUpPinx;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_PWR_EnableWakeUpPin.WakeUpPinx = WakeUpPinx;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnableWakeUpPin.redirectFuncPtr(WakeUpPinx);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnableWakeUpPin.redirectFuncPtr(WakeUpPinx);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
@@ -4533,19 +4277,17 @@ void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
   TEST_STUB.HAL_PWR_DisableWakeUpPin.callcount++;
   switch (TEST_STUB.HAL_PWR_DisableWakeUpPin.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_PWR_DisableWakeUpPin.WakeUpPinx = WakeUpPinx;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_PWR_DisableWakeUpPin.WakeUpPinx = WakeUpPinx;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DisableWakeUpPin.redirectFuncPtr(WakeUpPinx);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DisableWakeUpPin.redirectFuncPtr(WakeUpPinx);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
@@ -4553,20 +4295,18 @@ void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
   TEST_STUB.HAL_PWR_EnterSTOPMode.callcount++;
   switch (TEST_STUB.HAL_PWR_EnterSTOPMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_PWR_EnterSTOPMode.Regulator = Regulator;
-      TEST_STUB.HAL_PWR_EnterSTOPMode.STOPEntry = STOPEntry;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_PWR_EnterSTOPMode.Regulator = Regulator;
+    TEST_STUB.HAL_PWR_EnterSTOPMode.STOPEntry = STOPEntry;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnterSTOPMode.redirectFuncPtr(Regulator, STOPEntry);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnterSTOPMode.redirectFuncPtr(Regulator, STOPEntry);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
@@ -4574,20 +4314,18 @@ void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
   TEST_STUB.HAL_PWR_EnterSLEEPMode.callcount++;
   switch (TEST_STUB.HAL_PWR_EnterSLEEPMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_PWR_EnterSLEEPMode.Regulator = Regulator;
-      TEST_STUB.HAL_PWR_EnterSLEEPMode.SLEEPEntry = SLEEPEntry;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_PWR_EnterSLEEPMode.Regulator = Regulator;
+    TEST_STUB.HAL_PWR_EnterSLEEPMode.SLEEPEntry = SLEEPEntry;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnterSLEEPMode.redirectFuncPtr(Regulator, SLEEPEntry);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnterSLEEPMode.redirectFuncPtr(Regulator, SLEEPEntry);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnterSTANDBYMode(void)
@@ -4595,18 +4333,16 @@ void HAL_PWR_EnterSTANDBYMode(void)
   TEST_STUB.HAL_PWR_EnterSTANDBYMode.callcount++;
   switch (TEST_STUB.HAL_PWR_EnterSTANDBYMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnterSTANDBYMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnterSTANDBYMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_PVD_IRQHandler(void)
@@ -4614,18 +4350,16 @@ void HAL_PWR_PVD_IRQHandler(void)
   TEST_STUB.HAL_PWR_PVD_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_PWR_PVD_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_PVD_IRQHandler.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_PVD_IRQHandler.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_PVDCallback(void)
@@ -4633,18 +4367,16 @@ void HAL_PWR_PVDCallback(void)
   TEST_STUB.HAL_PWR_PVDCallback.callcount++;
   switch (TEST_STUB.HAL_PWR_PVDCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_PVDCallback.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_PVDCallback.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnableSleepOnExit(void)
@@ -4652,18 +4384,16 @@ void HAL_PWR_EnableSleepOnExit(void)
   TEST_STUB.HAL_PWR_EnableSleepOnExit.callcount++;
   switch (TEST_STUB.HAL_PWR_EnableSleepOnExit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnableSleepOnExit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnableSleepOnExit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_DisableSleepOnExit(void)
@@ -4671,18 +4401,16 @@ void HAL_PWR_DisableSleepOnExit(void)
   TEST_STUB.HAL_PWR_DisableSleepOnExit.callcount++;
   switch (TEST_STUB.HAL_PWR_DisableSleepOnExit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DisableSleepOnExit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DisableSleepOnExit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_EnableSEVOnPend(void)
@@ -4690,18 +4418,16 @@ void HAL_PWR_EnableSEVOnPend(void)
   TEST_STUB.HAL_PWR_EnableSEVOnPend.callcount++;
   switch (TEST_STUB.HAL_PWR_EnableSEVOnPend.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_EnableSEVOnPend.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_EnableSEVOnPend.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_PWR_DisableSEVOnPend(void)
@@ -4709,18 +4435,16 @@ void HAL_PWR_DisableSEVOnPend(void)
   TEST_STUB.HAL_PWR_DisableSEVOnPend.callcount++;
   switch (TEST_STUB.HAL_PWR_DisableSEVOnPend.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_PWR_DisableSEVOnPend.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_PWR_DisableSEVOnPend.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
@@ -4729,9 +4453,9 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_Init.callcount++;
   switch (TEST_STUB.HAL_SPI_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Init.returnValue;
-      if (TEST_STUB.HAL_SPI_Init.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Init.returnValue;
+    if (TEST_STUB.HAL_SPI_Init.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Init.hspi.value;
     }
@@ -4742,15 +4466,14 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_Init.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Init.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Init.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4762,9 +4485,9 @@ HAL_StatusTypeDef HAL_SPI_DeInit(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_DeInit.callcount++;
   switch (TEST_STUB.HAL_SPI_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_DeInit.returnValue;
-      if (TEST_STUB.HAL_SPI_DeInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_DeInit.returnValue;
+    if (TEST_STUB.HAL_SPI_DeInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_DeInit.hspi.value;
     }
@@ -4775,15 +4498,14 @@ HAL_StatusTypeDef HAL_SPI_DeInit(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_DeInit.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_DeInit.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_DeInit.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4794,8 +4516,8 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_MspInit.callcount++;
   switch (TEST_STUB.HAL_SPI_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_MspInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_MspInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_MspInit.hspi.value;
     }
@@ -4806,17 +4528,15 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_MspInit.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_MspInit.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_MspInit.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi)
@@ -4824,8 +4544,8 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_SPI_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_MspDeInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_MspDeInit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_MspDeInit.hspi.value;
     }
@@ -4836,17 +4556,15 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_MspDeInit.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_MspDeInit.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_MspDeInit.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)
@@ -4855,9 +4573,9 @@ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint
   TEST_STUB.HAL_SPI_Transmit.callcount++;
   switch (TEST_STUB.HAL_SPI_Transmit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Transmit.returnValue;
-      if (TEST_STUB.HAL_SPI_Transmit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Transmit.returnValue;
+    if (TEST_STUB.HAL_SPI_Transmit.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Transmit.hspi.value;
     }
@@ -4868,7 +4586,7 @@ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint
         TEST_STUB.HAL_SPI_Transmit.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Transmit.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Transmit.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Transmit.pData.value;
     }
@@ -4879,17 +4597,16 @@ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint
         TEST_STUB.HAL_SPI_Transmit.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Transmit.Size = Size;
-      TEST_STUB.HAL_SPI_Transmit.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_SPI_Transmit.Size = Size;
+    TEST_STUB.HAL_SPI_Transmit.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Transmit.redirectFuncPtr(hspi, pData, Size, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Transmit.redirectFuncPtr(hspi, pData, Size, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4901,9 +4618,9 @@ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint1
   TEST_STUB.HAL_SPI_Receive.callcount++;
   switch (TEST_STUB.HAL_SPI_Receive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Receive.returnValue;
-      if (TEST_STUB.HAL_SPI_Receive.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Receive.returnValue;
+    if (TEST_STUB.HAL_SPI_Receive.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Receive.hspi.value;
     }
@@ -4914,7 +4631,7 @@ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint1
         TEST_STUB.HAL_SPI_Receive.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Receive.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Receive.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Receive.pData.value;
     }
@@ -4925,17 +4642,16 @@ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint1
         TEST_STUB.HAL_SPI_Receive.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Receive.Size = Size;
-      TEST_STUB.HAL_SPI_Receive.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_SPI_Receive.Size = Size;
+    TEST_STUB.HAL_SPI_Receive.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Receive.redirectFuncPtr(hspi, pData, Size, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Receive.redirectFuncPtr(hspi, pData, Size, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -4947,9 +4663,9 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
   TEST_STUB.HAL_SPI_TransmitReceive.callcount++;
   switch (TEST_STUB.HAL_SPI_TransmitReceive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive.returnValue;
-      if (TEST_STUB.HAL_SPI_TransmitReceive.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive.returnValue;
+    if (TEST_STUB.HAL_SPI_TransmitReceive.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TransmitReceive.hspi.value;
     }
@@ -4960,7 +4676,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
         TEST_STUB.HAL_SPI_TransmitReceive.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pTxData = TEST_STUB.HAL_SPI_TransmitReceive.pTxData.value;
     }
@@ -4971,7 +4687,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
         TEST_STUB.HAL_SPI_TransmitReceive.pTxData.value = *pTxData;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pRxData = TEST_STUB.HAL_SPI_TransmitReceive.pRxData.value;
     }
@@ -4982,17 +4698,16 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxD
         TEST_STUB.HAL_SPI_TransmitReceive.pRxData.value = *pRxData;
       }
     }
-      TEST_STUB.HAL_SPI_TransmitReceive.Size = Size;
-      TEST_STUB.HAL_SPI_TransmitReceive.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_SPI_TransmitReceive.Size = Size;
+    TEST_STUB.HAL_SPI_TransmitReceive.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive.redirectFuncPtr(hspi, pTxData, pRxData, Size, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive.redirectFuncPtr(hspi, pTxData, pRxData, Size, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5004,9 +4719,9 @@ HAL_StatusTypeDef HAL_SPI_Transmit_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, u
   TEST_STUB.HAL_SPI_Transmit_IT.callcount++;
   switch (TEST_STUB.HAL_SPI_Transmit_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Transmit_IT.returnValue;
-      if (TEST_STUB.HAL_SPI_Transmit_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Transmit_IT.returnValue;
+    if (TEST_STUB.HAL_SPI_Transmit_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Transmit_IT.hspi.value;
     }
@@ -5017,7 +4732,7 @@ HAL_StatusTypeDef HAL_SPI_Transmit_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, u
         TEST_STUB.HAL_SPI_Transmit_IT.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Transmit_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Transmit_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Transmit_IT.pData.value;
     }
@@ -5028,16 +4743,15 @@ HAL_StatusTypeDef HAL_SPI_Transmit_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, u
         TEST_STUB.HAL_SPI_Transmit_IT.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Transmit_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_Transmit_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Transmit_IT.redirectFuncPtr(hspi, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Transmit_IT.redirectFuncPtr(hspi, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5049,9 +4763,9 @@ HAL_StatusTypeDef HAL_SPI_Receive_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, ui
   TEST_STUB.HAL_SPI_Receive_IT.callcount++;
   switch (TEST_STUB.HAL_SPI_Receive_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Receive_IT.returnValue;
-      if (TEST_STUB.HAL_SPI_Receive_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Receive_IT.returnValue;
+    if (TEST_STUB.HAL_SPI_Receive_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Receive_IT.hspi.value;
     }
@@ -5062,7 +4776,7 @@ HAL_StatusTypeDef HAL_SPI_Receive_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, ui
         TEST_STUB.HAL_SPI_Receive_IT.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Receive_IT.pData.value;
     }
@@ -5073,16 +4787,15 @@ HAL_StatusTypeDef HAL_SPI_Receive_IT(SPI_HandleTypeDef *hspi, uint8_t *pData, ui
         TEST_STUB.HAL_SPI_Receive_IT.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Receive_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_Receive_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Receive_IT.redirectFuncPtr(hspi, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Receive_IT.redirectFuncPtr(hspi, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5094,9 +4807,9 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *p
   TEST_STUB.HAL_SPI_TransmitReceive_IT.callcount++;
   switch (TEST_STUB.HAL_SPI_TransmitReceive_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive_IT.returnValue;
-      if (TEST_STUB.HAL_SPI_TransmitReceive_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive_IT.returnValue;
+    if (TEST_STUB.HAL_SPI_TransmitReceive_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TransmitReceive_IT.hspi.value;
     }
@@ -5107,7 +4820,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *p
         TEST_STUB.HAL_SPI_TransmitReceive_IT.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive_IT.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive_IT.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pTxData = TEST_STUB.HAL_SPI_TransmitReceive_IT.pTxData.value;
     }
@@ -5118,7 +4831,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *p
         TEST_STUB.HAL_SPI_TransmitReceive_IT.pTxData.value = *pTxData;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive_IT.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive_IT.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pRxData = TEST_STUB.HAL_SPI_TransmitReceive_IT.pRxData.value;
     }
@@ -5129,16 +4842,15 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_IT(SPI_HandleTypeDef *hspi, uint8_t *p
         TEST_STUB.HAL_SPI_TransmitReceive_IT.pRxData.value = *pRxData;
       }
     }
-      TEST_STUB.HAL_SPI_TransmitReceive_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_TransmitReceive_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive_IT.redirectFuncPtr(hspi, pTxData, pRxData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive_IT.redirectFuncPtr(hspi, pTxData, pRxData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5150,9 +4862,9 @@ HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, 
   TEST_STUB.HAL_SPI_Transmit_DMA.callcount++;
   switch (TEST_STUB.HAL_SPI_Transmit_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Transmit_DMA.returnValue;
-      if (TEST_STUB.HAL_SPI_Transmit_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Transmit_DMA.returnValue;
+    if (TEST_STUB.HAL_SPI_Transmit_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Transmit_DMA.hspi.value;
     }
@@ -5163,7 +4875,7 @@ HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, 
         TEST_STUB.HAL_SPI_Transmit_DMA.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Transmit_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Transmit_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Transmit_DMA.pData.value;
     }
@@ -5174,16 +4886,15 @@ HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, 
         TEST_STUB.HAL_SPI_Transmit_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Transmit_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_Transmit_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Transmit_DMA.redirectFuncPtr(hspi, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Transmit_DMA.redirectFuncPtr(hspi, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5195,9 +4906,9 @@ HAL_StatusTypeDef HAL_SPI_Receive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, u
   TEST_STUB.HAL_SPI_Receive_DMA.callcount++;
   switch (TEST_STUB.HAL_SPI_Receive_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Receive_DMA.returnValue;
-      if (TEST_STUB.HAL_SPI_Receive_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Receive_DMA.returnValue;
+    if (TEST_STUB.HAL_SPI_Receive_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Receive_DMA.hspi.value;
     }
@@ -5208,7 +4919,7 @@ HAL_StatusTypeDef HAL_SPI_Receive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, u
         TEST_STUB.HAL_SPI_Receive_DMA.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_SPI_Receive_DMA.pData.value;
     }
@@ -5219,16 +4930,15 @@ HAL_StatusTypeDef HAL_SPI_Receive_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, u
         TEST_STUB.HAL_SPI_Receive_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_SPI_Receive_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_Receive_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Receive_DMA.redirectFuncPtr(hspi, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Receive_DMA.redirectFuncPtr(hspi, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5240,9 +4950,9 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, uint8_t *
   TEST_STUB.HAL_SPI_TransmitReceive_DMA.callcount++;
   switch (TEST_STUB.HAL_SPI_TransmitReceive_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive_DMA.returnValue;
-      if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive_DMA.returnValue;
+    if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TransmitReceive_DMA.hspi.value;
     }
@@ -5253,7 +4963,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, uint8_t *
         TEST_STUB.HAL_SPI_TransmitReceive_DMA.hspi.value = *hspi;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.pTxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pTxData = TEST_STUB.HAL_SPI_TransmitReceive_DMA.pTxData.value;
     }
@@ -5264,7 +4974,7 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, uint8_t *
         TEST_STUB.HAL_SPI_TransmitReceive_DMA.pTxData.value = *pTxData;
       }
     }
-      if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_SPI_TransmitReceive_DMA.pRxData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pRxData = TEST_STUB.HAL_SPI_TransmitReceive_DMA.pRxData.value;
     }
@@ -5275,16 +4985,15 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, uint8_t *
         TEST_STUB.HAL_SPI_TransmitReceive_DMA.pRxData.value = *pRxData;
       }
     }
-      TEST_STUB.HAL_SPI_TransmitReceive_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_SPI_TransmitReceive_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_TransmitReceive_DMA.redirectFuncPtr(hspi, pTxData, pRxData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_TransmitReceive_DMA.redirectFuncPtr(hspi, pTxData, pRxData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5296,9 +5005,9 @@ HAL_StatusTypeDef HAL_SPI_DMAPause(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_DMAPause.callcount++;
   switch (TEST_STUB.HAL_SPI_DMAPause.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_DMAPause.returnValue;
-      if (TEST_STUB.HAL_SPI_DMAPause.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_DMAPause.returnValue;
+    if (TEST_STUB.HAL_SPI_DMAPause.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_DMAPause.hspi.value;
     }
@@ -5309,15 +5018,14 @@ HAL_StatusTypeDef HAL_SPI_DMAPause(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_DMAPause.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_DMAPause.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_DMAPause.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5329,9 +5037,9 @@ HAL_StatusTypeDef HAL_SPI_DMAResume(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_DMAResume.callcount++;
   switch (TEST_STUB.HAL_SPI_DMAResume.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_DMAResume.returnValue;
-      if (TEST_STUB.HAL_SPI_DMAResume.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_DMAResume.returnValue;
+    if (TEST_STUB.HAL_SPI_DMAResume.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_DMAResume.hspi.value;
     }
@@ -5342,15 +5050,14 @@ HAL_StatusTypeDef HAL_SPI_DMAResume(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_DMAResume.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_DMAResume.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_DMAResume.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5362,9 +5069,9 @@ HAL_StatusTypeDef HAL_SPI_DMAStop(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_DMAStop.callcount++;
   switch (TEST_STUB.HAL_SPI_DMAStop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_DMAStop.returnValue;
-      if (TEST_STUB.HAL_SPI_DMAStop.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_DMAStop.returnValue;
+    if (TEST_STUB.HAL_SPI_DMAStop.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_DMAStop.hspi.value;
     }
@@ -5375,15 +5082,14 @@ HAL_StatusTypeDef HAL_SPI_DMAStop(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_DMAStop.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_DMAStop.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_DMAStop.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5395,9 +5101,9 @@ HAL_StatusTypeDef HAL_SPI_Abort(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_Abort.callcount++;
   switch (TEST_STUB.HAL_SPI_Abort.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Abort.returnValue;
-      if (TEST_STUB.HAL_SPI_Abort.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Abort.returnValue;
+    if (TEST_STUB.HAL_SPI_Abort.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Abort.hspi.value;
     }
@@ -5408,15 +5114,14 @@ HAL_StatusTypeDef HAL_SPI_Abort(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_Abort.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Abort.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Abort.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5428,9 +5133,9 @@ HAL_StatusTypeDef HAL_SPI_Abort_IT(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_Abort_IT.callcount++;
   switch (TEST_STUB.HAL_SPI_Abort_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_Abort_IT.returnValue;
-      if (TEST_STUB.HAL_SPI_Abort_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_Abort_IT.returnValue;
+    if (TEST_STUB.HAL_SPI_Abort_IT.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_Abort_IT.hspi.value;
     }
@@ -5441,15 +5146,14 @@ HAL_StatusTypeDef HAL_SPI_Abort_IT(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_Abort_IT.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_Abort_IT.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_Abort_IT.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5460,8 +5164,8 @@ void HAL_SPI_IRQHandler(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_SPI_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_IRQHandler.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_IRQHandler.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_IRQHandler.hspi.value;
     }
@@ -5472,17 +5176,15 @@ void HAL_SPI_IRQHandler(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_IRQHandler.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_IRQHandler.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_IRQHandler.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5490,8 +5192,8 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_TxCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_TxCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_TxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_TxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TxCpltCallback.hspi.value;
     }
@@ -5502,17 +5204,15 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_TxCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_TxCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_TxCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5520,8 +5220,8 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_RxCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_RxCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_RxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_RxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_RxCpltCallback.hspi.value;
     }
@@ -5532,17 +5232,15 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_RxCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_RxCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_RxCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5550,8 +5248,8 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_TxRxCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_TxRxCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_TxRxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_TxRxCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TxRxCpltCallback.hspi.value;
     }
@@ -5562,17 +5260,15 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_TxRxCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_TxRxCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_TxRxCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_TxHalfCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5580,8 +5276,8 @@ void HAL_SPI_TxHalfCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_TxHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_TxHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_TxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_TxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TxHalfCpltCallback.hspi.value;
     }
@@ -5592,17 +5288,15 @@ void HAL_SPI_TxHalfCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_TxHalfCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_TxHalfCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_TxHalfCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5610,8 +5304,8 @@ void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_RxHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_RxHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_RxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_RxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_RxHalfCpltCallback.hspi.value;
     }
@@ -5622,17 +5316,15 @@ void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_RxHalfCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_RxHalfCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_RxHalfCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5640,8 +5332,8 @@ void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.hspi.value;
     }
@@ -5652,17 +5344,15 @@ void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_TxRxHalfCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
@@ -5670,8 +5360,8 @@ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_ErrorCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_ErrorCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_ErrorCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_ErrorCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_ErrorCallback.hspi.value;
     }
@@ -5682,17 +5372,15 @@ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_ErrorCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_ErrorCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_ErrorCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi)
@@ -5700,8 +5388,8 @@ void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_AbortCpltCallback.callcount++;
   switch (TEST_STUB.HAL_SPI_AbortCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_SPI_AbortCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_SPI_AbortCpltCallback.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_AbortCpltCallback.hspi.value;
     }
@@ -5712,17 +5400,15 @@ void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_AbortCpltCallback.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SPI_AbortCpltCallback.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SPI_AbortCpltCallback.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_SPI_StateTypeDef HAL_SPI_GetState(SPI_HandleTypeDef *hspi)
@@ -5731,9 +5417,9 @@ HAL_SPI_StateTypeDef HAL_SPI_GetState(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_GetState.callcount++;
   switch (TEST_STUB.HAL_SPI_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_GetState.returnValue;
-      if (TEST_STUB.HAL_SPI_GetState.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_GetState.returnValue;
+    if (TEST_STUB.HAL_SPI_GetState.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_GetState.hspi.value;
     }
@@ -5744,15 +5430,14 @@ HAL_SPI_StateTypeDef HAL_SPI_GetState(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_GetState.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_GetState.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_GetState.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5764,9 +5449,9 @@ uint32_t HAL_SPI_GetError(SPI_HandleTypeDef *hspi)
   TEST_STUB.HAL_SPI_GetError.callcount++;
   switch (TEST_STUB.HAL_SPI_GetError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SPI_GetError.returnValue;
-      if (TEST_STUB.HAL_SPI_GetError.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SPI_GetError.returnValue;
+    if (TEST_STUB.HAL_SPI_GetError.hspi.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hspi = TEST_STUB.HAL_SPI_GetError.hspi.value;
     }
@@ -5777,15 +5462,14 @@ uint32_t HAL_SPI_GetError(SPI_HandleTypeDef *hspi)
         TEST_STUB.HAL_SPI_GetError.hspi.value = *hspi;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SPI_GetError.redirectFuncPtr(hspi);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SPI_GetError.redirectFuncPtr(hspi);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5797,9 +5481,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Init(TIM_HandleTypeDef *htim, TIM_HallSen
   TEST_STUB.HAL_TIMEx_HallSensor_Init.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Init.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Init.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Init.htim.value;
     }
@@ -5810,7 +5494,7 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Init(TIM_HandleTypeDef *htim, TIM_HallSen
         TEST_STUB.HAL_TIMEx_HallSensor_Init.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Init.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Init.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIMEx_HallSensor_Init.sConfig.value;
     }
@@ -5821,15 +5505,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Init(TIM_HandleTypeDef *htim, TIM_HallSen
         TEST_STUB.HAL_TIMEx_HallSensor_Init.sConfig.value = *sConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Init.redirectFuncPtr(htim, sConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Init.redirectFuncPtr(htim, sConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5841,9 +5524,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_DeInit.htim.value;
     }
@@ -5854,15 +5537,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5873,8 +5555,8 @@ void HAL_TIMEx_HallSensor_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIMEx_HallSensor_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIMEx_HallSensor_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_MspInit.htim.value;
     }
@@ -5885,17 +5567,15 @@ void HAL_TIMEx_HallSensor_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIMEx_HallSensor_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIMEx_HallSensor_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIMEx_HallSensor_MspDeInit(TIM_HandleTypeDef *htim)
@@ -5903,8 +5583,8 @@ void HAL_TIMEx_HallSensor_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.htim.value;
     }
@@ -5915,17 +5595,15 @@ void HAL_TIMEx_HallSensor_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIMEx_HallSensor_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start(TIM_HandleTypeDef *htim)
@@ -5934,9 +5612,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_Start.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Start.htim.value;
     }
@@ -5947,15 +5625,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_Start.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -5967,9 +5644,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_Stop.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Stop.htim.value;
     }
@@ -5980,15 +5657,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_Stop.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6000,9 +5676,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start_IT(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.htim.value;
     }
@@ -6013,15 +5689,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start_IT(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_IT.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6033,9 +5708,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop_IT(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.htim.value;
     }
@@ -6046,15 +5721,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop_IT(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_IT.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6066,9 +5740,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start_DMA(TIM_HandleTypeDef *htim, uint32
   TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.htim.value;
     }
@@ -6079,7 +5753,7 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start_DMA(TIM_HandleTypeDef *htim, uint32
         TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.pData.value;
     }
@@ -6090,16 +5764,15 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Start_DMA(TIM_HandleTypeDef *htim, uint32
         TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.redirectFuncPtr(htim, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Start_DMA.redirectFuncPtr(htim, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6111,9 +5784,9 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop_DMA(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.htim.value;
     }
@@ -6124,15 +5797,14 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop_DMA(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_Stop_DMA.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6144,9 +5816,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIMEx_OCN_Start.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Start.htim.value;
     }
@@ -6157,16 +5829,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIMEx_OCN_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6178,9 +5849,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIMEx_OCN_Stop.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Stop.htim.value;
     }
@@ -6191,16 +5862,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIMEx_OCN_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6212,9 +5882,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start_IT(TIM_HandleTypeDef *htim, uint32_t Chann
   TEST_STUB.HAL_TIMEx_OCN_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Start_IT.htim.value;
     }
@@ -6225,16 +5895,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start_IT(TIM_HandleTypeDef *htim, uint32_t Chann
         TEST_STUB.HAL_TIMEx_OCN_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6246,9 +5915,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channe
   TEST_STUB.HAL_TIMEx_OCN_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Stop_IT.htim.value;
     }
@@ -6259,16 +5928,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channe
         TEST_STUB.HAL_TIMEx_OCN_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6280,9 +5948,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
   TEST_STUB.HAL_TIMEx_OCN_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.htim.value;
     }
@@ -6293,8 +5961,8 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
         TEST_STUB.HAL_TIMEx_OCN_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIMEx_OCN_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIMEx_OCN_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIMEx_OCN_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.pData.value;
     }
@@ -6305,16 +5973,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
         TEST_STUB.HAL_TIMEx_OCN_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6326,9 +5993,9 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chann
   TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.htim.value;
     }
@@ -6339,16 +6006,15 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chann
         TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OCN_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6360,9 +6026,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIMEx_PWMN_Start.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Start.htim.value;
     }
@@ -6373,16 +6039,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIMEx_PWMN_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6394,9 +6059,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIMEx_PWMN_Stop.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Stop.htim.value;
     }
@@ -6407,16 +6072,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIMEx_PWMN_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6428,9 +6092,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start_IT(TIM_HandleTypeDef *htim, uint32_t Chan
   TEST_STUB.HAL_TIMEx_PWMN_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Start_IT.htim.value;
     }
@@ -6441,16 +6105,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start_IT(TIM_HandleTypeDef *htim, uint32_t Chan
         TEST_STUB.HAL_TIMEx_PWMN_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6462,9 +6125,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Chann
   TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.htim.value;
     }
@@ -6475,16 +6138,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Chann
         TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6496,9 +6158,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
   TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.htim.value;
     }
@@ -6509,8 +6171,8 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
         TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.pData.value;
     }
@@ -6521,16 +6183,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
         TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6542,9 +6203,9 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
   TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.htim.value;
     }
@@ -6555,16 +6216,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
         TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_PWMN_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6576,9 +6236,9 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Start(TIM_HandleTypeDef *htim, uint32_t Ou
   TEST_STUB.HAL_TIMEx_OnePulseN_Start.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OnePulseN_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OnePulseN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OnePulseN_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OnePulseN_Start.htim.value;
     }
@@ -6589,16 +6249,15 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Start(TIM_HandleTypeDef *htim, uint32_t Ou
         TEST_STUB.HAL_TIMEx_OnePulseN_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OnePulseN_Start.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIMEx_OnePulseN_Start.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6610,9 +6269,9 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Stop(TIM_HandleTypeDef *htim, uint32_t Out
   TEST_STUB.HAL_TIMEx_OnePulseN_Stop.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OnePulseN_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OnePulseN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OnePulseN_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OnePulseN_Stop.htim.value;
     }
@@ -6623,16 +6282,15 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Stop(TIM_HandleTypeDef *htim, uint32_t Out
         TEST_STUB.HAL_TIMEx_OnePulseN_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OnePulseN_Stop.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIMEx_OnePulseN_Stop.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6644,9 +6302,9 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Start_IT(TIM_HandleTypeDef *htim, uint32_t
   TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.htim.value;
     }
@@ -6657,16 +6315,15 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Start_IT(TIM_HandleTypeDef *htim, uint32_t
         TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Start_IT.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6678,9 +6335,9 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t 
   TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.htim.value;
     }
@@ -6691,16 +6348,15 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t 
         TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_OnePulseN_Stop_IT.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6712,9 +6368,9 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent(TIM_HandleTypeDef *htim, uint32_t 
   TEST_STUB.HAL_TIMEx_ConfigCommutEvent.callcount++;
   switch (TEST_STUB.HAL_TIMEx_ConfigCommutEvent.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent.returnValue;
-      if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent.returnValue;
+    if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_ConfigCommutEvent.htim.value;
     }
@@ -6725,17 +6381,16 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent(TIM_HandleTypeDef *htim, uint32_t 
         TEST_STUB.HAL_TIMEx_ConfigCommutEvent.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent.InputTrigger = InputTrigger;
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent.CommutationSource = CommutationSource;
-      break;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent.InputTrigger = InputTrigger;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent.CommutationSource = CommutationSource;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent.redirectFuncPtr(htim, InputTrigger, CommutationSource);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent.redirectFuncPtr(htim, InputTrigger, CommutationSource);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6747,9 +6402,9 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent_IT(TIM_HandleTypeDef *htim, uint32
   TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.callcount++;
   switch (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.returnValue;
-      if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.returnValue;
+    if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.htim.value;
     }
@@ -6760,17 +6415,16 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent_IT(TIM_HandleTypeDef *htim, uint32
         TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.InputTrigger = InputTrigger;
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.CommutationSource = CommutationSource;
-      break;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.InputTrigger = InputTrigger;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.CommutationSource = CommutationSource;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.redirectFuncPtr(htim, InputTrigger, CommutationSource);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_IT.redirectFuncPtr(htim, InputTrigger, CommutationSource);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6782,9 +6436,9 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent_DMA(TIM_HandleTypeDef *htim, uint3
   TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.callcount++;
   switch (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.returnValue;
-      if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.returnValue;
+    if (TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.htim.value;
     }
@@ -6795,17 +6449,16 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigCommutEvent_DMA(TIM_HandleTypeDef *htim, uint3
         TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.InputTrigger = InputTrigger;
-      TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.CommutationSource = CommutationSource;
-      break;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.InputTrigger = InputTrigger;
+    TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.CommutationSource = CommutationSource;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.redirectFuncPtr(htim, InputTrigger, CommutationSource);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigCommutEvent_DMA.redirectFuncPtr(htim, InputTrigger, CommutationSource);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6817,9 +6470,9 @@ HAL_StatusTypeDef HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef *htim,
   TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.callcount++;
   switch (TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.returnValue;
-      if (TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.returnValue;
+    if (TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.htim.value;
     }
@@ -6830,7 +6483,7 @@ HAL_StatusTypeDef HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef *htim,
         TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.sMasterConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.sMasterConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sMasterConfig = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.sMasterConfig.value;
     }
@@ -6841,15 +6494,14 @@ HAL_StatusTypeDef HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef *htim,
         TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.sMasterConfig.value = *sMasterConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.redirectFuncPtr(htim, sMasterConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_MasterConfigSynchronization.redirectFuncPtr(htim, sMasterConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6861,9 +6513,9 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigBreakDeadTime(TIM_HandleTypeDef *htim, TIM_Bre
   TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.callcount++;
   switch (TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.returnValue;
-      if (TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.returnValue;
+    if (TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.htim.value;
     }
@@ -6874,7 +6526,7 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigBreakDeadTime(TIM_HandleTypeDef *htim, TIM_Bre
         TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.sBreakDeadTimeConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.sBreakDeadTimeConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sBreakDeadTimeConfig = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.sBreakDeadTimeConfig.value;
     }
@@ -6885,15 +6537,14 @@ HAL_StatusTypeDef HAL_TIMEx_ConfigBreakDeadTime(TIM_HandleTypeDef *htim, TIM_Bre
         TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.sBreakDeadTimeConfig.value = *sBreakDeadTimeConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.redirectFuncPtr(htim, sBreakDeadTimeConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_ConfigBreakDeadTime.redirectFuncPtr(htim, sBreakDeadTimeConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6905,9 +6556,9 @@ HAL_StatusTypeDef HAL_TIMEx_RemapConfig(TIM_HandleTypeDef *htim, uint32_t Remap)
   TEST_STUB.HAL_TIMEx_RemapConfig.callcount++;
   switch (TEST_STUB.HAL_TIMEx_RemapConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_RemapConfig.returnValue;
-      if (TEST_STUB.HAL_TIMEx_RemapConfig.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_RemapConfig.returnValue;
+    if (TEST_STUB.HAL_TIMEx_RemapConfig.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_RemapConfig.htim.value;
     }
@@ -6918,16 +6569,15 @@ HAL_StatusTypeDef HAL_TIMEx_RemapConfig(TIM_HandleTypeDef *htim, uint32_t Remap)
         TEST_STUB.HAL_TIMEx_RemapConfig.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_RemapConfig.Remap = Remap;
-      break;
+    TEST_STUB.HAL_TIMEx_RemapConfig.Remap = Remap;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_RemapConfig.redirectFuncPtr(htim, Remap);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_RemapConfig.redirectFuncPtr(htim, Remap);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -6938,8 +6588,8 @@ void HAL_TIMEx_CommutCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_CommutCallback.callcount++;
   switch (TEST_STUB.HAL_TIMEx_CommutCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIMEx_CommutCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIMEx_CommutCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_CommutCallback.htim.value;
     }
@@ -6950,17 +6600,15 @@ void HAL_TIMEx_CommutCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_CommutCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIMEx_CommutCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIMEx_CommutCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIMEx_CommutHalfCpltCallback(TIM_HandleTypeDef *htim)
@@ -6968,8 +6616,8 @@ void HAL_TIMEx_CommutHalfCpltCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.htim.value;
     }
@@ -6980,17 +6628,15 @@ void HAL_TIMEx_CommutHalfCpltCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIMEx_CommutHalfCpltCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIMEx_BreakCallback(TIM_HandleTypeDef *htim)
@@ -6998,8 +6644,8 @@ void HAL_TIMEx_BreakCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_BreakCallback.callcount++;
   switch (TEST_STUB.HAL_TIMEx_BreakCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIMEx_BreakCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIMEx_BreakCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_BreakCallback.htim.value;
     }
@@ -7010,17 +6656,15 @@ void HAL_TIMEx_BreakCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_BreakCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIMEx_BreakCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIMEx_BreakCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_TIM_StateTypeDef HAL_TIMEx_HallSensor_GetState(TIM_HandleTypeDef *htim)
@@ -7029,9 +6673,9 @@ HAL_TIM_StateTypeDef HAL_TIMEx_HallSensor_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIMEx_HallSensor_GetState.callcount++;
   switch (TEST_STUB.HAL_TIMEx_HallSensor_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_GetState.returnValue;
-      if (TEST_STUB.HAL_TIMEx_HallSensor_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_GetState.returnValue;
+    if (TEST_STUB.HAL_TIMEx_HallSensor_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_HallSensor_GetState.htim.value;
     }
@@ -7042,15 +6686,14 @@ HAL_TIM_StateTypeDef HAL_TIMEx_HallSensor_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIMEx_HallSensor_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_HallSensor_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_HallSensor_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7062,9 +6705,9 @@ HAL_TIM_ChannelStateTypeDef HAL_TIMEx_GetChannelNState(TIM_HandleTypeDef *htim, 
   TEST_STUB.HAL_TIMEx_GetChannelNState.callcount++;
   switch (TEST_STUB.HAL_TIMEx_GetChannelNState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIMEx_GetChannelNState.returnValue;
-      if (TEST_STUB.HAL_TIMEx_GetChannelNState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIMEx_GetChannelNState.returnValue;
+    if (TEST_STUB.HAL_TIMEx_GetChannelNState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIMEx_GetChannelNState.htim.value;
     }
@@ -7075,16 +6718,15 @@ HAL_TIM_ChannelStateTypeDef HAL_TIMEx_GetChannelNState(TIM_HandleTypeDef *htim, 
         TEST_STUB.HAL_TIMEx_GetChannelNState.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIMEx_GetChannelNState.ChannelN = ChannelN;
-      break;
+    TEST_STUB.HAL_TIMEx_GetChannelNState.ChannelN = ChannelN;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIMEx_GetChannelNState.redirectFuncPtr(htim, ChannelN);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIMEx_GetChannelNState.redirectFuncPtr(htim, ChannelN);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7095,8 +6737,8 @@ void TIMEx_DMACommutationCplt(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIMEx_DMACommutationCplt.callcount++;
   switch (TEST_STUB.TIMEx_DMACommutationCplt.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIMEx_DMACommutationCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIMEx_DMACommutationCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIMEx_DMACommutationCplt.hdma.value;
     }
@@ -7107,17 +6749,15 @@ void TIMEx_DMACommutationCplt(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIMEx_DMACommutationCplt.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIMEx_DMACommutationCplt.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIMEx_DMACommutationCplt.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIMEx_DMACommutationHalfCplt(DMA_HandleTypeDef *hdma)
@@ -7125,8 +6765,8 @@ void TIMEx_DMACommutationHalfCplt(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIMEx_DMACommutationHalfCplt.callcount++;
   switch (TEST_STUB.TIMEx_DMACommutationHalfCplt.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIMEx_DMACommutationHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIMEx_DMACommutationHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIMEx_DMACommutationHalfCplt.hdma.value;
     }
@@ -7137,17 +6777,15 @@ void TIMEx_DMACommutationHalfCplt(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIMEx_DMACommutationHalfCplt.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIMEx_DMACommutationHalfCplt.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIMEx_DMACommutationHalfCplt.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
@@ -7156,9 +6794,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Init.htim.value;
     }
@@ -7169,15 +6807,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Init.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Init.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Init.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7189,9 +6826,9 @@ HAL_StatusTypeDef HAL_TIM_Base_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_DeInit.htim.value;
     }
@@ -7202,15 +6839,14 @@ HAL_StatusTypeDef HAL_TIM_Base_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7221,8 +6857,8 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_Base_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_Base_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_MspInit.htim.value;
     }
@@ -7233,17 +6869,15 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_Base_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_Base_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef *htim)
@@ -7251,8 +6885,8 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_Base_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_Base_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_MspDeInit.htim.value;
     }
@@ -7263,17 +6897,15 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_Base_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_Base_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
@@ -7282,9 +6914,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Start.htim.value;
     }
@@ -7295,15 +6927,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Start.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7315,9 +6946,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Stop.htim.value;
     }
@@ -7328,15 +6959,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Stop.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7348,9 +6978,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Start_IT.htim.value;
     }
@@ -7361,15 +6991,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Start_IT.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start_IT.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start_IT.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7381,9 +7010,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Stop_IT.htim.value;
     }
@@ -7394,15 +7023,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Stop_IT.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop_IT.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop_IT.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7414,9 +7042,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_DMA(TIM_HandleTypeDef *htim, uint32_t *pDat
   TEST_STUB.HAL_TIM_Base_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Start_DMA.htim.value;
     }
@@ -7427,7 +7055,7 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_DMA(TIM_HandleTypeDef *htim, uint32_t *pDat
         TEST_STUB.HAL_TIM_Base_Start_DMA.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_Base_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_Base_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIM_Base_Start_DMA.pData.value;
     }
@@ -7438,16 +7066,15 @@ HAL_StatusTypeDef HAL_TIM_Base_Start_DMA(TIM_HandleTypeDef *htim, uint32_t *pDat
         TEST_STUB.HAL_TIM_Base_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIM_Base_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIM_Base_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Start_DMA.redirectFuncPtr(htim, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Start_DMA.redirectFuncPtr(htim, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7459,9 +7086,9 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop_DMA(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_Stop_DMA.htim.value;
     }
@@ -7472,15 +7099,14 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop_DMA(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_Stop_DMA.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_Stop_DMA.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_Stop_DMA.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7492,9 +7118,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Init(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Init.htim.value;
     }
@@ -7505,15 +7131,14 @@ HAL_StatusTypeDef HAL_TIM_OC_Init(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_Init.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Init.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Init.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7525,9 +7150,9 @@ HAL_StatusTypeDef HAL_TIM_OC_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_DeInit.htim.value;
     }
@@ -7538,15 +7163,14 @@ HAL_StatusTypeDef HAL_TIM_OC_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7557,8 +7181,8 @@ void HAL_TIM_OC_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_OC_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_OC_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_MspInit.htim.value;
     }
@@ -7569,17 +7193,15 @@ void HAL_TIM_OC_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_OC_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_OC_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_OC_MspDeInit(TIM_HandleTypeDef *htim)
@@ -7587,8 +7209,8 @@ void HAL_TIM_OC_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_OC_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_OC_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_MspDeInit.htim.value;
     }
@@ -7599,17 +7221,15 @@ void HAL_TIM_OC_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_OC_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_OC_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_OC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
@@ -7618,9 +7238,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_OC_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Start.htim.value;
     }
@@ -7631,16 +7251,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_OC_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7652,9 +7271,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_OC_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Stop.htim.value;
     }
@@ -7665,16 +7284,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_OC_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7686,9 +7304,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_OC_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Start_IT.htim.value;
     }
@@ -7699,16 +7317,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_OC_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7720,9 +7337,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_OC_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Stop_IT.htim.value;
     }
@@ -7733,16 +7350,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_OC_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7754,9 +7370,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIM_OC_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Start_DMA.htim.value;
     }
@@ -7767,8 +7383,8 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_OC_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIM_OC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_OC_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIM_OC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIM_OC_Start_DMA.pData.value;
     }
@@ -7779,16 +7395,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_OC_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIM_OC_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7800,9 +7415,9 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_OC_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_Stop_DMA.htim.value;
     }
@@ -7813,16 +7428,15 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_OC_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OC_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7834,9 +7448,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Init(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Init.htim.value;
     }
@@ -7847,15 +7461,14 @@ HAL_StatusTypeDef HAL_TIM_PWM_Init(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_Init.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Init.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Init.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7867,9 +7480,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_DeInit.htim.value;
     }
@@ -7880,15 +7493,14 @@ HAL_StatusTypeDef HAL_TIM_PWM_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7899,8 +7511,8 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PWM_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PWM_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_MspInit.htim.value;
     }
@@ -7911,17 +7523,15 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PWM_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PWM_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef *htim)
@@ -7929,8 +7539,8 @@ void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PWM_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PWM_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_MspDeInit.htim.value;
     }
@@ -7941,17 +7551,15 @@ void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PWM_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PWM_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
@@ -7960,9 +7568,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_PWM_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Start.htim.value;
     }
@@ -7973,16 +7581,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_PWM_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -7994,9 +7601,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_PWM_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Stop.htim.value;
     }
@@ -8007,16 +7614,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_PWM_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8028,9 +7634,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIM_PWM_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Start_IT.htim.value;
     }
@@ -8041,16 +7647,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_PWM_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8062,9 +7667,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_PWM_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Stop_IT.htim.value;
     }
@@ -8075,16 +7680,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_PWM_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8096,9 +7700,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channe
   TEST_STUB.HAL_TIM_PWM_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Start_DMA.htim.value;
     }
@@ -8109,8 +7713,8 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channe
         TEST_STUB.HAL_TIM_PWM_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIM_PWM_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_PWM_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIM_PWM_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIM_PWM_Start_DMA.pData.value;
     }
@@ -8121,16 +7725,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channe
         TEST_STUB.HAL_TIM_PWM_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8142,9 +7745,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIM_PWM_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_Stop_DMA.htim.value;
     }
@@ -8155,16 +7758,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_PWM_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8176,9 +7778,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Init(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Init.htim.value;
     }
@@ -8189,15 +7791,14 @@ HAL_StatusTypeDef HAL_TIM_IC_Init(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_Init.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Init.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Init.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8209,9 +7810,9 @@ HAL_StatusTypeDef HAL_TIM_IC_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_DeInit.htim.value;
     }
@@ -8222,15 +7823,14 @@ HAL_StatusTypeDef HAL_TIM_IC_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8241,8 +7841,8 @@ void HAL_TIM_IC_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_IC_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_IC_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_MspInit.htim.value;
     }
@@ -8253,17 +7853,15 @@ void HAL_TIM_IC_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_IC_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_IC_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef *htim)
@@ -8271,8 +7869,8 @@ void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_IC_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_IC_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_MspDeInit.htim.value;
     }
@@ -8283,17 +7881,15 @@ void HAL_TIM_IC_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_IC_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_IC_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
@@ -8302,9 +7898,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_IC_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Start.htim.value;
     }
@@ -8315,16 +7911,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_IC_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8336,9 +7931,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_IC_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Stop.htim.value;
     }
@@ -8349,16 +7944,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_IC_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8370,9 +7964,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_IC_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Start_IT.htim.value;
     }
@@ -8383,16 +7977,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_IC_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8404,9 +7997,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_IC_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Stop_IT.htim.value;
     }
@@ -8417,16 +8010,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_IC_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8438,9 +8030,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIM_IC_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Start_DMA.htim.value;
     }
@@ -8451,8 +8043,8 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_IC_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIM_IC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_IC_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIM_IC_Start_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_TIM_IC_Start_DMA.pData.value;
     }
@@ -8463,16 +8055,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_IC_Start_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIM_IC_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Start_DMA.redirectFuncPtr(htim, Channel, pData, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8484,9 +8075,9 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_IC_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_Stop_DMA.htim.value;
     }
@@ -8497,16 +8088,15 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_IC_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_IC_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8518,9 +8108,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Init(TIM_HandleTypeDef *htim, uint32_t OnePul
   TEST_STUB.HAL_TIM_OnePulse_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_Init.htim.value;
     }
@@ -8531,16 +8121,15 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Init(TIM_HandleTypeDef *htim, uint32_t OnePul
         TEST_STUB.HAL_TIM_OnePulse_Init.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_Init.OnePulseMode = OnePulseMode;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_Init.OnePulseMode = OnePulseMode;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Init.redirectFuncPtr(htim, OnePulseMode);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Init.redirectFuncPtr(htim, OnePulseMode);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8552,9 +8141,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OnePulse_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_DeInit.htim.value;
     }
@@ -8565,15 +8154,14 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OnePulse_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8584,8 +8172,8 @@ void HAL_TIM_OnePulse_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OnePulse_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_OnePulse_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_OnePulse_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_MspInit.htim.value;
     }
@@ -8596,17 +8184,15 @@ void HAL_TIM_OnePulse_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OnePulse_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_OnePulse_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_OnePulse_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_OnePulse_MspDeInit(TIM_HandleTypeDef *htim)
@@ -8614,8 +8200,8 @@ void HAL_TIM_OnePulse_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OnePulse_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_OnePulse_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_OnePulse_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_MspDeInit.htim.value;
     }
@@ -8626,17 +8212,15 @@ void HAL_TIM_OnePulse_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OnePulse_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_OnePulse_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_OnePulse_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_OnePulse_Start(TIM_HandleTypeDef *htim, uint32_t OutputChannel)
@@ -8645,9 +8229,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Start(TIM_HandleTypeDef *htim, uint32_t Outpu
   TEST_STUB.HAL_TIM_OnePulse_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_Start.htim.value;
     }
@@ -8658,16 +8242,15 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Start(TIM_HandleTypeDef *htim, uint32_t Outpu
         TEST_STUB.HAL_TIM_OnePulse_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_Start.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_Start.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Start.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Start.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8679,9 +8262,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop(TIM_HandleTypeDef *htim, uint32_t Output
   TEST_STUB.HAL_TIM_OnePulse_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_Stop.htim.value;
     }
@@ -8692,16 +8275,15 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop(TIM_HandleTypeDef *htim, uint32_t Output
         TEST_STUB.HAL_TIM_OnePulse_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_Stop.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_Stop.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8713,9 +8295,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Start_IT(TIM_HandleTypeDef *htim, uint32_t Ou
   TEST_STUB.HAL_TIM_OnePulse_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_Start_IT.htim.value;
     }
@@ -8726,16 +8308,15 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Start_IT(TIM_HandleTypeDef *htim, uint32_t Ou
         TEST_STUB.HAL_TIM_OnePulse_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_Start_IT.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_Start_IT.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Start_IT.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Start_IT.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8747,9 +8328,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Out
   TEST_STUB.HAL_TIM_OnePulse_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_Stop_IT.htim.value;
     }
@@ -8760,16 +8341,15 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Out
         TEST_STUB.HAL_TIM_OnePulse_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_Stop_IT.OutputChannel = OutputChannel;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_Stop_IT.OutputChannel = OutputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop_IT.redirectFuncPtr(htim, OutputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_Stop_IT.redirectFuncPtr(htim, OutputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8781,9 +8361,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Init(TIM_HandleTypeDef *htim, TIM_Encoder_Init
   TEST_STUB.HAL_TIM_Encoder_Init.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Init.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Init.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Init.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Init.htim.value;
     }
@@ -8794,7 +8374,7 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Init(TIM_HandleTypeDef *htim, TIM_Encoder_Init
         TEST_STUB.HAL_TIM_Encoder_Init.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_Encoder_Init.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_Encoder_Init.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIM_Encoder_Init.sConfig.value;
     }
@@ -8805,15 +8385,14 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Init(TIM_HandleTypeDef *htim, TIM_Encoder_Init
         TEST_STUB.HAL_TIM_Encoder_Init.sConfig.value = *sConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Init.redirectFuncPtr(htim, sConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Init.redirectFuncPtr(htim, sConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8825,9 +8404,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_DeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Encoder_DeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_DeInit.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_DeInit.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_DeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_DeInit.htim.value;
     }
@@ -8838,15 +8417,14 @@ HAL_StatusTypeDef HAL_TIM_Encoder_DeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Encoder_DeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_DeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_DeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8857,8 +8435,8 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Encoder_MspInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_Encoder_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_Encoder_MspInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_MspInit.htim.value;
     }
@@ -8869,17 +8447,15 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Encoder_MspInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_Encoder_MspInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_Encoder_MspInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef *htim)
@@ -8887,8 +8463,8 @@ void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Encoder_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_Encoder_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_Encoder_MspDeInit.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_MspDeInit.htim.value;
     }
@@ -8899,17 +8475,15 @@ void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Encoder_MspDeInit.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_Encoder_MspDeInit.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_Encoder_MspDeInit.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_Encoder_Start(TIM_HandleTypeDef *htim, uint32_t Channel)
@@ -8918,9 +8492,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start(TIM_HandleTypeDef *htim, uint32_t Channe
   TEST_STUB.HAL_TIM_Encoder_Start.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Start.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Start.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Start.htim.value;
     }
@@ -8931,16 +8505,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start(TIM_HandleTypeDef *htim, uint32_t Channe
         TEST_STUB.HAL_TIM_Encoder_Start.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Start.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Start.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8952,9 +8525,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop(TIM_HandleTypeDef *htim, uint32_t Channel
   TEST_STUB.HAL_TIM_Encoder_Stop.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Stop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Stop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Stop.htim.value;
     }
@@ -8965,16 +8538,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop(TIM_HandleTypeDef *htim, uint32_t Channel
         TEST_STUB.HAL_TIM_Encoder_Stop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Stop.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Stop.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -8986,9 +8558,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_IT(TIM_HandleTypeDef *htim, uint32_t Cha
   TEST_STUB.HAL_TIM_Encoder_Start_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Start_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Start_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Start_IT.htim.value;
     }
@@ -8999,16 +8571,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_IT(TIM_HandleTypeDef *htim, uint32_t Cha
         TEST_STUB.HAL_TIM_Encoder_Start_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Start_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Start_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9020,9 +8591,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Chan
   TEST_STUB.HAL_TIM_Encoder_Stop_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Stop_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Stop_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Stop_IT.htim.value;
     }
@@ -9033,16 +8604,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Chan
         TEST_STUB.HAL_TIM_Encoder_Stop_IT.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Stop_IT.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Stop_IT.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_IT.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_IT.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9054,9 +8624,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
   TEST_STUB.HAL_TIM_Encoder_Start_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Start_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Start_DMA.htim.value;
     }
@@ -9067,8 +8637,8 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
         TEST_STUB.HAL_TIM_Encoder_Start_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Start_DMA.Channel = Channel;
-      if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData1.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_Encoder_Start_DMA.Channel = Channel;
+    if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData1.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData1 = TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData1.value;
     }
@@ -9079,7 +8649,7 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
         TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData1.value = *pData1;
       }
     }
-      if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData2.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData2.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData2 = TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData2.value;
     }
@@ -9090,16 +8660,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Ch
         TEST_STUB.HAL_TIM_Encoder_Start_DMA.pData2.value = *pData2;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Start_DMA.Length = Length;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Start_DMA.Length = Length;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Start_DMA.redirectFuncPtr(htim, Channel, pData1, pData2, Length);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Start_DMA.redirectFuncPtr(htim, Channel, pData1, pData2, Length);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9111,9 +8680,9 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
   TEST_STUB.HAL_TIM_Encoder_Stop_DMA.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_Stop_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_DMA.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_DMA.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_Stop_DMA.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_Stop_DMA.htim.value;
     }
@@ -9124,16 +8693,15 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
         TEST_STUB.HAL_TIM_Encoder_Stop_DMA.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_Encoder_Stop_DMA.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_Encoder_Stop_DMA.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_DMA.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_Stop_DMA.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9144,8 +8712,8 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_TIM_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_IRQHandler.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_IRQHandler.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IRQHandler.htim.value;
     }
@@ -9156,17 +8724,15 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IRQHandler.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_IRQHandler.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_IRQHandler.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_TIM_OC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitTypeDef *sConfig, uint32_t Channel)
@@ -9175,9 +8741,9 @@ HAL_StatusTypeDef HAL_TIM_OC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitT
   TEST_STUB.HAL_TIM_OC_ConfigChannel.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_ConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_ConfigChannel.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_ConfigChannel.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_ConfigChannel.htim.value;
     }
@@ -9188,7 +8754,7 @@ HAL_StatusTypeDef HAL_TIM_OC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitT
         TEST_STUB.HAL_TIM_OC_ConfigChannel.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_OC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_OC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIM_OC_ConfigChannel.sConfig.value;
     }
@@ -9199,16 +8765,15 @@ HAL_StatusTypeDef HAL_TIM_OC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitT
         TEST_STUB.HAL_TIM_OC_ConfigChannel.sConfig.value = *sConfig;
       }
     }
-      TEST_STUB.HAL_TIM_OC_ConfigChannel.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_OC_ConfigChannel.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9220,9 +8785,9 @@ HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_Init
   TEST_STUB.HAL_TIM_PWM_ConfigChannel.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_ConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_ConfigChannel.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_ConfigChannel.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_ConfigChannel.htim.value;
     }
@@ -9233,7 +8798,7 @@ HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_Init
         TEST_STUB.HAL_TIM_PWM_ConfigChannel.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_PWM_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_PWM_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIM_PWM_ConfigChannel.sConfig.value;
     }
@@ -9244,16 +8809,15 @@ HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_Init
         TEST_STUB.HAL_TIM_PWM_ConfigChannel.sConfig.value = *sConfig;
       }
     }
-      TEST_STUB.HAL_TIM_PWM_ConfigChannel.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_PWM_ConfigChannel.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9265,9 +8829,9 @@ HAL_StatusTypeDef HAL_TIM_IC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_IC_InitT
   TEST_STUB.HAL_TIM_IC_ConfigChannel.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_ConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_ConfigChannel.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_ConfigChannel.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_ConfigChannel.htim.value;
     }
@@ -9278,7 +8842,7 @@ HAL_StatusTypeDef HAL_TIM_IC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_IC_InitT
         TEST_STUB.HAL_TIM_IC_ConfigChannel.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_IC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_IC_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIM_IC_ConfigChannel.sConfig.value;
     }
@@ -9289,16 +8853,15 @@ HAL_StatusTypeDef HAL_TIM_IC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_IC_InitT
         TEST_STUB.HAL_TIM_IC_ConfigChannel.sConfig.value = *sConfig;
       }
     }
-      TEST_STUB.HAL_TIM_IC_ConfigChannel.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_IC_ConfigChannel.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_ConfigChannel.redirectFuncPtr(htim, sConfig, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9310,9 +8873,9 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_ConfigChannel(TIM_HandleTypeDef *htim, TIM_On
   TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.htim.value;
     }
@@ -9323,7 +8886,7 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_ConfigChannel(TIM_HandleTypeDef *htim, TIM_On
         TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.sConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sConfig = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.sConfig.value;
     }
@@ -9334,17 +8897,16 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_ConfigChannel(TIM_HandleTypeDef *htim, TIM_On
         TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.sConfig.value = *sConfig;
       }
     }
-      TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.OutputChannel = OutputChannel;
-      TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.InputChannel = InputChannel;
-      break;
+    TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.OutputChannel = OutputChannel;
+    TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.InputChannel = InputChannel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.redirectFuncPtr(htim, sConfig, OutputChannel, InputChannel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_ConfigChannel.redirectFuncPtr(htim, sConfig, OutputChannel, InputChannel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9356,9 +8918,9 @@ HAL_StatusTypeDef HAL_TIM_ConfigOCrefClear(TIM_HandleTypeDef *htim, TIM_ClearInp
   TEST_STUB.HAL_TIM_ConfigOCrefClear.callcount++;
   switch (TEST_STUB.HAL_TIM_ConfigOCrefClear.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_ConfigOCrefClear.returnValue;
-      if (TEST_STUB.HAL_TIM_ConfigOCrefClear.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_ConfigOCrefClear.returnValue;
+    if (TEST_STUB.HAL_TIM_ConfigOCrefClear.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_ConfigOCrefClear.htim.value;
     }
@@ -9369,7 +8931,7 @@ HAL_StatusTypeDef HAL_TIM_ConfigOCrefClear(TIM_HandleTypeDef *htim, TIM_ClearInp
         TEST_STUB.HAL_TIM_ConfigOCrefClear.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_ConfigOCrefClear.sClearInputConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_ConfigOCrefClear.sClearInputConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sClearInputConfig = TEST_STUB.HAL_TIM_ConfigOCrefClear.sClearInputConfig.value;
     }
@@ -9380,16 +8942,15 @@ HAL_StatusTypeDef HAL_TIM_ConfigOCrefClear(TIM_HandleTypeDef *htim, TIM_ClearInp
         TEST_STUB.HAL_TIM_ConfigOCrefClear.sClearInputConfig.value = *sClearInputConfig;
       }
     }
-      TEST_STUB.HAL_TIM_ConfigOCrefClear.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_ConfigOCrefClear.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_ConfigOCrefClear.redirectFuncPtr(htim, sClearInputConfig, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_ConfigOCrefClear.redirectFuncPtr(htim, sClearInputConfig, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9401,9 +8962,9 @@ HAL_StatusTypeDef HAL_TIM_ConfigClockSource(TIM_HandleTypeDef *htim, TIM_ClockCo
   TEST_STUB.HAL_TIM_ConfigClockSource.callcount++;
   switch (TEST_STUB.HAL_TIM_ConfigClockSource.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_ConfigClockSource.returnValue;
-      if (TEST_STUB.HAL_TIM_ConfigClockSource.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_ConfigClockSource.returnValue;
+    if (TEST_STUB.HAL_TIM_ConfigClockSource.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_ConfigClockSource.htim.value;
     }
@@ -9414,7 +8975,7 @@ HAL_StatusTypeDef HAL_TIM_ConfigClockSource(TIM_HandleTypeDef *htim, TIM_ClockCo
         TEST_STUB.HAL_TIM_ConfigClockSource.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_ConfigClockSource.sClockSourceConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_ConfigClockSource.sClockSourceConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sClockSourceConfig = TEST_STUB.HAL_TIM_ConfigClockSource.sClockSourceConfig.value;
     }
@@ -9425,15 +8986,14 @@ HAL_StatusTypeDef HAL_TIM_ConfigClockSource(TIM_HandleTypeDef *htim, TIM_ClockCo
         TEST_STUB.HAL_TIM_ConfigClockSource.sClockSourceConfig.value = *sClockSourceConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_ConfigClockSource.redirectFuncPtr(htim, sClockSourceConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_ConfigClockSource.redirectFuncPtr(htim, sClockSourceConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9445,9 +9005,9 @@ HAL_StatusTypeDef HAL_TIM_ConfigTI1Input(TIM_HandleTypeDef *htim, uint32_t TI1_S
   TEST_STUB.HAL_TIM_ConfigTI1Input.callcount++;
   switch (TEST_STUB.HAL_TIM_ConfigTI1Input.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_ConfigTI1Input.returnValue;
-      if (TEST_STUB.HAL_TIM_ConfigTI1Input.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_ConfigTI1Input.returnValue;
+    if (TEST_STUB.HAL_TIM_ConfigTI1Input.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_ConfigTI1Input.htim.value;
     }
@@ -9458,16 +9018,15 @@ HAL_StatusTypeDef HAL_TIM_ConfigTI1Input(TIM_HandleTypeDef *htim, uint32_t TI1_S
         TEST_STUB.HAL_TIM_ConfigTI1Input.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_ConfigTI1Input.TI1_Selection = TI1_Selection;
-      break;
+    TEST_STUB.HAL_TIM_ConfigTI1Input.TI1_Selection = TI1_Selection;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_ConfigTI1Input.redirectFuncPtr(htim, TI1_Selection);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_ConfigTI1Input.redirectFuncPtr(htim, TI1_Selection);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9479,9 +9038,9 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro(TIM_HandleTypeDef *htim, TIM_SlaveC
   TEST_STUB.HAL_TIM_SlaveConfigSynchro.callcount++;
   switch (TEST_STUB.HAL_TIM_SlaveConfigSynchro.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro.returnValue;
-      if (TEST_STUB.HAL_TIM_SlaveConfigSynchro.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro.returnValue;
+    if (TEST_STUB.HAL_TIM_SlaveConfigSynchro.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_SlaveConfigSynchro.htim.value;
     }
@@ -9492,7 +9051,7 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro(TIM_HandleTypeDef *htim, TIM_SlaveC
         TEST_STUB.HAL_TIM_SlaveConfigSynchro.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_SlaveConfigSynchro.sSlaveConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_SlaveConfigSynchro.sSlaveConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sSlaveConfig = TEST_STUB.HAL_TIM_SlaveConfigSynchro.sSlaveConfig.value;
     }
@@ -9503,15 +9062,14 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro(TIM_HandleTypeDef *htim, TIM_SlaveC
         TEST_STUB.HAL_TIM_SlaveConfigSynchro.sSlaveConfig.value = *sSlaveConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro.redirectFuncPtr(htim, sSlaveConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro.redirectFuncPtr(htim, sSlaveConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9523,9 +9081,9 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro_IT(TIM_HandleTypeDef *htim, TIM_Sla
   TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.callcount++;
   switch (TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.returnValue;
-      if (TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.returnValue;
+    if (TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.htim.value;
     }
@@ -9536,7 +9094,7 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro_IT(TIM_HandleTypeDef *htim, TIM_Sla
         TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.htim.value = *htim;
       }
     }
-      if (TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.sSlaveConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.sSlaveConfig.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *sSlaveConfig = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.sSlaveConfig.value;
     }
@@ -9547,15 +9105,14 @@ HAL_StatusTypeDef HAL_TIM_SlaveConfigSynchro_IT(TIM_HandleTypeDef *htim, TIM_Sla
         TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.sSlaveConfig.value = *sSlaveConfig;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.redirectFuncPtr(htim, sSlaveConfig);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_SlaveConfigSynchro_IT.redirectFuncPtr(htim, sSlaveConfig);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9567,9 +9124,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStart(TIM_HandleTypeDef *htim, uint32_t 
   TEST_STUB.HAL_TIM_DMABurst_WriteStart.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_WriteStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStart.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_WriteStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStart.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_WriteStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_WriteStart.htim.value;
     }
@@ -9580,9 +9137,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStart(TIM_HandleTypeDef *htim, uint32_t 
         TEST_STUB.HAL_TIM_DMABurst_WriteStart.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBaseAddress = BurstBaseAddress;
-      TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstRequestSrc = BurstRequestSrc;
-      if (TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBaseAddress = BurstBaseAddress;
+    TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstRequestSrc = BurstRequestSrc;
+    if (TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *BurstBuffer = TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBuffer.value;
     }
@@ -9593,16 +9150,15 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStart(TIM_HandleTypeDef *htim, uint32_t 
         TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstBuffer.value = *BurstBuffer;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstLength = BurstLength;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_WriteStart.BurstLength = BurstLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9614,9 +9170,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiWriteStart(TIM_HandleTypeDef *htim, uint
   TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.htim.value;
     }
@@ -9627,9 +9183,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiWriteStart(TIM_HandleTypeDef *htim, uint
         TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBaseAddress = BurstBaseAddress;
-      TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstRequestSrc = BurstRequestSrc;
-      if (TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBaseAddress = BurstBaseAddress;
+    TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstRequestSrc = BurstRequestSrc;
+    if (TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *BurstBuffer = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBuffer.value;
     }
@@ -9640,17 +9196,16 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiWriteStart(TIM_HandleTypeDef *htim, uint
         TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstBuffer.value = *BurstBuffer;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstLength = BurstLength;
-      TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.BurstLength = BurstLength;
+    TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiWriteStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9662,9 +9217,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStop(TIM_HandleTypeDef *htim, uint32_t B
   TEST_STUB.HAL_TIM_DMABurst_WriteStop.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_WriteStop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStop.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_WriteStop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStop.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_WriteStop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_WriteStop.htim.value;
     }
@@ -9675,16 +9230,15 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_WriteStop(TIM_HandleTypeDef *htim, uint32_t B
         TEST_STUB.HAL_TIM_DMABurst_WriteStop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_WriteStop.BurstRequestSrc = BurstRequestSrc;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_WriteStop.BurstRequestSrc = BurstRequestSrc;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStop.redirectFuncPtr(htim, BurstRequestSrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_WriteStop.redirectFuncPtr(htim, BurstRequestSrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9696,9 +9250,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStart(TIM_HandleTypeDef *htim, uint32_t B
   TEST_STUB.HAL_TIM_DMABurst_ReadStart.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_ReadStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStart.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_ReadStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStart.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_ReadStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_ReadStart.htim.value;
     }
@@ -9709,9 +9263,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStart(TIM_HandleTypeDef *htim, uint32_t B
         TEST_STUB.HAL_TIM_DMABurst_ReadStart.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBaseAddress = BurstBaseAddress;
-      TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstRequestSrc = BurstRequestSrc;
-      if (TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBaseAddress = BurstBaseAddress;
+    TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstRequestSrc = BurstRequestSrc;
+    if (TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *BurstBuffer = TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBuffer.value;
     }
@@ -9722,16 +9276,15 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStart(TIM_HandleTypeDef *htim, uint32_t B
         TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstBuffer.value = *BurstBuffer;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstLength = BurstLength;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_ReadStart.BurstLength = BurstLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9743,9 +9296,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiReadStart(TIM_HandleTypeDef *htim, uint3
   TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.htim.value;
     }
@@ -9756,9 +9309,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiReadStart(TIM_HandleTypeDef *htim, uint3
         TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBaseAddress = BurstBaseAddress;
-      TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstRequestSrc = BurstRequestSrc;
-      if (TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBaseAddress = BurstBaseAddress;
+    TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstRequestSrc = BurstRequestSrc;
+    if (TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBuffer.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *BurstBuffer = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBuffer.value;
     }
@@ -9769,17 +9322,16 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_MultiReadStart(TIM_HandleTypeDef *htim, uint3
         TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstBuffer.value = *BurstBuffer;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstLength = BurstLength;
-      TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.DataLength = DataLength;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.BurstLength = BurstLength;
+    TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.DataLength = DataLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength, DataLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_MultiReadStart.redirectFuncPtr(htim, BurstBaseAddress, BurstRequestSrc, BurstBuffer, BurstLength, DataLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9791,9 +9343,9 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStop(TIM_HandleTypeDef *htim, uint32_t Bu
   TEST_STUB.HAL_TIM_DMABurst_ReadStop.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurst_ReadStop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStop.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurst_ReadStop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStop.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurst_ReadStop.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurst_ReadStop.htim.value;
     }
@@ -9804,16 +9356,15 @@ HAL_StatusTypeDef HAL_TIM_DMABurst_ReadStop(TIM_HandleTypeDef *htim, uint32_t Bu
         TEST_STUB.HAL_TIM_DMABurst_ReadStop.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_DMABurst_ReadStop.BurstRequestSrc = BurstRequestSrc;
-      break;
+    TEST_STUB.HAL_TIM_DMABurst_ReadStop.BurstRequestSrc = BurstRequestSrc;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStop.redirectFuncPtr(htim, BurstRequestSrc);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurst_ReadStop.redirectFuncPtr(htim, BurstRequestSrc);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9825,9 +9376,9 @@ HAL_StatusTypeDef HAL_TIM_GenerateEvent(TIM_HandleTypeDef *htim, uint32_t EventS
   TEST_STUB.HAL_TIM_GenerateEvent.callcount++;
   switch (TEST_STUB.HAL_TIM_GenerateEvent.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_GenerateEvent.returnValue;
-      if (TEST_STUB.HAL_TIM_GenerateEvent.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_GenerateEvent.returnValue;
+    if (TEST_STUB.HAL_TIM_GenerateEvent.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_GenerateEvent.htim.value;
     }
@@ -9838,16 +9389,15 @@ HAL_StatusTypeDef HAL_TIM_GenerateEvent(TIM_HandleTypeDef *htim, uint32_t EventS
         TEST_STUB.HAL_TIM_GenerateEvent.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_GenerateEvent.EventSource = EventSource;
-      break;
+    TEST_STUB.HAL_TIM_GenerateEvent.EventSource = EventSource;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_GenerateEvent.redirectFuncPtr(htim, EventSource);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_GenerateEvent.redirectFuncPtr(htim, EventSource);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9859,9 +9409,9 @@ uint32_t HAL_TIM_ReadCapturedValue(TIM_HandleTypeDef *htim, uint32_t Channel)
   TEST_STUB.HAL_TIM_ReadCapturedValue.callcount++;
   switch (TEST_STUB.HAL_TIM_ReadCapturedValue.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_ReadCapturedValue.returnValue;
-      if (TEST_STUB.HAL_TIM_ReadCapturedValue.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_ReadCapturedValue.returnValue;
+    if (TEST_STUB.HAL_TIM_ReadCapturedValue.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_ReadCapturedValue.htim.value;
     }
@@ -9872,16 +9422,15 @@ uint32_t HAL_TIM_ReadCapturedValue(TIM_HandleTypeDef *htim, uint32_t Channel)
         TEST_STUB.HAL_TIM_ReadCapturedValue.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_ReadCapturedValue.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_ReadCapturedValue.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_ReadCapturedValue.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_ReadCapturedValue.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -9892,8 +9441,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PeriodElapsedCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_PeriodElapsedCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PeriodElapsedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PeriodElapsedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PeriodElapsedCallback.htim.value;
     }
@@ -9904,17 +9453,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PeriodElapsedCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PeriodElapsedCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PeriodElapsedCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim)
@@ -9922,8 +9469,8 @@ void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.htim.value;
     }
@@ -9934,17 +9481,15 @@ void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PeriodElapsedHalfCpltCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
@@ -9952,8 +9497,8 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.htim.value;
     }
@@ -9964,17 +9509,15 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_OC_DelayElapsedCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
@@ -9982,8 +9525,8 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_CaptureCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_CaptureCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_IC_CaptureCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_IC_CaptureCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_CaptureCallback.htim.value;
     }
@@ -9994,17 +9537,15 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_CaptureCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_IC_CaptureCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_IC_CaptureCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
@@ -10012,8 +9553,8 @@ void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.htim.value;
     }
@@ -10024,17 +9565,15 @@ void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_IC_CaptureHalfCpltCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
@@ -10042,8 +9581,8 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.htim.value;
     }
@@ -10054,17 +9593,15 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PWM_PulseFinishedCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim)
@@ -10072,8 +9609,8 @@ void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.htim.value;
     }
@@ -10084,17 +9621,15 @@ void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_PWM_PulseFinishedHalfCpltCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
@@ -10102,8 +9637,8 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_TriggerCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_TriggerCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_TriggerCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_TriggerCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_TriggerCallback.htim.value;
     }
@@ -10114,17 +9649,15 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_TriggerCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_TriggerCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_TriggerCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_TriggerHalfCpltCallback(TIM_HandleTypeDef *htim)
@@ -10132,8 +9665,8 @@ void HAL_TIM_TriggerHalfCpltCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.htim.value;
     }
@@ -10144,17 +9677,15 @@ void HAL_TIM_TriggerHalfCpltCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_TriggerHalfCpltCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_TIM_ErrorCallback(TIM_HandleTypeDef *htim)
@@ -10162,8 +9693,8 @@ void HAL_TIM_ErrorCallback(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_ErrorCallback.callcount++;
   switch (TEST_STUB.HAL_TIM_ErrorCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_TIM_ErrorCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_TIM_ErrorCallback.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_ErrorCallback.htim.value;
     }
@@ -10174,17 +9705,15 @@ void HAL_TIM_ErrorCallback(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_ErrorCallback.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_TIM_ErrorCallback.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_TIM_ErrorCallback.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_TIM_StateTypeDef HAL_TIM_Base_GetState(TIM_HandleTypeDef *htim)
@@ -10193,9 +9722,9 @@ HAL_TIM_StateTypeDef HAL_TIM_Base_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Base_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_Base_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Base_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_Base_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Base_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_Base_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Base_GetState.htim.value;
     }
@@ -10206,15 +9735,14 @@ HAL_TIM_StateTypeDef HAL_TIM_Base_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Base_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Base_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Base_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10226,9 +9754,9 @@ HAL_TIM_StateTypeDef HAL_TIM_OC_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OC_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_OC_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OC_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_OC_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OC_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_OC_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OC_GetState.htim.value;
     }
@@ -10239,15 +9767,14 @@ HAL_TIM_StateTypeDef HAL_TIM_OC_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OC_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OC_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OC_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10259,9 +9786,9 @@ HAL_TIM_StateTypeDef HAL_TIM_PWM_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_PWM_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_PWM_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_PWM_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_PWM_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_PWM_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_PWM_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_PWM_GetState.htim.value;
     }
@@ -10272,15 +9799,14 @@ HAL_TIM_StateTypeDef HAL_TIM_PWM_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_PWM_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_PWM_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_PWM_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10292,9 +9818,9 @@ HAL_TIM_StateTypeDef HAL_TIM_IC_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_IC_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_IC_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_IC_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_IC_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_IC_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_IC_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_IC_GetState.htim.value;
     }
@@ -10305,15 +9831,14 @@ HAL_TIM_StateTypeDef HAL_TIM_IC_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_IC_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_IC_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_IC_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10325,9 +9850,9 @@ HAL_TIM_StateTypeDef HAL_TIM_OnePulse_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_OnePulse_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_OnePulse_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_OnePulse_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_OnePulse_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_OnePulse_GetState.htim.value;
     }
@@ -10338,15 +9863,14 @@ HAL_TIM_StateTypeDef HAL_TIM_OnePulse_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_OnePulse_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_OnePulse_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_OnePulse_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10358,9 +9882,9 @@ HAL_TIM_StateTypeDef HAL_TIM_Encoder_GetState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_Encoder_GetState.callcount++;
   switch (TEST_STUB.HAL_TIM_Encoder_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_GetState.returnValue;
-      if (TEST_STUB.HAL_TIM_Encoder_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_GetState.returnValue;
+    if (TEST_STUB.HAL_TIM_Encoder_GetState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_Encoder_GetState.htim.value;
     }
@@ -10371,15 +9895,14 @@ HAL_TIM_StateTypeDef HAL_TIM_Encoder_GetState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_Encoder_GetState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_Encoder_GetState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_Encoder_GetState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10391,9 +9914,9 @@ HAL_TIM_ActiveChannel HAL_TIM_GetActiveChannel(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_GetActiveChannel.callcount++;
   switch (TEST_STUB.HAL_TIM_GetActiveChannel.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_GetActiveChannel.returnValue;
-      if (TEST_STUB.HAL_TIM_GetActiveChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_GetActiveChannel.returnValue;
+    if (TEST_STUB.HAL_TIM_GetActiveChannel.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_GetActiveChannel.htim.value;
     }
@@ -10404,15 +9927,14 @@ HAL_TIM_ActiveChannel HAL_TIM_GetActiveChannel(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_GetActiveChannel.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_GetActiveChannel.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_GetActiveChannel.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10424,9 +9946,9 @@ HAL_TIM_ChannelStateTypeDef HAL_TIM_GetChannelState(TIM_HandleTypeDef *htim, uin
   TEST_STUB.HAL_TIM_GetChannelState.callcount++;
   switch (TEST_STUB.HAL_TIM_GetChannelState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_GetChannelState.returnValue;
-      if (TEST_STUB.HAL_TIM_GetChannelState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_GetChannelState.returnValue;
+    if (TEST_STUB.HAL_TIM_GetChannelState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_GetChannelState.htim.value;
     }
@@ -10437,16 +9959,15 @@ HAL_TIM_ChannelStateTypeDef HAL_TIM_GetChannelState(TIM_HandleTypeDef *htim, uin
         TEST_STUB.HAL_TIM_GetChannelState.htim.value = *htim;
       }
     }
-      TEST_STUB.HAL_TIM_GetChannelState.Channel = Channel;
-      break;
+    TEST_STUB.HAL_TIM_GetChannelState.Channel = Channel;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_GetChannelState.redirectFuncPtr(htim, Channel);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_GetChannelState.redirectFuncPtr(htim, Channel);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10458,9 +9979,9 @@ HAL_TIM_DMABurstStateTypeDef HAL_TIM_DMABurstState(TIM_HandleTypeDef *htim)
   TEST_STUB.HAL_TIM_DMABurstState.callcount++;
   switch (TEST_STUB.HAL_TIM_DMABurstState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_TIM_DMABurstState.returnValue;
-      if (TEST_STUB.HAL_TIM_DMABurstState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_TIM_DMABurstState.returnValue;
+    if (TEST_STUB.HAL_TIM_DMABurstState.htim.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *htim = TEST_STUB.HAL_TIM_DMABurstState.htim.value;
     }
@@ -10471,15 +9992,14 @@ HAL_TIM_DMABurstStateTypeDef HAL_TIM_DMABurstState(TIM_HandleTypeDef *htim)
         TEST_STUB.HAL_TIM_DMABurstState.htim.value = *htim;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_TIM_DMABurstState.redirectFuncPtr(htim);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_TIM_DMABurstState.redirectFuncPtr(htim);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10490,8 +10010,8 @@ void TIM_Base_SetConfig(TIM_TypeDef *TIMx, TIM_Base_InitTypeDef *Structure)
   TEST_STUB.TIM_Base_SetConfig.callcount++;
   switch (TEST_STUB.TIM_Base_SetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_Base_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_Base_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *TIMx = TEST_STUB.TIM_Base_SetConfig.TIMx.value;
     }
@@ -10502,7 +10022,7 @@ void TIM_Base_SetConfig(TIM_TypeDef *TIMx, TIM_Base_InitTypeDef *Structure)
         TEST_STUB.TIM_Base_SetConfig.TIMx.value = *TIMx;
       }
     }
-      if (TEST_STUB.TIM_Base_SetConfig.Structure.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.TIM_Base_SetConfig.Structure.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *Structure = TEST_STUB.TIM_Base_SetConfig.Structure.value;
     }
@@ -10513,17 +10033,15 @@ void TIM_Base_SetConfig(TIM_TypeDef *TIMx, TIM_Base_InitTypeDef *Structure)
         TEST_STUB.TIM_Base_SetConfig.Structure.value = *Structure;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_Base_SetConfig.redirectFuncPtr(TIMx, Structure);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_Base_SetConfig.redirectFuncPtr(TIMx, Structure);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_TI1_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ICPolarity, uint32_t TIM_ICSelection, uint32_t TIM_ICFilter)
@@ -10531,8 +10049,8 @@ void TIM_TI1_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ICPolarity, uint32_t TIM_
   TEST_STUB.TIM_TI1_SetConfig.callcount++;
   switch (TEST_STUB.TIM_TI1_SetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_TI1_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_TI1_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *TIMx = TEST_STUB.TIM_TI1_SetConfig.TIMx.value;
     }
@@ -10543,20 +10061,18 @@ void TIM_TI1_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ICPolarity, uint32_t TIM_
         TEST_STUB.TIM_TI1_SetConfig.TIMx.value = *TIMx;
       }
     }
-      TEST_STUB.TIM_TI1_SetConfig.TIM_ICPolarity = TIM_ICPolarity;
-      TEST_STUB.TIM_TI1_SetConfig.TIM_ICSelection = TIM_ICSelection;
-      TEST_STUB.TIM_TI1_SetConfig.TIM_ICFilter = TIM_ICFilter;
-      break;
+    TEST_STUB.TIM_TI1_SetConfig.TIM_ICPolarity = TIM_ICPolarity;
+    TEST_STUB.TIM_TI1_SetConfig.TIM_ICSelection = TIM_ICSelection;
+    TEST_STUB.TIM_TI1_SetConfig.TIM_ICFilter = TIM_ICFilter;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_TI1_SetConfig.redirectFuncPtr(TIMx, TIM_ICPolarity, TIM_ICSelection, TIM_ICFilter);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_TI1_SetConfig.redirectFuncPtr(TIMx, TIM_ICPolarity, TIM_ICSelection, TIM_ICFilter);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_OC2_SetConfig(TIM_TypeDef *TIMx, TIM_OC_InitTypeDef *OC_Config)
@@ -10564,8 +10080,8 @@ void TIM_OC2_SetConfig(TIM_TypeDef *TIMx, TIM_OC_InitTypeDef *OC_Config)
   TEST_STUB.TIM_OC2_SetConfig.callcount++;
   switch (TEST_STUB.TIM_OC2_SetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_OC2_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_OC2_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *TIMx = TEST_STUB.TIM_OC2_SetConfig.TIMx.value;
     }
@@ -10576,7 +10092,7 @@ void TIM_OC2_SetConfig(TIM_TypeDef *TIMx, TIM_OC_InitTypeDef *OC_Config)
         TEST_STUB.TIM_OC2_SetConfig.TIMx.value = *TIMx;
       }
     }
-      if (TEST_STUB.TIM_OC2_SetConfig.OC_Config.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.TIM_OC2_SetConfig.OC_Config.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *OC_Config = TEST_STUB.TIM_OC2_SetConfig.OC_Config.value;
     }
@@ -10587,17 +10103,15 @@ void TIM_OC2_SetConfig(TIM_TypeDef *TIMx, TIM_OC_InitTypeDef *OC_Config)
         TEST_STUB.TIM_OC2_SetConfig.OC_Config.value = *OC_Config;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_OC2_SetConfig.redirectFuncPtr(TIMx, OC_Config);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_OC2_SetConfig.redirectFuncPtr(TIMx, OC_Config);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_ETR_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ExtTRGPrescaler, uint32_t TIM_ExtTRGPolarity, uint32_t ExtTRGFilter)
@@ -10605,8 +10119,8 @@ void TIM_ETR_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ExtTRGPrescaler, uint32_t
   TEST_STUB.TIM_ETR_SetConfig.callcount++;
   switch (TEST_STUB.TIM_ETR_SetConfig.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_ETR_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_ETR_SetConfig.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *TIMx = TEST_STUB.TIM_ETR_SetConfig.TIMx.value;
     }
@@ -10617,20 +10131,18 @@ void TIM_ETR_SetConfig(TIM_TypeDef *TIMx, uint32_t TIM_ExtTRGPrescaler, uint32_t
         TEST_STUB.TIM_ETR_SetConfig.TIMx.value = *TIMx;
       }
     }
-      TEST_STUB.TIM_ETR_SetConfig.TIM_ExtTRGPrescaler = TIM_ExtTRGPrescaler;
-      TEST_STUB.TIM_ETR_SetConfig.TIM_ExtTRGPolarity = TIM_ExtTRGPolarity;
-      TEST_STUB.TIM_ETR_SetConfig.ExtTRGFilter = ExtTRGFilter;
-      break;
+    TEST_STUB.TIM_ETR_SetConfig.TIM_ExtTRGPrescaler = TIM_ExtTRGPrescaler;
+    TEST_STUB.TIM_ETR_SetConfig.TIM_ExtTRGPolarity = TIM_ExtTRGPolarity;
+    TEST_STUB.TIM_ETR_SetConfig.ExtTRGFilter = ExtTRGFilter;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_ETR_SetConfig.redirectFuncPtr(TIMx, TIM_ExtTRGPrescaler, TIM_ExtTRGPolarity, ExtTRGFilter);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_ETR_SetConfig.redirectFuncPtr(TIMx, TIM_ExtTRGPrescaler, TIM_ExtTRGPolarity, ExtTRGFilter);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_DMADelayPulseHalfCplt(DMA_HandleTypeDef *hdma)
@@ -10638,8 +10150,8 @@ void TIM_DMADelayPulseHalfCplt(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIM_DMADelayPulseHalfCplt.callcount++;
   switch (TEST_STUB.TIM_DMADelayPulseHalfCplt.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_DMADelayPulseHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_DMADelayPulseHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIM_DMADelayPulseHalfCplt.hdma.value;
     }
@@ -10650,17 +10162,15 @@ void TIM_DMADelayPulseHalfCplt(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIM_DMADelayPulseHalfCplt.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_DMADelayPulseHalfCplt.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_DMADelayPulseHalfCplt.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_DMAError(DMA_HandleTypeDef *hdma)
@@ -10668,8 +10178,8 @@ void TIM_DMAError(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIM_DMAError.callcount++;
   switch (TEST_STUB.TIM_DMAError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_DMAError.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_DMAError.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIM_DMAError.hdma.value;
     }
@@ -10680,17 +10190,15 @@ void TIM_DMAError(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIM_DMAError.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_DMAError.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_DMAError.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_DMACaptureCplt(DMA_HandleTypeDef *hdma)
@@ -10698,8 +10206,8 @@ void TIM_DMACaptureCplt(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIM_DMACaptureCplt.callcount++;
   switch (TEST_STUB.TIM_DMACaptureCplt.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_DMACaptureCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_DMACaptureCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIM_DMACaptureCplt.hdma.value;
     }
@@ -10710,17 +10218,15 @@ void TIM_DMACaptureCplt(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIM_DMACaptureCplt.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_DMACaptureCplt.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_DMACaptureCplt.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_DMACaptureHalfCplt(DMA_HandleTypeDef *hdma)
@@ -10728,8 +10234,8 @@ void TIM_DMACaptureHalfCplt(DMA_HandleTypeDef *hdma)
   TEST_STUB.TIM_DMACaptureHalfCplt.callcount++;
   switch (TEST_STUB.TIM_DMACaptureHalfCplt.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_DMACaptureHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_DMACaptureHalfCplt.hdma.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *hdma = TEST_STUB.TIM_DMACaptureHalfCplt.hdma.value;
     }
@@ -10740,17 +10246,15 @@ void TIM_DMACaptureHalfCplt(DMA_HandleTypeDef *hdma)
         TEST_STUB.TIM_DMACaptureHalfCplt.hdma.value = *hdma;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_DMACaptureHalfCplt.redirectFuncPtr(hdma);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_DMACaptureHalfCplt.redirectFuncPtr(hdma);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TIM_CCxChannelCmd(TIM_TypeDef *TIMx, uint32_t Channel, uint32_t ChannelState)
@@ -10758,8 +10262,8 @@ void TIM_CCxChannelCmd(TIM_TypeDef *TIMx, uint32_t Channel, uint32_t ChannelStat
   TEST_STUB.TIM_CCxChannelCmd.callcount++;
   switch (TEST_STUB.TIM_CCxChannelCmd.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.TIM_CCxChannelCmd.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.TIM_CCxChannelCmd.TIMx.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *TIMx = TEST_STUB.TIM_CCxChannelCmd.TIMx.value;
     }
@@ -10770,19 +10274,17 @@ void TIM_CCxChannelCmd(TIM_TypeDef *TIMx, uint32_t Channel, uint32_t ChannelStat
         TEST_STUB.TIM_CCxChannelCmd.TIMx.value = *TIMx;
       }
     }
-      TEST_STUB.TIM_CCxChannelCmd.Channel = Channel;
-      TEST_STUB.TIM_CCxChannelCmd.ChannelState = ChannelState;
-      break;
+    TEST_STUB.TIM_CCxChannelCmd.Channel = Channel;
+    TEST_STUB.TIM_CCxChannelCmd.ChannelState = ChannelState;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.TIM_CCxChannelCmd.redirectFuncPtr(TIMx, Channel, ChannelState);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.TIM_CCxChannelCmd.redirectFuncPtr(TIMx, Channel, ChannelState);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)
@@ -10791,9 +10293,9 @@ HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_Init.callcount++;
   switch (TEST_STUB.HAL_UART_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Init.returnValue;
-      if (TEST_STUB.HAL_UART_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Init.returnValue;
+    if (TEST_STUB.HAL_UART_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Init.huart.value;
     }
@@ -10804,15 +10306,14 @@ HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_Init.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Init.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Init.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10824,9 +10325,9 @@ HAL_StatusTypeDef HAL_HalfDuplex_Init(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_HalfDuplex_Init.callcount++;
   switch (TEST_STUB.HAL_HalfDuplex_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_HalfDuplex_Init.returnValue;
-      if (TEST_STUB.HAL_HalfDuplex_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_HalfDuplex_Init.returnValue;
+    if (TEST_STUB.HAL_HalfDuplex_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_HalfDuplex_Init.huart.value;
     }
@@ -10837,15 +10338,14 @@ HAL_StatusTypeDef HAL_HalfDuplex_Init(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_HalfDuplex_Init.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_HalfDuplex_Init.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_HalfDuplex_Init.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10857,9 +10357,9 @@ HAL_StatusTypeDef HAL_LIN_Init(UART_HandleTypeDef *huart, uint32_t BreakDetectLe
   TEST_STUB.HAL_LIN_Init.callcount++;
   switch (TEST_STUB.HAL_LIN_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_LIN_Init.returnValue;
-      if (TEST_STUB.HAL_LIN_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_LIN_Init.returnValue;
+    if (TEST_STUB.HAL_LIN_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_LIN_Init.huart.value;
     }
@@ -10870,16 +10370,15 @@ HAL_StatusTypeDef HAL_LIN_Init(UART_HandleTypeDef *huart, uint32_t BreakDetectLe
         TEST_STUB.HAL_LIN_Init.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_LIN_Init.BreakDetectLength = BreakDetectLength;
-      break;
+    TEST_STUB.HAL_LIN_Init.BreakDetectLength = BreakDetectLength;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_LIN_Init.redirectFuncPtr(huart, BreakDetectLength);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_LIN_Init.redirectFuncPtr(huart, BreakDetectLength);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10891,9 +10390,9 @@ HAL_StatusTypeDef HAL_MultiProcessor_Init(UART_HandleTypeDef *huart, uint8_t Add
   TEST_STUB.HAL_MultiProcessor_Init.callcount++;
   switch (TEST_STUB.HAL_MultiProcessor_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_MultiProcessor_Init.returnValue;
-      if (TEST_STUB.HAL_MultiProcessor_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_MultiProcessor_Init.returnValue;
+    if (TEST_STUB.HAL_MultiProcessor_Init.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_MultiProcessor_Init.huart.value;
     }
@@ -10904,17 +10403,16 @@ HAL_StatusTypeDef HAL_MultiProcessor_Init(UART_HandleTypeDef *huart, uint8_t Add
         TEST_STUB.HAL_MultiProcessor_Init.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_MultiProcessor_Init.Address = Address;
-      TEST_STUB.HAL_MultiProcessor_Init.WakeUpMethod = WakeUpMethod;
-      break;
+    TEST_STUB.HAL_MultiProcessor_Init.Address = Address;
+    TEST_STUB.HAL_MultiProcessor_Init.WakeUpMethod = WakeUpMethod;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_MultiProcessor_Init.redirectFuncPtr(huart, Address, WakeUpMethod);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_MultiProcessor_Init.redirectFuncPtr(huart, Address, WakeUpMethod);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10926,9 +10424,9 @@ HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_DeInit.callcount++;
   switch (TEST_STUB.HAL_UART_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_DeInit.returnValue;
-      if (TEST_STUB.HAL_UART_DeInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_DeInit.returnValue;
+    if (TEST_STUB.HAL_UART_DeInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_DeInit.huart.value;
     }
@@ -10939,15 +10437,14 @@ HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_DeInit.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_DeInit.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_DeInit.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -10958,8 +10455,8 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_MspInit.callcount++;
   switch (TEST_STUB.HAL_UART_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_MspInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_MspInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_MspInit.huart.value;
     }
@@ -10970,17 +10467,15 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_MspInit.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_MspInit.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_MspInit.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
@@ -10988,8 +10483,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_UART_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_MspDeInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_MspDeInit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_MspDeInit.huart.value;
     }
@@ -11000,17 +10495,15 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_MspDeInit.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_MspDeInit.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_MspDeInit.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout)
@@ -11019,9 +10512,9 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pD
   TEST_STUB.HAL_UART_Transmit.callcount++;
   switch (TEST_STUB.HAL_UART_Transmit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Transmit.returnValue;
-      if (TEST_STUB.HAL_UART_Transmit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Transmit.returnValue;
+    if (TEST_STUB.HAL_UART_Transmit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Transmit.huart.value;
     }
@@ -11032,18 +10525,17 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pD
         TEST_STUB.HAL_UART_Transmit.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_UART_Transmit.pData = *pData;
-      TEST_STUB.HAL_UART_Transmit.Size = Size;
-      TEST_STUB.HAL_UART_Transmit.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_UART_Transmit.pData = *pData;
+    TEST_STUB.HAL_UART_Transmit.Size = Size;
+    TEST_STUB.HAL_UART_Transmit.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Transmit.redirectFuncPtr(huart, pData, Size, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Transmit.redirectFuncPtr(huart, pData, Size, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11055,9 +10547,9 @@ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, ui
   TEST_STUB.HAL_UART_Receive.callcount++;
   switch (TEST_STUB.HAL_UART_Receive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Receive.returnValue;
-      if (TEST_STUB.HAL_UART_Receive.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Receive.returnValue;
+    if (TEST_STUB.HAL_UART_Receive.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Receive.huart.value;
     }
@@ -11068,7 +10560,7 @@ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, ui
         TEST_STUB.HAL_UART_Receive.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UART_Receive.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UART_Receive.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UART_Receive.pData.value;
     }
@@ -11079,17 +10571,16 @@ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, ui
         TEST_STUB.HAL_UART_Receive.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UART_Receive.Size = Size;
-      TEST_STUB.HAL_UART_Receive.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_UART_Receive.Size = Size;
+    TEST_STUB.HAL_UART_Receive.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Receive.redirectFuncPtr(huart, pData, Size, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Receive.redirectFuncPtr(huart, pData, Size, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11101,9 +10592,9 @@ HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t 
   TEST_STUB.HAL_UART_Transmit_IT.callcount++;
   switch (TEST_STUB.HAL_UART_Transmit_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Transmit_IT.returnValue;
-      if (TEST_STUB.HAL_UART_Transmit_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Transmit_IT.returnValue;
+    if (TEST_STUB.HAL_UART_Transmit_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Transmit_IT.huart.value;
     }
@@ -11114,17 +10605,16 @@ HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t 
         TEST_STUB.HAL_UART_Transmit_IT.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_UART_Transmit_IT.pData = *pData;
-      TEST_STUB.HAL_UART_Transmit_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_UART_Transmit_IT.pData = *pData;
+    TEST_STUB.HAL_UART_Transmit_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Transmit_IT.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Transmit_IT.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11136,9 +10626,9 @@ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData,
   TEST_STUB.HAL_UART_Receive_IT.callcount++;
   switch (TEST_STUB.HAL_UART_Receive_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Receive_IT.returnValue;
-      if (TEST_STUB.HAL_UART_Receive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Receive_IT.returnValue;
+    if (TEST_STUB.HAL_UART_Receive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Receive_IT.huart.value;
     }
@@ -11149,7 +10639,7 @@ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData,
         TEST_STUB.HAL_UART_Receive_IT.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UART_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UART_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UART_Receive_IT.pData.value;
     }
@@ -11160,16 +10650,15 @@ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData,
         TEST_STUB.HAL_UART_Receive_IT.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UART_Receive_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_UART_Receive_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Receive_IT.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Receive_IT.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11181,9 +10670,9 @@ HAL_StatusTypeDef HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, const uint8_t
   TEST_STUB.HAL_UART_Transmit_DMA.callcount++;
   switch (TEST_STUB.HAL_UART_Transmit_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Transmit_DMA.returnValue;
-      if (TEST_STUB.HAL_UART_Transmit_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Transmit_DMA.returnValue;
+    if (TEST_STUB.HAL_UART_Transmit_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Transmit_DMA.huart.value;
     }
@@ -11194,17 +10683,16 @@ HAL_StatusTypeDef HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, const uint8_t
         TEST_STUB.HAL_UART_Transmit_DMA.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_UART_Transmit_DMA.pData = *pData;
-      TEST_STUB.HAL_UART_Transmit_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_UART_Transmit_DMA.pData = *pData;
+    TEST_STUB.HAL_UART_Transmit_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Transmit_DMA.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Transmit_DMA.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11216,9 +10704,9 @@ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData
   TEST_STUB.HAL_UART_Receive_DMA.callcount++;
   switch (TEST_STUB.HAL_UART_Receive_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Receive_DMA.returnValue;
-      if (TEST_STUB.HAL_UART_Receive_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Receive_DMA.returnValue;
+    if (TEST_STUB.HAL_UART_Receive_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Receive_DMA.huart.value;
     }
@@ -11229,7 +10717,7 @@ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData
         TEST_STUB.HAL_UART_Receive_DMA.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UART_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UART_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UART_Receive_DMA.pData.value;
     }
@@ -11240,16 +10728,15 @@ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData
         TEST_STUB.HAL_UART_Receive_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UART_Receive_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_UART_Receive_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Receive_DMA.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Receive_DMA.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11261,9 +10748,9 @@ HAL_StatusTypeDef HAL_UART_DMAPause(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_DMAPause.callcount++;
   switch (TEST_STUB.HAL_UART_DMAPause.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_DMAPause.returnValue;
-      if (TEST_STUB.HAL_UART_DMAPause.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_DMAPause.returnValue;
+    if (TEST_STUB.HAL_UART_DMAPause.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_DMAPause.huart.value;
     }
@@ -11274,15 +10761,14 @@ HAL_StatusTypeDef HAL_UART_DMAPause(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_DMAPause.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_DMAPause.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_DMAPause.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11294,9 +10780,9 @@ HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_DMAResume.callcount++;
   switch (TEST_STUB.HAL_UART_DMAResume.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_DMAResume.returnValue;
-      if (TEST_STUB.HAL_UART_DMAResume.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_DMAResume.returnValue;
+    if (TEST_STUB.HAL_UART_DMAResume.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_DMAResume.huart.value;
     }
@@ -11307,15 +10793,14 @@ HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_DMAResume.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_DMAResume.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_DMAResume.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11327,9 +10812,9 @@ HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_DMAStop.callcount++;
   switch (TEST_STUB.HAL_UART_DMAStop.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_DMAStop.returnValue;
-      if (TEST_STUB.HAL_UART_DMAStop.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_DMAStop.returnValue;
+    if (TEST_STUB.HAL_UART_DMAStop.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_DMAStop.huart.value;
     }
@@ -11340,15 +10825,14 @@ HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_DMAStop.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_DMAStop.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_DMAStop.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11360,9 +10844,9 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle(UART_HandleTypeDef *huart, uint8_t *p
   TEST_STUB.HAL_UARTEx_ReceiveToIdle.callcount++;
   switch (TEST_STUB.HAL_UARTEx_ReceiveToIdle.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle.returnValue;
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle.returnValue;
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UARTEx_ReceiveToIdle.huart.value;
     }
@@ -11373,7 +10857,7 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle(UART_HandleTypeDef *huart, uint8_t *p
         TEST_STUB.HAL_UARTEx_ReceiveToIdle.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UARTEx_ReceiveToIdle.pData.value;
     }
@@ -11384,8 +10868,8 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle(UART_HandleTypeDef *huart, uint8_t *p
         TEST_STUB.HAL_UARTEx_ReceiveToIdle.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UARTEx_ReceiveToIdle.Size = Size;
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.RxLen.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    TEST_STUB.HAL_UARTEx_ReceiveToIdle.Size = Size;
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle.RxLen.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *RxLen = TEST_STUB.HAL_UARTEx_ReceiveToIdle.RxLen.value;
     }
@@ -11396,16 +10880,15 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle(UART_HandleTypeDef *huart, uint8_t *p
         TEST_STUB.HAL_UARTEx_ReceiveToIdle.RxLen.value = *RxLen;
       }
     }
-      TEST_STUB.HAL_UARTEx_ReceiveToIdle.Timeout = Timeout;
-      break;
+    TEST_STUB.HAL_UARTEx_ReceiveToIdle.Timeout = Timeout;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle.redirectFuncPtr(huart, pData, Size, RxLen, Timeout);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle.redirectFuncPtr(huart, pData, Size, RxLen, Timeout);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11417,9 +10900,9 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_IT(UART_HandleTypeDef *huart, uint8_t
   TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.callcount++;
   switch (TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.returnValue;
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.returnValue;
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.huart.value;
     }
@@ -11430,7 +10913,7 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_IT(UART_HandleTypeDef *huart, uint8_t
         TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.pData.value;
     }
@@ -11441,16 +10924,15 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_IT(UART_HandleTypeDef *huart, uint8_t
         TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.Size = Size;
-      break;
+    TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_IT.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11462,9 +10944,9 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_
   TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.callcount++;
   switch (TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.returnValue;
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.returnValue;
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.huart.value;
     }
@@ -11475,7 +10957,7 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_
         TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.huart.value = *huart;
       }
     }
-      if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.pData.value;
     }
@@ -11486,16 +10968,15 @@ HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_
         TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.Size = Size;
-      break;
+    TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UARTEx_ReceiveToIdle_DMA.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11507,9 +10988,9 @@ HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_Abort.callcount++;
   switch (TEST_STUB.HAL_UART_Abort.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Abort.returnValue;
-      if (TEST_STUB.HAL_UART_Abort.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Abort.returnValue;
+    if (TEST_STUB.HAL_UART_Abort.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Abort.huart.value;
     }
@@ -11520,15 +11001,14 @@ HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_Abort.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Abort.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Abort.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11540,9 +11020,9 @@ HAL_StatusTypeDef HAL_UART_AbortTransmit(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortTransmit.callcount++;
   switch (TEST_STUB.HAL_UART_AbortTransmit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_AbortTransmit.returnValue;
-      if (TEST_STUB.HAL_UART_AbortTransmit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_AbortTransmit.returnValue;
+    if (TEST_STUB.HAL_UART_AbortTransmit.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortTransmit.huart.value;
     }
@@ -11553,15 +11033,14 @@ HAL_StatusTypeDef HAL_UART_AbortTransmit(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortTransmit.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_AbortTransmit.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_AbortTransmit.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11573,9 +11052,9 @@ HAL_StatusTypeDef HAL_UART_AbortReceive(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortReceive.callcount++;
   switch (TEST_STUB.HAL_UART_AbortReceive.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_AbortReceive.returnValue;
-      if (TEST_STUB.HAL_UART_AbortReceive.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_AbortReceive.returnValue;
+    if (TEST_STUB.HAL_UART_AbortReceive.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortReceive.huart.value;
     }
@@ -11586,15 +11065,14 @@ HAL_StatusTypeDef HAL_UART_AbortReceive(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortReceive.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_AbortReceive.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_AbortReceive.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11606,9 +11084,9 @@ HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_Abort_IT.callcount++;
   switch (TEST_STUB.HAL_UART_Abort_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_Abort_IT.returnValue;
-      if (TEST_STUB.HAL_UART_Abort_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_Abort_IT.returnValue;
+    if (TEST_STUB.HAL_UART_Abort_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_Abort_IT.huart.value;
     }
@@ -11619,15 +11097,14 @@ HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_Abort_IT.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_Abort_IT.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_Abort_IT.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11639,9 +11116,9 @@ HAL_StatusTypeDef HAL_UART_AbortTransmit_IT(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortTransmit_IT.callcount++;
   switch (TEST_STUB.HAL_UART_AbortTransmit_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_AbortTransmit_IT.returnValue;
-      if (TEST_STUB.HAL_UART_AbortTransmit_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_AbortTransmit_IT.returnValue;
+    if (TEST_STUB.HAL_UART_AbortTransmit_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortTransmit_IT.huart.value;
     }
@@ -11652,15 +11129,14 @@ HAL_StatusTypeDef HAL_UART_AbortTransmit_IT(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortTransmit_IT.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_AbortTransmit_IT.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_AbortTransmit_IT.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11672,9 +11148,9 @@ HAL_StatusTypeDef HAL_UART_AbortReceive_IT(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortReceive_IT.callcount++;
   switch (TEST_STUB.HAL_UART_AbortReceive_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_AbortReceive_IT.returnValue;
-      if (TEST_STUB.HAL_UART_AbortReceive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_AbortReceive_IT.returnValue;
+    if (TEST_STUB.HAL_UART_AbortReceive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortReceive_IT.huart.value;
     }
@@ -11685,15 +11161,14 @@ HAL_StatusTypeDef HAL_UART_AbortReceive_IT(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortReceive_IT.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_AbortReceive_IT.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_AbortReceive_IT.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -11704,8 +11179,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_IRQHandler.callcount++;
   switch (TEST_STUB.HAL_UART_IRQHandler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_IRQHandler.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_IRQHandler.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_IRQHandler.huart.value;
     }
@@ -11716,17 +11191,15 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_IRQHandler.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_IRQHandler.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_IRQHandler.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
@@ -11734,8 +11207,8 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_TxCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_TxCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_TxCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_TxCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_TxCpltCallback.huart.value;
     }
@@ -11746,17 +11219,15 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_TxCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_TxCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_TxCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
@@ -11764,8 +11235,8 @@ void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_TxHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_TxHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_TxHalfCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_TxHalfCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_TxHalfCpltCallback.huart.value;
     }
@@ -11776,17 +11247,15 @@ void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_TxHalfCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_TxHalfCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_TxHalfCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
@@ -11794,8 +11263,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_RxCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_RxCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_RxCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_RxCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_RxCpltCallback.huart.value;
     }
@@ -11806,17 +11275,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_RxCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_RxCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_RxCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
@@ -11824,8 +11291,8 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_RxHalfCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_RxHalfCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_RxHalfCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_RxHalfCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_RxHalfCpltCallback.huart.value;
     }
@@ -11836,17 +11303,15 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_RxHalfCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_RxHalfCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_RxHalfCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
@@ -11854,8 +11319,8 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_ErrorCallback.callcount++;
   switch (TEST_STUB.HAL_UART_ErrorCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_ErrorCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_ErrorCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_ErrorCallback.huart.value;
     }
@@ -11866,17 +11331,15 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_ErrorCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_ErrorCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_ErrorCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
@@ -11884,8 +11347,8 @@ void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_AbortCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_AbortCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_AbortCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortCpltCallback.huart.value;
     }
@@ -11896,17 +11359,15 @@ void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_AbortCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_AbortCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart)
@@ -11914,8 +11375,8 @@ void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortTransmitCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_AbortTransmitCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_AbortTransmitCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_AbortTransmitCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortTransmitCpltCallback.huart.value;
     }
@@ -11926,17 +11387,15 @@ void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortTransmitCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_AbortTransmitCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_AbortTransmitCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)
@@ -11944,8 +11403,8 @@ void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_AbortReceiveCpltCallback.callcount++;
   switch (TEST_STUB.HAL_UART_AbortReceiveCpltCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UART_AbortReceiveCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UART_AbortReceiveCpltCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_AbortReceiveCpltCallback.huart.value;
     }
@@ -11956,17 +11415,15 @@ void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_AbortReceiveCpltCallback.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UART_AbortReceiveCpltCallback.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UART_AbortReceiveCpltCallback.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
@@ -11974,8 +11431,8 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   TEST_STUB.HAL_UARTEx_RxEventCallback.callcount++;
   switch (TEST_STUB.HAL_UARTEx_RxEventCallback.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      if (TEST_STUB.HAL_UARTEx_RxEventCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    if (TEST_STUB.HAL_UARTEx_RxEventCallback.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UARTEx_RxEventCallback.huart.value;
     }
@@ -11986,18 +11443,16 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
         TEST_STUB.HAL_UARTEx_RxEventCallback.huart.value = *huart;
       }
     }
-      TEST_STUB.HAL_UARTEx_RxEventCallback.Size = Size;
-      break;
+    TEST_STUB.HAL_UARTEx_RxEventCallback.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_UARTEx_RxEventCallback.redirectFuncPtr(huart, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_UARTEx_RxEventCallback.redirectFuncPtr(huart, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart)
@@ -12006,9 +11461,9 @@ HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_LIN_SendBreak.callcount++;
   switch (TEST_STUB.HAL_LIN_SendBreak.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_LIN_SendBreak.returnValue;
-      if (TEST_STUB.HAL_LIN_SendBreak.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_LIN_SendBreak.returnValue;
+    if (TEST_STUB.HAL_LIN_SendBreak.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_LIN_SendBreak.huart.value;
     }
@@ -12019,15 +11474,14 @@ HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_LIN_SendBreak.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_LIN_SendBreak.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_LIN_SendBreak.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12039,9 +11493,9 @@ HAL_StatusTypeDef HAL_MultiProcessor_EnterMuteMode(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_MultiProcessor_EnterMuteMode.callcount++;
   switch (TEST_STUB.HAL_MultiProcessor_EnterMuteMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_MultiProcessor_EnterMuteMode.returnValue;
-      if (TEST_STUB.HAL_MultiProcessor_EnterMuteMode.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_MultiProcessor_EnterMuteMode.returnValue;
+    if (TEST_STUB.HAL_MultiProcessor_EnterMuteMode.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_MultiProcessor_EnterMuteMode.huart.value;
     }
@@ -12052,15 +11506,14 @@ HAL_StatusTypeDef HAL_MultiProcessor_EnterMuteMode(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_MultiProcessor_EnterMuteMode.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_MultiProcessor_EnterMuteMode.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_MultiProcessor_EnterMuteMode.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12072,9 +11525,9 @@ HAL_StatusTypeDef HAL_MultiProcessor_ExitMuteMode(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_MultiProcessor_ExitMuteMode.callcount++;
   switch (TEST_STUB.HAL_MultiProcessor_ExitMuteMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_MultiProcessor_ExitMuteMode.returnValue;
-      if (TEST_STUB.HAL_MultiProcessor_ExitMuteMode.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_MultiProcessor_ExitMuteMode.returnValue;
+    if (TEST_STUB.HAL_MultiProcessor_ExitMuteMode.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_MultiProcessor_ExitMuteMode.huart.value;
     }
@@ -12085,15 +11538,14 @@ HAL_StatusTypeDef HAL_MultiProcessor_ExitMuteMode(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_MultiProcessor_ExitMuteMode.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_MultiProcessor_ExitMuteMode.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_MultiProcessor_ExitMuteMode.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12105,9 +11557,9 @@ HAL_StatusTypeDef HAL_HalfDuplex_EnableTransmitter(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_HalfDuplex_EnableTransmitter.callcount++;
   switch (TEST_STUB.HAL_HalfDuplex_EnableTransmitter.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_HalfDuplex_EnableTransmitter.returnValue;
-      if (TEST_STUB.HAL_HalfDuplex_EnableTransmitter.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_HalfDuplex_EnableTransmitter.returnValue;
+    if (TEST_STUB.HAL_HalfDuplex_EnableTransmitter.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_HalfDuplex_EnableTransmitter.huart.value;
     }
@@ -12118,15 +11570,14 @@ HAL_StatusTypeDef HAL_HalfDuplex_EnableTransmitter(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_HalfDuplex_EnableTransmitter.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_HalfDuplex_EnableTransmitter.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_HalfDuplex_EnableTransmitter.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12138,9 +11589,9 @@ HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_HalfDuplex_EnableReceiver.callcount++;
   switch (TEST_STUB.HAL_HalfDuplex_EnableReceiver.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_HalfDuplex_EnableReceiver.returnValue;
-      if (TEST_STUB.HAL_HalfDuplex_EnableReceiver.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_HalfDuplex_EnableReceiver.returnValue;
+    if (TEST_STUB.HAL_HalfDuplex_EnableReceiver.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_HalfDuplex_EnableReceiver.huart.value;
     }
@@ -12151,15 +11602,14 @@ HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_HalfDuplex_EnableReceiver.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_HalfDuplex_EnableReceiver.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_HalfDuplex_EnableReceiver.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12171,9 +11621,9 @@ HAL_UART_StateTypeDef HAL_UART_GetState(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_GetState.callcount++;
   switch (TEST_STUB.HAL_UART_GetState.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_GetState.returnValue;
-      if (TEST_STUB.HAL_UART_GetState.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_GetState.returnValue;
+    if (TEST_STUB.HAL_UART_GetState.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_GetState.huart.value;
     }
@@ -12184,15 +11634,14 @@ HAL_UART_StateTypeDef HAL_UART_GetState(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_GetState.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_GetState.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_GetState.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12204,9 +11653,9 @@ uint32_t HAL_UART_GetError(UART_HandleTypeDef *huart)
   TEST_STUB.HAL_UART_GetError.callcount++;
   switch (TEST_STUB.HAL_UART_GetError.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_UART_GetError.returnValue;
-      if (TEST_STUB.HAL_UART_GetError.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_UART_GetError.returnValue;
+    if (TEST_STUB.HAL_UART_GetError.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.HAL_UART_GetError.huart.value;
     }
@@ -12217,15 +11666,14 @@ uint32_t HAL_UART_GetError(UART_HandleTypeDef *huart)
         TEST_STUB.HAL_UART_GetError.huart.value = *huart;
       }
     }
-      break;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_UART_GetError.redirectFuncPtr(huart);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_UART_GetError.redirectFuncPtr(huart);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12237,9 +11685,9 @@ HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pDat
   TEST_STUB.UART_Start_Receive_IT.callcount++;
   switch (TEST_STUB.UART_Start_Receive_IT.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.UART_Start_Receive_IT.returnValue;
-      if (TEST_STUB.UART_Start_Receive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.UART_Start_Receive_IT.returnValue;
+    if (TEST_STUB.UART_Start_Receive_IT.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.UART_Start_Receive_IT.huart.value;
     }
@@ -12250,7 +11698,7 @@ HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pDat
         TEST_STUB.UART_Start_Receive_IT.huart.value = *huart;
       }
     }
-      if (TEST_STUB.UART_Start_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.UART_Start_Receive_IT.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.UART_Start_Receive_IT.pData.value;
     }
@@ -12261,16 +11709,15 @@ HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pDat
         TEST_STUB.UART_Start_Receive_IT.pData.value = *pData;
       }
     }
-      TEST_STUB.UART_Start_Receive_IT.Size = Size;
-      break;
+    TEST_STUB.UART_Start_Receive_IT.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.UART_Start_Receive_IT.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.UART_Start_Receive_IT.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12282,9 +11729,9 @@ HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pDa
   TEST_STUB.UART_Start_Receive_DMA.callcount++;
   switch (TEST_STUB.UART_Start_Receive_DMA.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.UART_Start_Receive_DMA.returnValue;
-      if (TEST_STUB.UART_Start_Receive_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.UART_Start_Receive_DMA.returnValue;
+    if (TEST_STUB.UART_Start_Receive_DMA.huart.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *huart = TEST_STUB.UART_Start_Receive_DMA.huart.value;
     }
@@ -12295,7 +11742,7 @@ HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pDa
         TEST_STUB.UART_Start_Receive_DMA.huart.value = *huart;
       }
     }
-      if (TEST_STUB.UART_Start_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
+    if (TEST_STUB.UART_Start_Receive_DMA.pData.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {
       *pData = TEST_STUB.UART_Start_Receive_DMA.pData.value;
     }
@@ -12306,16 +11753,15 @@ HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pDa
         TEST_STUB.UART_Start_Receive_DMA.pData.value = *pData;
       }
     }
-      TEST_STUB.UART_Start_Receive_DMA.Size = Size;
-      break;
+    TEST_STUB.UART_Start_Receive_DMA.Size = Size;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.UART_Start_Receive_DMA.redirectFuncPtr(huart, pData, Size);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.UART_Start_Receive_DMA.redirectFuncPtr(huart, pData, Size);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12327,17 +11773,16 @@ HAL_StatusTypeDef HAL_Init(void)
   TEST_STUB.HAL_Init.callcount++;
   switch (TEST_STUB.HAL_Init.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_Init.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_Init.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_Init.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_Init.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12349,17 +11794,16 @@ HAL_StatusTypeDef HAL_DeInit(void)
   TEST_STUB.HAL_DeInit.callcount++;
   switch (TEST_STUB.HAL_DeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_DeInit.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_DeInit.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_DeInit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_DeInit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12370,18 +11814,16 @@ void HAL_MspInit(void)
   TEST_STUB.HAL_MspInit.callcount++;
   switch (TEST_STUB.HAL_MspInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_MspInit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_MspInit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_MspDeInit(void)
@@ -12389,18 +11831,16 @@ void HAL_MspDeInit(void)
   TEST_STUB.HAL_MspDeInit.callcount++;
   switch (TEST_STUB.HAL_MspDeInit.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_MspDeInit.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_MspDeInit.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
@@ -12409,18 +11849,17 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
   TEST_STUB.HAL_InitTick.callcount++;
   switch (TEST_STUB.HAL_InitTick.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_InitTick.returnValue;
-      TEST_STUB.HAL_InitTick.TickPriority = TickPriority;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_InitTick.returnValue;
+    TEST_STUB.HAL_InitTick.TickPriority = TickPriority;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_InitTick.redirectFuncPtr(TickPriority);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_InitTick.redirectFuncPtr(TickPriority);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12431,18 +11870,16 @@ void HAL_IncTick(void)
   TEST_STUB.HAL_IncTick.callcount++;
   switch (TEST_STUB.HAL_IncTick.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_IncTick.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_IncTick.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_Delay(uint32_t Delay)
@@ -12450,19 +11887,17 @@ void HAL_Delay(uint32_t Delay)
   TEST_STUB.HAL_Delay.callcount++;
   switch (TEST_STUB.HAL_Delay.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.HAL_Delay.Delay = Delay;
-      break;
+  case STUB_OPTION_VALUE:
+    TEST_STUB.HAL_Delay.Delay = Delay;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_Delay.redirectFuncPtr(Delay);
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_Delay.redirectFuncPtr(Delay);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_GetTick(void)
@@ -12471,17 +11906,16 @@ uint32_t HAL_GetTick(void)
   TEST_STUB.HAL_GetTick.callcount++;
   switch (TEST_STUB.HAL_GetTick.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetTick.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetTick.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetTick.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetTick.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12493,17 +11927,16 @@ uint32_t HAL_GetTickPrio(void)
   TEST_STUB.HAL_GetTickPrio.callcount++;
   switch (TEST_STUB.HAL_GetTickPrio.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetTickPrio.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetTickPrio.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetTickPrio.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetTickPrio.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12515,18 +11948,17 @@ HAL_StatusTypeDef HAL_SetTickFreq(HAL_TickFreqTypeDef Freq)
   TEST_STUB.HAL_SetTickFreq.callcount++;
   switch (TEST_STUB.HAL_SetTickFreq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_SetTickFreq.returnValue;
-      TEST_STUB.HAL_SetTickFreq.Freq = Freq;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_SetTickFreq.returnValue;
+    TEST_STUB.HAL_SetTickFreq.Freq = Freq;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_SetTickFreq.redirectFuncPtr(Freq);
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_SetTickFreq.redirectFuncPtr(Freq);
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12538,17 +11970,16 @@ HAL_TickFreqTypeDef HAL_GetTickFreq(void)
   TEST_STUB.HAL_GetTickFreq.callcount++;
   switch (TEST_STUB.HAL_GetTickFreq.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetTickFreq.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetTickFreq.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetTickFreq.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetTickFreq.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12559,18 +11990,16 @@ void HAL_SuspendTick(void)
   TEST_STUB.HAL_SuspendTick.callcount++;
   switch (TEST_STUB.HAL_SuspendTick.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_SuspendTick.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_SuspendTick.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_ResumeTick(void)
@@ -12578,18 +12007,16 @@ void HAL_ResumeTick(void)
   TEST_STUB.HAL_ResumeTick.callcount++;
   switch (TEST_STUB.HAL_ResumeTick.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_ResumeTick.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_ResumeTick.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_GetHalVersion(void)
@@ -12598,17 +12025,16 @@ uint32_t HAL_GetHalVersion(void)
   TEST_STUB.HAL_GetHalVersion.callcount++;
   switch (TEST_STUB.HAL_GetHalVersion.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetHalVersion.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetHalVersion.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetHalVersion.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetHalVersion.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12620,17 +12046,16 @@ uint32_t HAL_GetREVID(void)
   TEST_STUB.HAL_GetREVID.callcount++;
   switch (TEST_STUB.HAL_GetREVID.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetREVID.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetREVID.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetREVID.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetREVID.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12642,17 +12067,16 @@ uint32_t HAL_GetDEVID(void)
   TEST_STUB.HAL_GetDEVID.callcount++;
   switch (TEST_STUB.HAL_GetDEVID.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetDEVID.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetDEVID.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetDEVID.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetDEVID.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12663,18 +12087,16 @@ void HAL_DBGMCU_EnableDBGSleepMode(void)
   TEST_STUB.HAL_DBGMCU_EnableDBGSleepMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_EnableDBGSleepMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_EnableDBGSleepMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_EnableDBGSleepMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DBGMCU_DisableDBGSleepMode(void)
@@ -12682,18 +12104,16 @@ void HAL_DBGMCU_DisableDBGSleepMode(void)
   TEST_STUB.HAL_DBGMCU_DisableDBGSleepMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_DisableDBGSleepMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_DisableDBGSleepMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_DisableDBGSleepMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DBGMCU_EnableDBGStopMode(void)
@@ -12701,18 +12121,16 @@ void HAL_DBGMCU_EnableDBGStopMode(void)
   TEST_STUB.HAL_DBGMCU_EnableDBGStopMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_EnableDBGStopMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_EnableDBGStopMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_EnableDBGStopMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DBGMCU_DisableDBGStopMode(void)
@@ -12720,18 +12138,16 @@ void HAL_DBGMCU_DisableDBGStopMode(void)
   TEST_STUB.HAL_DBGMCU_DisableDBGStopMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_DisableDBGStopMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_DisableDBGStopMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_DisableDBGStopMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DBGMCU_EnableDBGStandbyMode(void)
@@ -12739,18 +12155,16 @@ void HAL_DBGMCU_EnableDBGStandbyMode(void)
   TEST_STUB.HAL_DBGMCU_EnableDBGStandbyMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_EnableDBGStandbyMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_EnableDBGStandbyMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_EnableDBGStandbyMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DBGMCU_DisableDBGStandbyMode(void)
@@ -12758,18 +12172,16 @@ void HAL_DBGMCU_DisableDBGStandbyMode(void)
   TEST_STUB.HAL_DBGMCU_DisableDBGStandbyMode.callcount++;
   switch (TEST_STUB.HAL_DBGMCU_DisableDBGStandbyMode.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DBGMCU_DisableDBGStandbyMode.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DBGMCU_DisableDBGStandbyMode.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_EnableCompensationCell(void)
@@ -12777,18 +12189,16 @@ void HAL_EnableCompensationCell(void)
   TEST_STUB.HAL_EnableCompensationCell.callcount++;
   switch (TEST_STUB.HAL_EnableCompensationCell.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_EnableCompensationCell.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_EnableCompensationCell.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void HAL_DisableCompensationCell(void)
@@ -12796,18 +12206,16 @@ void HAL_DisableCompensationCell(void)
   TEST_STUB.HAL_DisableCompensationCell.callcount++;
   switch (TEST_STUB.HAL_DisableCompensationCell.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.HAL_DisableCompensationCell.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.HAL_DisableCompensationCell.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 uint32_t HAL_GetUIDw0(void)
@@ -12816,17 +12224,16 @@ uint32_t HAL_GetUIDw0(void)
   TEST_STUB.HAL_GetUIDw0.callcount++;
   switch (TEST_STUB.HAL_GetUIDw0.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetUIDw0.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetUIDw0.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetUIDw0.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetUIDw0.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12838,17 +12245,16 @@ uint32_t HAL_GetUIDw1(void)
   TEST_STUB.HAL_GetUIDw1.callcount++;
   switch (TEST_STUB.HAL_GetUIDw1.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetUIDw1.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetUIDw1.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetUIDw1.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetUIDw1.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12860,17 +12266,16 @@ uint32_t HAL_GetUIDw2(void)
   TEST_STUB.HAL_GetUIDw2.callcount++;
   switch (TEST_STUB.HAL_GetUIDw2.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      returnValue = TEST_STUB.HAL_GetUIDw2.returnValue;
-      break;
+  case STUB_OPTION_VALUE:
+    returnValue = TEST_STUB.HAL_GetUIDw2.returnValue;
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      returnValue = TEST_STUB.HAL_GetUIDw2.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    returnValue = TEST_STUB.HAL_GetUIDw2.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
 
   return returnValue;
@@ -12881,18 +12286,16 @@ void Error_Handler(void)
   TEST_STUB.Error_Handler.callcount++;
   switch (TEST_STUB.Error_Handler.stub_option)
   {
-    case STUB_OPTION_VALUE:
-      break;
+  case STUB_OPTION_VALUE:
+    break;
 
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.Error_Handler.redirectFuncPtr();
-      break;
+  case STUB_OPTION_REDIRECT:
+    TEST_STUB.Error_Handler.redirectFuncPtr();
+    break;
 
-    default:
-      break;
-
+  default:
+    break;
   }
-
 }
 
 void TEST_CALL_LCD_Init()
@@ -13008,4 +12411,3 @@ void TEST_CALL_LCD_Draw_Line(int x0, int y0, int x1, int y1)
   TEST_STUB.LCD_Draw_Line.callcount++;
   LCD_Draw_Line(x0, y0, x1, y1);
 }
-
