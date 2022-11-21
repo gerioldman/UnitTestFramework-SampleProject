@@ -12,7 +12,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
         {
             "label": "x86_x64 Run UnitTest",
@@ -27,7 +30,21 @@
                 "kind": "test",
                 "isDefault": true
             },
-            "dependsOn": "x86_x64 Build UnitTest"
+            "dependsOn": "x86_x64 Build UnitTest",
+            "problemMatcher": [
+                "$gcc",
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^([\\S]+):(\\d+): ([\\S]+): ([\\S ]+)$",
+                            "file": 1,
+                            "location": 2,
+                            "severity": 3,
+                            "message": 4
+                        }
+                    ]
+                }
+            ]
         },
         {
             "label": "Target Build UnitTest",
@@ -40,7 +57,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
         {
             "label": "Target Flash UnitTest",
@@ -49,6 +69,9 @@
             "args": [
                 "unittest_platform_flash",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         },
         {
@@ -62,7 +85,21 @@
             "group": {
                 "kind": "test",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc",
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^([\\S]+):(\\d+): ([\\S]+): ([\\S ]+)$",
+                            "file": 1,
+                            "location": 2,
+                            "severity": 3,
+                            "message": 4
+                        }
+                    ]
+                }
+            ]
         },
         {
             "label": "Software build",
@@ -74,16 +111,21 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
         {
             "label": "Software flash",
             "type": "shell",
             "command": "make",
             "args": [
-                "flash"
+                "flash-all"
             ],
-            "dependsOn": "Software build"
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
         {
             "label": "Clean",
@@ -91,6 +133,9 @@
             "command": "make",
             "args": [
                 "clean"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         },
         {
@@ -109,6 +154,9 @@
             "args": [
                 "coverage",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         },
         {
@@ -118,6 +166,9 @@
             "args": [
                 "coverage-html",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher": [
+                "$gcc"
             ]
         },
         {
@@ -125,7 +176,7 @@
             "command": "${command:gcov-viewer.toggle}"
         },
         {
-            "label": "Reload coverage",
+            "label": "Load coverage",
             "command": "${command:gcov-viewer.reloadGcdaFiles}"
         },
         {

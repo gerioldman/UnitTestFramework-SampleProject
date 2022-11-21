@@ -281,7 +281,7 @@ endif
 # x86_x64 unittest build objs
 #######################################
 
-ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS)) $(findstring coverage,$(MAKECMDGOALS)) )
+ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS))$(findstring coverage,$(MAKECMDGOALS)))
 
 OBJS_FOR_X86_X64_UNITTEST 	 = $(addprefix $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/,$(notdir $(UNITSOURCE:.c=.o)))
 OBJS_FOR_X86_X64_UNITTEST 	+= $(addprefix $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/,$(notdir $(UNITTESTSOURCE:.c=.o)))
@@ -299,7 +299,7 @@ endif
 # Rules
 #######################################
 
-.PHONY: unittest_platform_build unittest_platform_flash unittest_platform_run unittest_x86_x64_build all flash coverage coverage-html check
+.PHONY: unittest_platform_build unittest_platform_flash unittest_platform_run unittest_x86_x64_build all flash-all coverage coverage-html check
 
 # .PHONY: Rules: 
 # 	created tasks for VSCode expect a make targets under these names:
@@ -314,7 +314,7 @@ endif
 #
 #	- all: build whole software											# TODO: you have to add this yourself
 #
-#	- flash: flash whole software										# TODO: you have to add this yourself
+#	- flash-all: flash whole software										# TODO: you have to add this yourself
 #
 #	- coverage: output coverage summary to the terminal
 #
@@ -484,7 +484,7 @@ $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)/%.o: %.S | $(BUILD_DIR) $(BUILD_DIR)/$(PLA
 all: $(BUILD_DIR)/$(PLATFORM_DIR)/platform.elf $(BUILD_DIR)/$(PLATFORM_DIR)/platform.hex $(BUILD_DIR)/$(PLATFORM_DIR)/platform.bin
 
 # flash whole software
-flash: all
+flash-all: all
 	@JLink.exe -commanderscript .\Platform\downloadPlatform.jlink
 
 # linking rule
@@ -536,7 +536,7 @@ clean:
 #######################################
 
 # whole software build dependencies
-ifneq (,$(findstring all, $(MAKECMDGOALS)) $(findstring flash, $(MAKECMDGOALS)))
+ifneq (,$(findstring all,$(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(PLATFORM_DIR)/*.d)
 endif
 
@@ -546,6 +546,6 @@ ifneq (,$(findstring unittest_platform,$(MAKECMDGOALS)))
 endif
 
 # x86_x64 unittest build dependencies
-ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS)))
+ifneq (,$(findstring unittest_x86_x64,$(MAKECMDGOALS))$(findstring coverage,$(MAKECMDGOALS)))
 -include $(wildcard $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/*.d)
 endif

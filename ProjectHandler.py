@@ -68,7 +68,10 @@ def create_tasks(path : str, project : dict):
             "group": {
                 "kind": "build",
                 "isDefault": True
-            }
+            },
+            "problemMatcher":[
+                "$gcc"
+            ]
         },
         {
             "label": "x86_x64 Run UnitTest",
@@ -83,7 +86,21 @@ def create_tasks(path : str, project : dict):
                 "kind": "test",
                 "isDefault": True
             },
-            "dependsOn": "x86_x64 Build UnitTest"
+            "dependsOn": "x86_x64 Build UnitTest",
+            "problemMatcher":[
+                "$gcc",
+                {
+                    "pattern":[
+                        {
+                            "regexp": "^([\\S]+):(\\d+): ([\\S]+): ([\\S ]+)$",
+                            "file": 1,
+                            "location": 2,
+                            "severity": 3,
+                            "message": 4
+                        }
+                    ]
+                }
+            ]
         },
         {
             "label": "Target Build UnitTest",
@@ -96,7 +113,10 @@ def create_tasks(path : str, project : dict):
             "group": {
                 "kind": "build",
                 "isDefault": True
-            }
+            },
+            "problemMatcher":[
+                "$gcc"
+            ]
         },
         {
             "label": "Target Flash UnitTest",
@@ -105,6 +125,9 @@ def create_tasks(path : str, project : dict):
             "args": [
                 "unittest_platform_flash",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher":[
+                "$gcc"
             ]
         },
         {
@@ -118,7 +141,21 @@ def create_tasks(path : str, project : dict):
             "group": {
                 "kind": "test",
                 "isDefault": True
-            }
+            },
+            "problemMatcher":[
+                "$gcc",
+                {
+                    "pattern":[
+                        {
+                            "regexp": "^([\\S]+):(\\d+): ([\\S]+): ([\\S ]+)$",
+                            "file": 1,
+                            "location": 2,
+                            "severity": 3,
+                            "message": 4
+                        }
+                    ]
+                }
+            ]
         },
         {
             "label": "Software build",
@@ -130,16 +167,21 @@ def create_tasks(path : str, project : dict):
             "group": {
                 "kind": "build",
                 "isDefault": True
-            }
+            },
+            "problemMatcher":[
+                "$gcc"
+            ]
         },
         {
             "label": "Software flash",
             "type": "shell",
             "command": "make",
             "args": [
-                "flash"
+                "flash-all"
             ],
-            "dependsOn": "Software build"
+            "problemMatcher":[
+                "$gcc"
+            ]
         },
         {
             "label": "Clean",
@@ -147,6 +189,9 @@ def create_tasks(path : str, project : dict):
             "command": "make",
             "args": [
                 "clean"
+            ],
+            "problemMatcher":[
+                "$gcc"
             ]
         },
         {
@@ -165,6 +210,9 @@ def create_tasks(path : str, project : dict):
             "args": [
                 "coverage",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher":[
+                "$gcc"
             ]
         },
         {
@@ -174,6 +222,9 @@ def create_tasks(path : str, project : dict):
             "args": [
                 "coverage-html",
                 "UNIT=${input:UNIT}"
+            ],
+            "problemMatcher":[
+                "$gcc"
             ]
         },
         {
@@ -181,7 +232,7 @@ def create_tasks(path : str, project : dict):
             "command": "${command:gcov-viewer.toggle}"
         },
         {
-            "label": "Reload coverage",
+            "label": "Load coverage",
             "command": "${command:gcov-viewer.reloadGcdaFiles}"
         },
         {
@@ -302,14 +353,14 @@ def create_tree(path : str, project : dict):
             os.makedirs(os.path.join(path, component["name"], "UnitTest", "include","stubs")) 
             print("Created directory tree for " + component["name"])
         else:
-            print( component["name"] + " already exists, skipping...")
+            print( "Folder for "+component["name"] + " already exists, skipping...")
     
     # Create files for each component
     create_files(path, project)
     
 def create_unit_source(path : str, name : str):
     # Create a source file for the unit test
-    if not os.path.exists(os.path.join(path, name + ".c")):
+    if not Path(os.path.join(path, name + ".c")).is_file():
         file = open(os.path.join(path, name + ".c"), "w")
         file.write("/**\n * @file " + name + ".c\n * @brief TODO\n * @date " + datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")+ "\n*/")
         file.write("\n")
@@ -324,52 +375,52 @@ def create_unit_source(path : str, name : str):
         file.close()
         print("Created source file for " + name)
     else:
-        print(name + ".c already exists, skipping...")
+        print( name +"/Unit/src/" + name + ".c already exists, skipping...")
 
 def create_unit_header(path : str, name : str):
     
     # Create a header file for the unit test
-    if not os.path.exists(os.path.join(path, name + ".h")):
+    if not Path(os.path.join(path, name + ".h")).is_file():
         file = open(os.path.join(path, name + ".h"), "w")
         file.write("/**\n * @file " + name + ".h\n * @brief TODO\n * @date " + datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S") + "\n*/")
         file.write("\n")
         file.write("#ifndef " + name + "_H\n#define " + name + "_H\n")
         file.write("\n")
         file.write("/* Includes ------------------------------------------------------------------*/\n\n\n")
-        file.write("/* Private includes ----------------------------------------------------------*/\n\n\n")
-        file.write("/* Private typedef -----------------------------------------------------------*/\n\n\n")
-        file.write("/* Private define ------------------------------------------------------------*/\n\n\n")
-        file.write("/* Private macro -------------------------------------------------------------*/\n\n\n")
-        file.write("/* Private variables ---------------------------------------------------------*/\n\n\n")
+        file.write("/* Type definitions ----------------------------------------------------------*/\n\n\n")
+        file.write("/* Defines -------------------------------------------------------------------*/\n\n\n")
+        file.write("/* Global variables ----------------------------------------------------------*/\n\n\n")
+        file.write("/* Function declarations -----------------------------------------------------*/\n\n\n")
+        file.write("\n\n\n")
         file.write("#endif /* " + name + "_H */")
         file.close()
-        print("Created header file for " + name)
+        print("Created unit header file for " + name)
     else:
         print(name + ".h already exists, skipping...")
 
 def create_unittest_header(path : str, name : str):
     # Create a header file for the unit test
-    if not os.path.exists(os.path.join(name,"UnitTest","include","TestSuites.h")):
+    if not Path(os.path.join(name,"UnitTest","include","TestSuites.h")).is_file():
         file = open((os.path.join(name,"UnitTest","include","TestSuites.h")), "w")
         file.write("/**\n * @file TestSuites.h\n * @brief TODO\n * @date " + datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S") + "\n*/")
         file.write("\n")
         file.write("#ifndef TESTSUITES_H\n#define TESTSUITES_H\n")
         file.write("\n")
         file.write("/* Includes ------------------------------------------------------------------*/\n\n\n")
-        file.write("/* Type definitions -----------------------------------------------------------*/\n\n\n")
-        file.write("/* Defines ------------------------------------------------------------*/\n\n\n")
-        file.write("/* Macros -------------------------------------------------------------*/\n\n\n")
-        file.write("/* Global variables ---------------------------------------------------------*/\n\n\n")
+        file.write("/* Type definitions ----------------------------------------------------------*/\n\n\n")
+        file.write("/* Defines -------------------------------------------------------------------*/\n\n\n")
+        file.write("/* Global variables ----------------------------------------------------------*/\n\n\n")
+        file.write("/* Function declarations -----------------------------------------------------*/\n\n\n")
         file.write("\n\n\n")
         file.write("#endif /* TESTSUITES_H */")
         file.close()
-        print("Created header file for " + name)
+        print("Created unittest header file for " + name)
     else:
-        print(name + ".h already exists, skipping...")
+        print(name + "/UnitTest/src/TestSuites.h already exists, skipping...")
 
 def create_unittest_source(path : str, name : str, testsuites : dict):
     # Create a source file for the unit test
-    if not os.path.exists(os.path.join(name,"UnitTest","src","TestSuites.c")):
+    if not Path(os.path.join(name,"UnitTest","src","TestSuites.c")).is_file():
         file = open((os.path.join(name,"UnitTest","src","TestSuites.c")), "w")
         file.write("/**\n * @file TestSuites.c\n * @brief TODO\n * @date " + datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")+ "\n*/")
         file.write("\n")
@@ -391,16 +442,17 @@ def create_unittest_source(path : str, name : str, testsuites : dict):
         file.close()
         print("Created source file for " + name)
     else:
-        print(name + ".c already exists, skipping...")
+        print(name + "/UnitTest/src/TestSuites.c already exists, skipping...")
 
     for testSuite in testsuites:
-        if not os.path.exists(os.path.join(name,"UnitTest","src",testSuite["name"],".c")):
+        if not Path(os.path.join(name,"UnitTest","src",testSuite["name"],".c")).is_file():
             file = open(os.path.join(name,"UnitTest","src",testSuite["name"]+".c"), "w")
             file.write("/**\n * @file "+ testSuite["name"] +".c\n * @brief TODO\n * @date " + datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")+ "\n*/")
-            file.write("\n")
-            file.write("#include \"TestSuites.h\"")
-            file.write("\n")
-            file.write("/* Private includes ----------------------------------------------------------*/\n\n\n")
+            file.write("\n\n")
+            file.write("/* Private includes ----------------------------------------------------------*/\n\n")
+            file.write("#include \"TestSuites.h\"\n")
+            file.write("#include \"stub.h\"")
+            file.write("\n\n")
             file.write("/* Private typedef -----------------------------------------------------------*/\n\n\n")
             file.write("/* Private define ------------------------------------------------------------*/\n\n\n")
             file.write("/* Private macro -------------------------------------------------------------*/\n\n\n")
@@ -415,9 +467,11 @@ def create_unittest_source(path : str, name : str, testsuites : dict):
             file.write("\t.name = \"" + testSuite["name"] + "\",\n")
             file.write("\t.TestCases = \n\t{\n")
             for testCase in testSuite["testcases"]:
-                file.write("\t\t{\"" + testCase["name"] + "\"," + testCase["name"] + "},\n")
-            file.write("\t\t{\"TEST_CASE_END\",TEST_CASE_END},\n")
+                file.write("\t\tTEST_CASE_ENTRY(" + testCase["name"] + "),\n")
+            file.write("\t\tTEST_CASE_ENTRY(TEST_CASE_END),\n")
             file.write("\t}\n};")
+        else:
+            print(name + "/UnitTest/src/"+ testSuite["name"] +".c already exists, skipping...")
 
 def create_files(path : str, project : dict):
     # Create files for each component
