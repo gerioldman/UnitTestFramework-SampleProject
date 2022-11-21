@@ -13,28 +13,31 @@
 #include <stdarg.h>
 
 /**
- * @brief 
+ * @brief Global variable for setting Assert Mode
  * 
  */
 AssertMode_Type AssertMode = PRINT_FAILED_ASSERT;
 
 /**
- * @brief 
+ * @brief Global variable for setting Colour Mode
  * 
  */
 ColourMode_Type ColourMode = NO_COLOUR;
 
 /**
- * @brief 
+ * @brief Global variable for setting Log tMode
  * 
  */
 LogMode_Type LogMode = LOG_SCREEN;
 
 /**
- * @brief 
+ * @brief Global variable for setting File to log to
  * 
  */
 FILE *LogFile;
+
+uint32_t assertCount = 0u;
+uint32_t failedAssertCount = 0;
 
 /**
  * @brief Set a modifier for printed text
@@ -146,7 +149,7 @@ void AssertPrint(boolean condition, char *format, char *file, int line, char *me
 }
 
 /**
- * @brief 
+ * @brief Assert Implementation
  * 
  * @param condition Condition to be evaluated
  * @param format Format for the printed text
@@ -165,6 +168,10 @@ void AssertImplementationWithFormat(boolean condition, char *format, char *file,
     vsnprintf(message,1024u,format, args);
     /* Call AssertPrint implementation for actually printing */
     AssertPrint(condition, "%s:%d: %s\n", file, line, message);
+    /* Incremenet assert count */
+    assertCount++;
+    /* Increment failed assert, if condition evaluated to false */
+    if(!condition) failedAssertCount++;
     /* End variable args */
     va_end(args);
 }

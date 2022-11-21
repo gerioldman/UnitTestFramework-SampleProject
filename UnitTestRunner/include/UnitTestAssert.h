@@ -91,6 +91,8 @@ extern LogMode_Type LogMode;
 extern AssertMode_Type AssertMode;
 extern ColourMode_Type ColourMode;
 extern FILE *LogFile;
+extern uint32_t assertCount;
+extern uint32_t failedAssertCount;
 
 typedef unsigned char   boolean;
 #define TRUE            1

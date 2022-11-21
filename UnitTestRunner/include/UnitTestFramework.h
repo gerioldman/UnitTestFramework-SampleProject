@@ -19,9 +19,7 @@
 #include <string.h>
 #include "UnitTestAssert.h"
 
-void RunAllTests_Screen(void);
-void RunAllTests_File(void);
-void RunAllTests_ScreenAndFile(void);
+void RunAllTests(void);
 
 
 #endif // UNITTESTFRAMEWORK_H

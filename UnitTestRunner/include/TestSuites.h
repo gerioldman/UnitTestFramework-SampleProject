@@ -20,11 +20,19 @@
 #define TEST_SUITE_END  0
 #define TEST_CASE_END   0
 
+#define TEST_CASE_ENTRY(TESTCASE) \
+{ \
+    .name = #TESTCASE, \
+    .funct_ptr = TESTCASE, \
+    .failed = 0u \
+}
+
 /* Type Definitions */
 
 typedef struct {
     const char* name;
     void (*funct_ptr)(void);
+    unsigned char failed;
 }TestCase;
 
 typedef struct{
