@@ -131,7 +131,7 @@ AS_DEFS =
 AS_INCLUDES =
 # compile gcc flags
 TARGET_ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
-TARGET_CFLAGS += $(MCU) $(C_DEFS) $(OPT) -Wall -fdata-sections -ffunction-sections
+TARGET_CFLAGS += $(MCU) $(C_DEFS) $(OPT) -Wall -fdata-sections -ffunction-sections -Wextra
 # Generate dependency information
 TARGET_CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # link script
@@ -214,7 +214,8 @@ $(PLATFORM_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
 $(PLATFORM_DIR)/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
 $(PLATFORM_DIR)/Core/Src/system_stm32f4xx.c \
 $(PLATFORM_DIR)/Core/Src/lsm6dsl_reg.c \
-$(PLATFORM_DIR)/Core/Src/main.c
+$(PLATFORM_DIR)/Core/Src/main.c \
+$(PLATFORM_DIR)/Core/Src/LCD_HWI.c 
 
 PLATFORM_ASSEMBLY 	=	$(PLATFORM_DIR)/startup_stm32f446xx.s
 

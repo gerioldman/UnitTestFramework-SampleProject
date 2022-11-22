@@ -2,7 +2,7 @@
 # Unit build for unit test
 ###########################
 
-FOUNDSTRING = $(findstring unittest_x86_x64_build,$(MAKECMDGOALS))$(findstring unittest_platform_build,$(MAKECMDGOALS))
+FOUNDSTRING = $(findstring unittest_x86_x64_build,$(MAKECMDGOALS))$(findstring unittest_platform_build,$(MAKECMDGOALS))$(findstring stubgen,$(MAKECMDGOALS))
 
 ifneq (,$(FOUNDSTRING))
 
@@ -45,6 +45,5 @@ UNITTEST_INCLUDE_FOLDERS += $(UNITTESTSTUBINCLUDE)
 UNITTEST_INCLUDE_FOLDERS += $(UNITTESTINCLUDE)
 
 endif
-
 
 
