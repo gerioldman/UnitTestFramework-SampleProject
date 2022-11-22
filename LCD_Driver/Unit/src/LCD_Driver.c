@@ -6,9 +6,10 @@
  */
 
 #include "lcd.h"
-#include "main.h"
+#include "LCD_HWI.h"
 #include "font8x8_basic.h"
 #include <math.h>
+
 static uint8_t buffer_left[8][64];
 static uint8_t buffer_right[8][64];
 
@@ -16,121 +17,53 @@ void LCD_Init()
 {
 	// Vonalak alaphelyzetbe állítása
 
-	LCD_Enable(LCD_OFF);
-	HAL_GPIO_WritePin(LCD_E_GPIO_Port, LCD_E_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_R_W_GPIO_Port, LCD_R_W_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_SET);
-	LCD_SetCSLines(LCD_CS_OFF);
+	LCD_HWI_SetEnable(LCD_HWI_Enable_OFF);
+	LCD_HWI_SetLatch(LCD_HWI_Latch_ON);
+	LCD_HWI_SetRWLine(LCD_HWI_RW_Write);
+	LCD_HWI_SetReset(LCD_HWI_RST_OFF);
+	LCD_HWI_SetCSLines(LCD_HWI_CS_OFF);
 
 	// LCD és szintillesztők engedélyezése
-	LCD_Enable(LCD_ON);
+	LCD_HWI_SetEnable(LCD_HWI_Enable_ON);
 
 	// LCD_ON parancs kiküldése
-	LCD_Write(LCD_COMMAND_DISPLAY_ON,LCD_CS12,LCD_DI_Instruction);
+	LCD_Write(LCD_COMMAND_DISPLAY_ON,LCD_HWI_CS12,LCD_HWI_DI_Instruction);
 
 	// Page, Y és Z pointerek állítása
-	LCD_Write(LCD_SETYADDRESS,LCD_CS12,LCD_DI_Instruction);
-	LCD_Write(LCD_SETPAGE,LCD_CS12,LCD_DI_Instruction);
-	LCD_Write(LCD_DISPLAY_START_LINE,LCD_CS12,LCD_DI_Instruction);
+	LCD_Write(LCD_SETYADDRESS,LCD_HWI_CS12,LCD_HWI_DI_Instruction);
+	LCD_Write(LCD_SETPAGE,LCD_HWI_CS12,LCD_HWI_DI_Instruction);
+	LCD_Write(LCD_DISPLAY_START_LINE,LCD_HWI_CS12,LCD_HWI_DI_Instruction);
 }
-void LCD_Write(uint8_t value,LCDCSLinesState CSState,LCDInstructionDataState DIState)
+void LCD_Write(uint8_t value,LCD_HWI_CS_Lines_State CSState,LCD_HWI_Instruction_Data_State DIState)
 {
 	// Adat vagy Instrukció
-	LCD_SetDILine(DIState);
+	LCD_HWI_SetDILine(DIState);
 	// Melyik drivernek írok
-	LCD_SetCSLines(CSState);
+	LCD_HWI_SetCSLines(CSState);
 	// Kiírandó adat
-	LCD_SetDataLines(value);
+	LCD_HWI_SetDataLines(value);
 	// Adat latch
 	LCD_Data_Latch();
 	// Kiválasztó jelek kikapcsolása
-	LCD_SetCSLines(LCD_CS_OFF);
+	LCD_HWI_SetCSLines(LCD_HWI_CS_OFF);
 }
 void LCD_Data_Latch()
 {
 	// Időzítés miatt használok delay-eket, amúgy egy feszültségimpulzus az E vonalon
-	LCD_Delay(1);
-	HAL_GPIO_WritePin(LCD_E_GPIO_Port, LCD_E_Pin, GPIO_PIN_SET);
-	LCD_Delay(1);
-	HAL_GPIO_WritePin(LCD_E_GPIO_Port, LCD_E_Pin, GPIO_PIN_RESET);
-	LCD_Delay(1);
-}
-void LCD_SetRWLine(LCDRWState state)
-{
-	// Set Read or Write
-	if(state == LCD_RW_Write)
-	{
-		HAL_GPIO_WritePin(LCD_R_W_GPIO_Port, LCD_R_W_Pin, GPIO_PIN_RESET);
-	}
-	else
-		HAL_GPIO_WritePin(LCD_R_W_GPIO_Port, LCD_R_W_Pin, GPIO_PIN_SET);
-}
-void LCD_Enable(LCDEnableState enable)
-{
-	// Set enable or disable
-	if(enable == LCD_ON)
-	{
-		HAL_GPIO_WritePin(LCD_EN_GPIO_Port, LCD_EN_Pin, GPIO_PIN_RESET);
-	}
-	else HAL_GPIO_WritePin(LCD_EN_GPIO_Port,LCD_EN_Pin,GPIO_PIN_SET);
-}
-inline void LCD_SetDataLines(uint8_t value)
-{
-	// Adatvonalok írása
-	GPIOC->BSRR = 0x000000FF&(uint32_t)value;
-	GPIOC->BSRR = (((uint32_t)(~value))&0x000000FF) << 16;
-}
-HAL_StatusTypeDef LCD_SetCSLines(LCDCSLinesState state)
-{
-	//Kiválasztó jelek állítása
-	switch (state) {
-	case LCD_CS_OFF:
-		HAL_GPIO_WritePin(LCD_CS1_GPIO_Port, LCD_CS1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LCD_CS2_GPIO_Port, LCD_CS2_Pin, GPIO_PIN_RESET);
-		break;
-	case LCD_CS1:
-		HAL_GPIO_WritePin(LCD_CS1_GPIO_Port, LCD_CS1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LCD_CS2_GPIO_Port, LCD_CS2_Pin, GPIO_PIN_RESET);
-		break;
-	case LCD_CS2:
-		HAL_GPIO_WritePin(LCD_CS1_GPIO_Port, LCD_CS1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LCD_CS2_GPIO_Port, LCD_CS2_Pin, GPIO_PIN_SET);
-		break;
-	case LCD_CS12:
-		HAL_GPIO_WritePin(LCD_CS1_GPIO_Port, LCD_CS1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LCD_CS2_GPIO_Port, LCD_CS2_Pin, GPIO_PIN_SET);
-		break;
-	default:
-		return HAL_ERROR;
-	}
-	return HAL_OK;
-}
-void LCD_SetDILine(uint8_t state)
-{
-	// Adat vagy Instrukció
-	if(state == LCD_DI_Instruction)
-		{
-			HAL_GPIO_WritePin(LCD_D_I_GPIO_Port, LCD_D_I_Pin, GPIO_PIN_RESET);
-		}
-		else HAL_GPIO_WritePin(LCD_D_I_GPIO_Port, LCD_D_I_Pin,GPIO_PIN_SET);
-}
-
-void LCD_Delay(uint32_t us)
-{
-	// Szoftveres delay, csak arra kell, hogy legalább 500ns delay legyen Latch állításánál
-	for(uint32_t i=0;i<100*us;i++)
-	{
-		__NOP();
-	}
+	LCD_HWI_Delay(1);
+	LCD_HWI_SetLatch(LCD_HWI_Latch_OFF);
+	LCD_HWI_Delay(1);
+	LCD_HWI_SetLatch(LCD_HWI_Latch_ON);
+	LCD_HWI_Delay(1);
 }
 
 void LCD_Fill_Display(uint8_t value)
 {
 	for (uint8_t p = 0; p < LCD_PAGE_NUMBER; p++) {
-		LCD_Write(LCD_SETYADDRESS, LCD_CS12, LCD_DI_Instruction);
-		LCD_Write(LCD_SETPAGE|p, LCD_CS12, LCD_DI_Instruction);
+		LCD_Write(LCD_SETYADDRESS, LCD_HWI_CS12, LCD_HWI_DI_Instruction);
+		LCD_Write(LCD_SETPAGE|p, LCD_HWI_CS12, LCD_HWI_DI_Instruction);
 		for (uint8_t i = 0; i < 64; i++) {
-			LCD_Write(value,LCD_CS12,LCD_DI_Data);
+			LCD_Write(value,LCD_HWI_CS12,LCD_HWI_DI_Data);
 		}
 	}
 }
@@ -164,16 +97,16 @@ void LCD_Invalidate()
 	// Teljes kijelző frissítése buffer tartalmával
 	for (uint8_t p = 0; p < LCD_PAGE_NUMBER; p++) {
 		// Page-n belüli címzés
-		LCD_Write(LCD_SETYADDRESS, LCD_CS12, LCD_DI_Instruction);
+		LCD_Write(LCD_SETYADDRESS, LCD_HWI_CS12, LCD_HWI_DI_Instruction);
 		// Page címzése
-		LCD_Write(LCD_SETPAGE | p, LCD_CS12, LCD_DI_Instruction);
+		LCD_Write(LCD_SETPAGE | p, LCD_HWI_CS12, LCD_HWI_DI_Instruction);
 		// Kijelző bal oldalának írása
 		for (uint8_t i = 0; i < LCD_WIDTH/2; i++) {
-			LCD_Write(buffer_left[p][i], LCD_CS1, LCD_DI_Data);
+			LCD_Write(buffer_left[p][i], LCD_HWI_CS1, LCD_HWI_DI_Data);
 		}
 		// Kijelző jobb oldalának írása
 		for (uint8_t i = 0; i < LCD_WIDTH/2; i++) {
-			LCD_Write(buffer_right[p][i], LCD_CS2, LCD_DI_Data);
+			LCD_Write(buffer_right[p][i], LCD_HWI_CS2, LCD_HWI_DI_Data);
 		}
 	}
 }
@@ -255,8 +188,8 @@ void LCD__DrawCircle(int16_t xc, int16_t yc, int16_t x, int16_t y)
 // Hasonlóan körhöz, általános vonal rajzolásához létező megoldást használok, mert a saját nem működött jól
 
 void LCD_Draw_Line(int x0, int y0, int x1, int y1) {
-	int dx = fabsf(x1 - x0), sx = x0 < x1 ? 1 : -1;
-	int dy = -fabsf(y1 - y0), sy = y0 < y1 ? 1 : -1;
+	int dx = fabsf((float)(x1 - x0)), sx = x0 < x1 ? 1 : -1;
+	int dy = -fabsf((float)(y1 - y0)), sy = y0 < y1 ? 1 : -1;
 	int err = dx + dy, e2; /* error value e_xy */
 
 	for (;;) { /* loop */

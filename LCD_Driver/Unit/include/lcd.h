@@ -9,7 +9,8 @@
 #ifndef INC_LCD_H_
 #define INC_LCD_H_
 
-#include "main.h"
+#include <stdint.h>
+#include "LCD_HWI.h"
 
 // Defines
 
@@ -25,36 +26,6 @@
 #define LCD_WIDTH 128
 
 
-// Typedefs
-typedef enum LCDEnableState
-{
-	LCD_OFF = 0,
-	LCD_ON = 1
-}LCDEnableState;
-typedef enum LCDInstructionDataState
-{
-	LCD_DI_Data,
-	LCD_DI_Instruction
-}LCDInstructionDataState;
-typedef enum LCDCSLinesState
-{
-	LCD_CS_OFF = 0,
-	LCD_CS1 = 1,
-	LCD_CS2 = 2,
-	LCD_CS12 = 3
-}LCDCSLinesState;
-typedef enum LCDRWState
-{
-	LCD_RW_Write,
-	LCD_RW_Read
-}LCDRWState;
-//
-
-typedef struct
-{
-
-}LCD_Handle;
-
 //Public functions
 
 void LCD_Init();
@@ -64,13 +35,8 @@ void LCD_Invalidate(); 												// Buffer kiírása a kijelzőre
 void LCD_Write_BufferPixel(uint8_t pixel, int16_t x,int16_t y); 	// Pixel írása a bufferben
 
 void LCD_Data_Latch(); 												// Adatvonalakon lévő adat latchelése
-void LCD_SetRWLine(LCDRWState state); 								// Read or Write set
-void LCD_Enable(LCDEnableState enable); 							// LCD és szintillesztők engedélyezése
-void LCD_SetDataLines(uint8_t value); 								// megadott érték adatvonalra kiírása
-HAL_StatusTypeDef LCD_SetCSLines(LCDCSLinesState state); 			// Kiválasztójelek állítása
-void LCD_SetDILine(uint8_t state); 									// Data or Instruction set
-void LCD_Delay(uint32_t us); 										// Szoftveres delay főként Data_Latch függvényhez
-void LCD_Write(uint8_t value,LCDCSLinesState CSState,LCDInstructionDataState DIState); // Általános kiíró függvény
+
+void LCD_Write(uint8_t value, LCD_HWI_CS_Lines_State CSState,LCD_HWI_Instruction_Data_State DIState); // Általános kiíró függvény
 void LCD_Draw_Char(char c,int16_t x,int16_t y); 					// Karakter rajzolása bufferbe
 void LCD_Draw_String(char *string,int16_t x,int16_t y); 			// Sztring rajzolása bufferbe
 void LCD_Draw_Circle(int16_t xc,int16_t yc,int16_t r); 				// Kör rajzolása bufferbe
