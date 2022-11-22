@@ -2,4 +2,5 @@
 /old_makefile
 *.gcov
 */Unit/.cov
+*/.pre/*.i
 .vscode/BigProject.code-workspace
