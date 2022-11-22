@@ -91,6 +91,27 @@ def getHeaderList(declList):
                     headerList.append(headerName)
     return headerList
 
+# get list of header files from the preprocessed file directly
+def getHeaderListFromFileDirectly(file_path):
+    headerList = []
+    f = open(file_path,"r")
+    whole_file = f.readlines()
+
+    matches = []
+
+    for lines in whole_file:
+        findlist = re.findall("\w+\.h", lines)
+        if len(findlist) != 0:
+            for match in findlist:
+                matches.append(match)
+    
+    matches = list(set(matches))
+
+    for match in matches:
+        if match != '_fake_typedefs.h' and match != '_fake_defines.h':
+            headerList.append(match)
+    return headerList
+
 # create the folder structure for the unit test
 def createFolder():
     if( os.path.isdir("UnitTest") == False):
@@ -105,9 +126,8 @@ def createFolder():
         os.mkdir("UnitTest/src/stubs")
 
 # create the types.h header file
-def makeTypeStubHeader(ast):
+def makeTypeStubHeader(ast, header_list):
     #typedefList = getListofTypedef(ast)
-    header_list = getHeaderList(ast)
     local_ast = c_ast.FileAST(coord=None, ext=[]) # typedefList
     local_ast.ext.append(c_ast.Typedef( 
         name="stub_option_t",
@@ -122,6 +142,26 @@ def makeTypeStubHeader(ast):
                     enumerators=[
                         c_ast.Enumerator(   name="STUB_OPTION_VALUE", value=None),
                         c_ast.Enumerator(   name="STUB_OPTION_REDIRECT", value=None)
+                    ],
+                    coord=None
+                )
+            ),
+        ),
+        storage=['typedef']
+    ))
+    local_ast.ext.append(c_ast.Typedef( 
+        name="stub_trace_option_t",
+        quals=[],
+        type=c_ast.TypeDecl(    
+            declname="stub_trace_option_t",
+            quals=[],
+            align=None,
+            type=c_ast.Enum(    
+                name=None,
+                values= c_ast.EnumeratorList(
+                    enumerators=[
+                        c_ast.Enumerator(   name="STUB_OPTION_TRACE_OFF", value=None),
+                        c_ast.Enumerator(   name="STUB_OPTION_TRACE_ON", value=None)
                     ],
                     coord=None
                 )
@@ -149,6 +189,102 @@ def makeTypeStubHeader(ast):
         ),
         storage=['typedef']
     ))
+
+    local_ast.ext.append(c_ast.Typedef(
+        name = "TEST_STUB_Trace",
+        quals = [],
+        type= c_ast.TypeDecl(
+            declname = "TEST_STUB_Trace",
+            quals = [],
+            align=None,
+            type= c_ast.Struct(
+                name = "TEST_STUB_Trace",
+                decls=[
+                    c_ast.Decl(
+                        name= "trace_enabled",
+                        quals=[],
+                        align = None,
+                        storage= [],
+                        funcspec= None,
+                        type= c_ast.TypeDecl(
+                            declname= "trace_enabled",
+                            quals=[],
+                            align = None,
+                            type= c_ast.IdentifierType(names=["stub_trace_option_t"], coord= None),
+                            coord=None
+                        ),
+                        init= None,
+                        bitsize= None,
+                        coord= None
+                    ),
+                    c_ast.Decl(
+                        name= "trace_buffer",
+                        quals=[],
+                        align = None,
+                        storage= [],
+                        funcspec= None,
+                        type= c_ast.PtrDecl(
+                            quals= [],
+                            type= c_ast.PtrDecl(
+                                quals= [],
+                                type= c_ast.TypeDecl(
+                                    declname= "trace_buffer",
+                                    quals=[],
+                                    align=None,
+                                    type=c_ast.IdentifierType(names=["char"], coord=None),
+                                    coord=None
+                                ),
+                                coord= None
+                            ),
+                            coord= None
+                        ),
+                        init= None,
+                        bitsize= None,
+                        coord= None
+                    ),
+                    c_ast.Decl(
+                        name= "trace_buffer_length",
+                        quals=[],
+                        align = None,
+                        storage= [],
+                        funcspec= None,
+                        type= c_ast.TypeDecl(
+                            declname= "trace_buffer_length",
+                            quals=[],
+                            align = None,
+                            type= c_ast.IdentifierType(names=["unsigned", "long"], coord= None),
+                            coord=None
+                        ),
+                        init= None,
+                        bitsize= None,
+                        coord= None
+                    ),
+                    c_ast.Decl(
+                        name= "trace_buffer_index",
+                        quals=[],
+                        align = None,
+                        storage= [],
+                        funcspec= None,
+                        type= c_ast.TypeDecl(
+                            declname= "trace_buffer_index",
+                            quals=[],
+                            align = None,
+                            type= c_ast.IdentifierType(names=["unsigned", "long"], coord= None),
+                            coord=None
+                        ),
+                        init= None,
+                        bitsize= None,
+                        coord= None
+                    )
+                ],
+                coord=None
+            ),
+            coord=None
+        ),
+        storage=['typedef'],
+        coord=None
+    ))
+
     test_stub = c_ast.Typedef(
         name='TEST_STUB_TYPE',
         quals=['extern'],
@@ -161,6 +297,24 @@ def makeTypeStubHeader(ast):
             coord=None,
             storage=['typedef']
     )
+    test_stub.type.type.decls.append(c_ast.Decl( 
+        name = "TEST_TRACE",
+        quals = [],
+        storage = [],
+        funcspec = [],
+        align=None,
+        type = c_ast.TypeDecl(  
+            declname = "TEST_TRACE",
+            quals = [],
+            type = c_ast.IdentifierType(names=["TEST_STUB_Trace"]),
+            coord = None,
+            align = None
+        ),
+        init = None,
+        bitsize = None,
+        coord = None
+    ))
+
     for entity in ast.ext:
         for header in header_list:
             if returnHeaderName(entity.coord) == header:
@@ -229,7 +383,7 @@ def isVoidType(type):
 # create stub function definition
 def makeStubCompound(entity, test_call):
     blockItems = []
-    index = 1
+    index = 2
 
     #############################################
     #               STUB FUNCTION               #
@@ -237,7 +391,7 @@ def makeStubCompound(entity, test_call):
     
     if not test_call:
         if not isVoidType(entity.type.type):
-            index = 2
+            index = 3
             blockItems.append(c_ast.Decl(
                 name = "returnValue",
                 align=None,
@@ -261,6 +415,52 @@ def makeStubCompound(entity, test_call):
                 )
             ))
         blockItems.append(c_ast.UnaryOp(op='p++', expr=c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID(entity.name)), type='.',field= c_ast.ID(name ='callcount'))))
+        blockItems.append(
+            c_ast.If(
+                cond= c_ast.BinaryOp(
+                    left= c_ast.BinaryOp( 
+                        left= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_enabled')),
+                        op= "==",
+                        right= c_ast.ID(name="STUB_OPTION_TRACE_ON"),
+                        coord=None
+                    ),
+                    op= "&&",
+                    right= c_ast.BinaryOp(
+                        left= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer')),
+                        op="!=",
+                        right = c_ast.ID(name="NULL"),
+                        coord=None
+                    ),
+                    coord=None
+                ),
+                iftrue= c_ast.If(
+                    cond= c_ast.BinaryOp( 
+                        left= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')),
+                        op= "<",
+                        right= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_length')),
+                        coord=None
+                    ),
+                    iftrue= c_ast.Compound(
+                        block_items=[
+                            c_ast.Assignment(
+                                op="=",
+                                lvalue= c_ast.ArrayRef(
+                                    name= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer')),
+                                    subscript= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')),
+                                    coord=None
+                                ),
+                                rvalue= c_ast.ID(name="\""+ entity.name +"\""),
+                                coord=None
+                            ),
+                            c_ast.UnaryOp(op='p++', expr=c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')))
+                        ],
+                        coord=None
+                    ),
+                    iffalse=None
+                ),
+                iffalse=None
+            )
+        )
         blockItems.append(
             c_ast.Switch(cond=c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID(entity.name)), type='.',field= c_ast.ID(name ='stub_option')),
                 stmt=c_ast.Compound(block_items=[
@@ -1018,11 +1218,11 @@ def main():
         # get list of declarations
         declList = getListofDecl(ast)
 
-        # get list of header files from the ast tree
-        headerList = getHeaderList(ast.ext)
+        # get list of header files from file directly
+        headerList = getHeaderListFromFileDirectly(sys.argv[1])
 
         # create the type stub header file
-        makeTypeStubHeader(ast)
+        makeTypeStubHeader(ast, headerList)
 
         # create the header stub files
         makeStubSource(ast, headerList)
