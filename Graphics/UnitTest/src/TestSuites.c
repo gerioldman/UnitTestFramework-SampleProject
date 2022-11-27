@@ -1,13 +1,11 @@
 /**
- * @file Suite1.c
+ * @file TestSuites.c
  * @brief TODO
- * @date 2022-11-10-22:45:14
+ * @date 2022-11-27-17:32:20
 */
-
+#include "TestSuites.h"
 /* Private includes ----------------------------------------------------------*/
 
-#include "TestSuites.h"
-#include "stub.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -21,28 +19,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 
-/**
- * @brief 
- * 
- */
-void TS1_Test1()
-{
-}
+extern TestSuite Suite1;
+extern TestSuite Suite2;
 
-/**
- * @brief 
- * 
- */
-void TS1_Test2()
-{
-}
-
-TestSuite Suite1 = {
-	.name = "Suite1",
-	.TestCases = 
-	{
-		TEST_CASE_ENTRY(TS1_Test1),
-		TEST_CASE_ENTRY(TS1_Test2),
-		TEST_CASE_ENTRY(TEST_CASE_END),
-	}
+TestSuite* testSuites[] = {
+	&Suite1,
+	&Suite2,
+	TEST_SUITE_END
 };

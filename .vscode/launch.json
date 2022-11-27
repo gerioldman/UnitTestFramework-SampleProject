@@ -94,18 +94,6 @@
             },
             "showDevDebugOutput": "none",
             "preLaunchTask": "Software build"
-        },
-        {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "LCD_Driver/.pre/LCD_Driver.i",
-                "LCD_Driver/UnitTest"
-            ]
         }
     ]
 }

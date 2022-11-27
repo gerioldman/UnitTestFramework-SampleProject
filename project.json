@@ -56,7 +56,34 @@
             ]
         },
         {
-            "name": "ADC_Driver",
+            "name": "Graphics",
+            "testsuites": [
+                {
+                    "name": "Suite1",
+                    "testcases": [
+                        {
+                            "name": "TS1_Test1"
+                        },
+                        {
+                            "name": "TS1_Test2"
+                        }
+                    ]
+                },
+                {
+                    "name": "Suite2",
+                    "testcases": [
+                        {
+                            "name": "TS2_Test1"
+                        },
+                        {
+                            "name": "TS2_Test2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Application",
             "testsuites": [
                 {
                     "name": "Suite1",
@@ -83,7 +110,7 @@
             ]
         }
     ],
-    "platform-include-paths":[
+    "platform-include-paths": [
         "${workspaceFolder}/Platform/Core/Inc",
         "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
         "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -96,25 +123,22 @@
         "USE_HAL_DRIVER",
         "STM32F446xx"
     ],
-    "platform-template":
-        {
-            "name": "",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-            ],
-            "compilerPath": "C:\\msys64\\mingw64\\bin\\arm-none-eabi-gcc.exe",
-            "compilerArgs": [
-                "-mcpu=cortex-m4",
-                "-mfpu=fpv4-sp-d16",
-                "-mfloat-abi=hard",
-                "-mthumb"
-            ],
-            "cStandard": "gnu99",
-            "intelliSenseMode": "windows-gcc-arm"
-        }
-    ,
+    "platform-template": {
+        "name": "",
+        "includePath": [
+            "${workspaceFolder}/**"
+        ],
+        "defines": [],
+        "compilerPath": "C:\\msys64\\mingw64\\bin\\arm-none-eabi-gcc.exe",
+        "compilerArgs": [
+            "-mcpu=cortex-m4",
+            "-mfpu=fpv4-sp-d16",
+            "-mfloat-abi=hard",
+            "-mthumb"
+        ],
+        "cStandard": "gnu99",
+        "intelliSenseMode": "windows-gcc-arm"
+    },
     "custom-launch-configurations": [
         {
             "name": "Target UnitTest",

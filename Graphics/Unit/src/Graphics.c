@@ -1,11 +1,9 @@
 /**
- * @file ADC_Driver.h
+ * @file Graphics.c
  * @brief TODO
- * @date 2022-11-01-21:47:52
+ * @date 2022-11-27-17:32:20
 */
-#ifndef ADC_Driver_H
-#define ADC_Driver_H
-
+#include "Graphics.h"
 /* Includes ------------------------------------------------------------------*/
 
 
@@ -22,6 +20,5 @@
 
 
 /* Private variables ---------------------------------------------------------*/
-void DoNothing(void);
 
-#endif /* ADC_Driver_H */
+

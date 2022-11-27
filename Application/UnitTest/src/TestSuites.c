@@ -1,12 +1,9 @@
 /**
- * @file ADC_Driver.c
+ * @file TestSuites.c
  * @brief TODO
- * @date 2022-11-01-21:47:52
+ * @date 2022-11-27-17:32:20
 */
-#include "ADC_Driver.h"
-/* Includes ------------------------------------------------------------------*/
-
-
+#include "TestSuites.h"
 /* Private includes ----------------------------------------------------------*/
 
 
@@ -20,13 +17,13 @@
 
 
 /* Private variables ---------------------------------------------------------*/
-void DoNothing(void){
-    int i = 0;
-    i++;
-    i--;
-}
 
-static void doSomething(void){
-    int b = 0;
-    b++;
-}
+
+extern TestSuite Suite1;
+extern TestSuite Suite2;
+
+TestSuite* testSuites[] = {
+	&Suite1,
+	&Suite2,
+	TEST_SUITE_END
+};
