@@ -139,7 +139,7 @@ TARGET_LDSCRIPT = $(PLATFORM_DIR)/STM32F446RETx_FLASH.ld
 # libraries
 TARGET_LIBS 	:= -lc -lm -lnosys 
 TARGET_LIBDIR 	:= 
-TARGET_LDFLAGS 	:= $(MCU) -specs=nano.specs -T$(TARGET_LDSCRIPT) $(TARGET_LIBDIR) $(TARGET_LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections -u _printf_float
+TARGET_LDFLAGS 	:= $(MCU) -specs=nano.specs -T$(TARGET_LDSCRIPT) $(TARGET_LIBDIR) $(TARGET_LIBS) -Wl,-Map=$(BUILD_DIR)/$(MAKECMDGOALS).map,--cref -Wl,--gc-sections -u _printf_float
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Target specific rules - THIS IS UP TO THE USER TO ADD!												
@@ -231,9 +231,9 @@ PLATFORM_ASSEMBLY 	=	$(PLATFORM_DIR)/startup_stm32f446xx.s
 
 ifneq (,$(findstring all,$(MAKECMDGOALS)))
 
-OBJS_FOR_PLATFORM			=  $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(PLATFORM_SOURCES:.c=.o)))
-OBJS_FOR_PLATFORM			+= $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(PLATFORM_ASSEMBLY:.s=.o)))
-OBJS_FOR_PLATFORM			+= $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(UNIT_SOURCES:.c=.o)))
+OBJS_FOR_PLATFORM =  $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(PLATFORM_SOURCES:.c=.o)))
+OBJS_FOR_PLATFORM += $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(PLATFORM_ASSEMBLY:.s=.o)))
+OBJS_FOR_PLATFORM += $(addprefix $(BUILD_DIR)/$(PLATFORM_DIR)/,$(notdir $(UNIT_SOURCES:.c=.o)))
 
 vpath %.c $(sort $(dir $(UNIT_SOURCES)))
 vpath %.c $(sort $(dir $(PLATFORM_SOURCES)))
@@ -300,7 +300,7 @@ endif
 # Rules
 #######################################
 
-.PHONY: unittest_platform_build unittest_platform_flash unittest_platform_run unittest_x86_x64_build all flash-all coverage coverage-html check
+.PHONY: unittest_platform_build unittest_platform_flash unittest_platform_run unittest_x86_x64_build all flash-all coverage coverage-html check clean
 
 # .PHONY: Rules: 
 # 	created tasks for VSCode expect a make targets under these names:
@@ -315,13 +315,17 @@ endif
 #
 #	- all: build whole software											# TODO: you have to add this yourself
 #
-#	- flash-all: flash whole software										# TODO: you have to add this yourself
+#	- flash-all: flash whole software									# TODO: you have to add this yourself
 #
 #	- coverage: output coverage summary to the terminal
 #
 #	- coverage-html: create html representation of the coverage results
 #
 #	- check: you can check for dependencies of the framework like gcovr and so on...
+#
+#	- clean: delete .obj folder
+#
+#	- stubgen: generate stub for the selected Unit
 
 
 #    ████████  ██████  ██████   ██████
@@ -510,7 +514,7 @@ $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR
 	@echo Creating HEX file: $@
 	@$(HEX) $< $@
 
-# Rule for creating .elf binary
+# Rule for creating .bin binary
 %.bin: %.elf | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR)
 	@echo Creating BIN file: $@
 	@$(BIN) $< $@
