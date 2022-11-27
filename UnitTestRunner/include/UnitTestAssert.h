@@ -297,7 +297,7 @@ typedef unsigned char   boolean;
         } \
         else \
         { \
-                AssertImplementationWithFormat(((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"note: Actual:("#actual": %f) was not within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
+                AssertImplementationWithFormat(((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"error: Actual:("#actual": %f) was not within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
         }
 
 

@@ -109,14 +109,14 @@ void AssertPrint(boolean condition, char *format, char *file, int line, char *me
                 if (condition)
                 {
                     SetModifier(MC_BOLD);
-                    SetForegroundColour(BG_BRIGHTGREEN);
+                    SetBackgroundColour(BG_BRIGHTGREEN);
                     printf(format, file, line, message);
                     ResetColour();
                 }
                 else
                 {
                     SetModifier(MC_BOLD);
-                    SetForegroundColour(BG_BRIGHTRED);
+                    SetBackgroundColour(BG_BRIGHTRED);
                     printf(format, file, line, message);
                     ResetColour();
                 }
@@ -129,14 +129,14 @@ void AssertPrint(boolean condition, char *format, char *file, int line, char *me
                 if (condition)
                 {
                     SetModifier(MC_BOLD);
-                    SetForegroundColour(BG_BRIGHTGREEN);
+                    SetBackgroundColour(BG_BRIGHTGREEN);
                     printf(format, file, line, message);
                     ResetColour();
                 }
                 else
                 {
                     SetModifier(MC_BOLD);
-                    SetForegroundColour(BG_BRIGHTRED);
+                    SetBackgroundColour(BG_BRIGHTRED);
                     printf(format, file, line, message);
                     ResetColour();
                 }
