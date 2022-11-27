@@ -62,6 +62,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "unittest_x86_x64_build",
                 "UNIT=${input:UNIT}"
             ],
@@ -107,6 +108,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "unittest_platform_build",
                 "UNIT=${input:UNIT}"
             ],
@@ -123,6 +125,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "unittest_platform_flash",
                 "UNIT=${input:UNIT}"
             ],
@@ -135,6 +138,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "unittest_platform_run",
                 "UNIT=${input:UNIT}"
             ],
@@ -162,6 +166,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "all"
             ],
             "group": {
@@ -177,6 +182,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "flash-all"
             ],
             "problemMatcher":[
@@ -188,6 +194,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "clean"
             ],
             "problemMatcher":[
@@ -199,6 +206,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "stubgen",
                 "UNIT=${input:UNIT}"
             ]
@@ -208,6 +216,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "coverage",
                 "UNIT=${input:UNIT}"
             ],
@@ -220,6 +229,7 @@ def create_tasks(path : str, project : dict):
             "type": "shell",
             "command": "make",
             "args": [
+                "-j4",
                 "coverage-html",
                 "UNIT=${input:UNIT}"
             ],
