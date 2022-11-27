@@ -355,6 +355,7 @@ def makeTypeStubHeader(ast, header_list):
     ))
     
     generator = c_generator.CGenerator()
+    generator.indent_level = 4
     # open the file for writing
     f = open( sys.argv[2] + "\\include\\stubs\\types.h", "w")
     # header guard
@@ -885,7 +886,7 @@ def makeStubSource(ast, header_list):
     funcDeclList = getListofFuncWithDefinition(declList, funcDefList)
 
     for entity in funcDeclList:
-        if isinstance(entity.type, c_ast.FuncDecl):
+        if isinstance(entity.type, c_ast.FuncDecl) and entity.storage != ['static']:
             funcDef = c_ast.FuncDef(decl= c_ast.Decl(
                                                         name='TEST_CALL_' + entity.name,
                                                         quals=entity.quals,
@@ -909,6 +910,7 @@ def makeStubSource(ast, header_list):
     
 
     generator = c_generator.CGenerator()
+    generator.indent_level = 4
     f = open(sys.argv[2] + "/src/stubs/stub.c" , "w")
     f.write(
 "/**\n\
@@ -925,6 +927,7 @@ def makeStubSource(ast, header_list):
 # create the required header file
 def makeHeaderFile(name, ast):
     generator = c_generator.CGenerator()
+    generator.indent_level = 4
     # open the file for writing
     f = open( sys.argv[2] + "\\include\\stubs\\" + name, "w")
     # header guard
@@ -1246,12 +1249,26 @@ def main():
         f.write("#include \"types.h\"\n")
         funcDefList = getListofFuncDef(ast)
         unitFuncList = getListofFuncWithDefinition(declList, funcDefList)
+        stubFuncList = []
         for entity in unitFuncList:
-            entity.name = "TEST_CALL_" + entity.name
-            entity.type.type.declname = "TEST_CALL_" + entity.type.type.declname
+            if entity.storage != ['static']:
+                new_Decl = c_ast.Decl(
+                    name = "TEST_CALL_" + entity.name,
+                    quals= entity.quals,
+                    align= entity.align,
+                    storage= entity.storage,
+                    funcspec= entity.funcspec,
+                    type= entity.type,
+                    init= entity.init,
+                    bitsize= entity.bitsize,
+                    coord= entity.coord
+                )
+                new_Decl.type.type.declname = "TEST_CALL_" + entity.type.type.declname
+                stubFuncList.append(new_Decl)
+
         generator = c_generator.CGenerator()
         generator.indent_level = 4
-        header_ast = c_ast.FileAST(unitFuncList)
+        header_ast = c_ast.FileAST(stubFuncList)
         f.write(generator.visit(header_ast))
         f.write("#endif /* STUB_H */")
         
