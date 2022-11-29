@@ -515,7 +515,15 @@ def makeStubCompound(entity, test_call):
                                         )
                                     )
                                 elif isinstance(param.type.type, c_ast.TypeDecl):
-                                    if 'const' in param.quals:
+                                    if param.type.type.type.names == ['void']:
+                                        blockItems[index].stmt.block_items[0].stmts.append(
+                                            c_ast.Assignment(
+                                                op='=',
+                                                lvalue= c_ast.StructRef( name = c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID(entity.name)), type= '.' , field= c_ast.ID(param.name)),
+                                                rvalue=c_ast.ID(name=param.name)
+                                            )
+                                        )
+                                    elif 'const' in param.quals:
                                         blockItems[index].stmt.block_items[0].stmts.append(
                                             c_ast.Assignment(
                                                 op='=',
@@ -1015,7 +1023,9 @@ def makeStubStruct(entity):
                             ))
                     elif isinstance(arg.type, c_ast.PtrDecl):
                         if isinstance(arg.type.type,c_ast.TypeDecl):
-                            if 'const' in arg.quals :
+                            if arg.type.type.type.names == ['void']:
+                                struct.decls.append(arg)
+                            elif 'const' in arg.quals :
                                 struct.decls.append(c_ast.Decl(
                                     name= arg.name,
                                     quals=[],
