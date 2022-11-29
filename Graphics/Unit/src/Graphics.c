@@ -196,13 +196,6 @@ void Graphics_String(char *string,int16_t x,int16_t y)
 	}
 }
 
-void Graphics_Horizontal_Line(int16_t xc, int16_t yc,int16_t l)
-{
-	for (int i = 0; i < l; ++i) {
-		LCD_Write_BufferPixel(LCD_PIXEL_SET, xc+i, yc);
-	}
-}
-
 void Graphics_Circle(int16_t xc,int16_t yc,int16_t r)
 {
 	int x = 0, y = r;

@@ -177,12 +177,6 @@ void TEST_CALL_Graphics_Circle(int16_t xc, int16_t yc, int16_t r)
   Graphics_Circle(xc, yc, r);
 }
 
-void TEST_CALL_Graphics_Horizontal_Line(int16_t xc, int16_t yc, int16_t l)
-{
-  TEST_STUB.Graphics_Horizontal_Line.callcount++;
-  Graphics_Horizontal_Line(xc, yc, l);
-}
-
 void TEST_CALL_Graphics_Line(int x0, int y0, int x1, int y1)
 {
   TEST_STUB.Graphics_Line.callcount++;

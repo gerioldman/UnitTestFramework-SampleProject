@@ -231,34 +231,6 @@ void Graphics_Circle(int16_t xc, int16_t yc, int16_t r)
 
 }
 
-void Graphics_Horizontal_Line(int16_t xc, int16_t yc, int16_t l)
-{
-  TEST_STUB.Graphics_Horizontal_Line.callcount++;
-  if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
-    if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
-  {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "Graphics_Horizontal_Line";
-    TEST_STUB.TEST_TRACE.trace_buffer_index++;
-  }
-  switch (TEST_STUB.Graphics_Horizontal_Line.stub_option)
-  {
-    case STUB_OPTION_VALUE:
-      TEST_STUB.Graphics_Horizontal_Line.xc = xc;
-      TEST_STUB.Graphics_Horizontal_Line.yc = yc;
-      TEST_STUB.Graphics_Horizontal_Line.l = l;
-      break;
-
-    case STUB_OPTION_REDIRECT:
-      TEST_STUB.Graphics_Horizontal_Line.redirectFuncPtr(xc, yc, l);
-      break;
-
-    default:
-      break;
-
-  }
-
-}
-
 void Graphics_Line(int x0, int y0, int x1, int y1)
 {
   TEST_STUB.Graphics_Line.callcount++;

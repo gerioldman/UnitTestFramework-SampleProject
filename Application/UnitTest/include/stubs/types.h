@@ -1,15 +1,15 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include "Complementary_Filter.h"
+#include "Graphics.h"
+#include "stdio.h"
 #include "math.h"
 #include "LCD_Driver.h"
-#include "IMU_HWI.h"
-#include "Graphics.h"
 #include "Application.h"
-#include "Complementary_Filter.h"
-#include "IMU_Handler.h"
-#include "stdio.h"
 #include "stdint.h"
+#include "IMU_Handler.h"
+#include "IMU_HWI.h"
 typedef enum 
     {
       STUB_OPTION_VALUE,
@@ -114,15 +114,6 @@ typedef struct
     {
       unsigned long callcount;
       stub_option_t stub_option;
-      int16_t xc;
-      int16_t yc;
-      int16_t l;
-      void (*redirectFuncPtr)(int16_t xc, int16_t yc, int16_t l);
-    } TEST_STUB_Graphics_Horizontal_Line_TYPE;
-typedef struct 
-    {
-      unsigned long callcount;
-      stub_option_t stub_option;
       int x0;
       int y0;
       int x1;
@@ -215,7 +206,6 @@ typedef struct
       TEST_STUB_Graphics_Character_TYPE Graphics_Character;
       TEST_STUB_Graphics_String_TYPE Graphics_String;
       TEST_STUB_Graphics_Circle_TYPE Graphics_Circle;
-      TEST_STUB_Graphics_Horizontal_Line_TYPE Graphics_Horizontal_Line;
       TEST_STUB_Graphics_Line_TYPE Graphics_Line;
       TEST_STUB_Complementary_Filter_InitFilter_TYPE Complementary_Filter_InitFilter;
       TEST_STUB_Complementary_Filter_UpdateFilter_TYPE Complementary_Filter_UpdateFilter;
