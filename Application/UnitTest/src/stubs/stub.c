@@ -468,17 +468,7 @@ int32_t platform_write(void *handle, uint8_t reg, const uint8_t *bufp, uint16_t 
   {
     case STUB_OPTION_VALUE:
       returnValue = TEST_STUB.platform_write.returnValue;
-      if (TEST_STUB.platform_write.handle.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
-    {
-      *handle = TEST_STUB.platform_write.handle.value;
-    }
-    else
-    {
-      if (TEST_STUB.platform_write.handle.stub_pArg_option == STUB_OPTION_PARG_COPY_FROM)
-      {
-        TEST_STUB.platform_write.handle.value = *handle;
-      }
-    }
+      TEST_STUB.platform_write.handle = handle;
       TEST_STUB.platform_write.reg = reg;
       TEST_STUB.platform_write.bufp = *bufp;
       TEST_STUB.platform_write.len = len;
@@ -510,17 +500,7 @@ int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp, uint16_t len)
   {
     case STUB_OPTION_VALUE:
       returnValue = TEST_STUB.platform_read.returnValue;
-      if (TEST_STUB.platform_read.handle.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
-    {
-      *handle = TEST_STUB.platform_read.handle.value;
-    }
-    else
-    {
-      if (TEST_STUB.platform_read.handle.stub_pArg_option == STUB_OPTION_PARG_COPY_FROM)
-      {
-        TEST_STUB.platform_read.handle.value = *handle;
-      }
-    }
+      TEST_STUB.platform_read.handle = handle;
       TEST_STUB.platform_read.reg = reg;
       if (TEST_STUB.platform_read.bufp.stub_pArg_option == STUB_OPTION_PARG_COPY_TO)
     {

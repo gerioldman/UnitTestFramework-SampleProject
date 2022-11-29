@@ -1,13 +1,13 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "math.h"
 #include "Complementary_Filter.h"
+#include "IMU_Handler.h"
 #include "stdint.h"
 #include "CRC_HWI.h"
-#include "IMU_Handler.h"
-#include "CommHandler.h"
 #include "UART_HWI.h"
+#include "CommHandler.h"
+#include "math.h"
 typedef enum 
     {
       STUB_OPTION_VALUE,

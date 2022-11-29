@@ -50,7 +50,11 @@ void printSummary(){
             }
         }
     }
+#if PLATFORM == 1
     printf("\nAsserts: %lu, Failed asserts: %lu\n", assertCount, failedAssertCount);
+#else
+    printf("\nAsserts: %u, Failed asserts: %u\n", assertCount, failedAssertCount);
+#endif
 }
 
 

@@ -1,11 +1,11 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "font8x8_basic.h"
-#include "math.h"
-#include "stdint.h"
-#include "LCD_HWI.h"
 #include "LCD_Driver.h"
+#include "math.h"
+#include "LCD_HWI.h"
+#include "stdint.h"
+#include "font8x8_basic.h"
 typedef enum 
     {
       STUB_OPTION_VALUE,

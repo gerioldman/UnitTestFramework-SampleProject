@@ -1,14 +1,14 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "Graphics.h"
 #include "math.h"
+#include "LCD_Driver.h"
 #include "IMU_HWI.h"
-#include "stdio.h"
+#include "Graphics.h"
+#include "Application.h"
 #include "Complementary_Filter.h"
 #include "IMU_Handler.h"
-#include "LCD_Driver.h"
-#include "Application.h"
+#include "stdio.h"
 #include "stdint.h"
 typedef enum 
     {
@@ -174,11 +174,7 @@ typedef struct
       unsigned long callcount;
       stub_option_t stub_option;
       int32_t returnValue;
-      struct 
-      {
-        void value;
-        stub_pArg_option_t stub_pArg_option;
-      } handle;
+      void *handle;
       uint8_t reg;
       uint8_t bufp;
       uint16_t len;
@@ -189,11 +185,7 @@ typedef struct
       unsigned long callcount;
       stub_option_t stub_option;
       int32_t returnValue;
-      struct 
-      {
-        void value;
-        stub_pArg_option_t stub_pArg_option;
-      } handle;
+      void *handle;
       uint8_t reg;
       struct 
       {

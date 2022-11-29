@@ -1,9 +1,9 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include "Graphics.h"
 #include "math.h"
 #include "stdint.h"
-#include "Graphics.h"
 #include "LCD_Driver.h"
 typedef enum 
     {
