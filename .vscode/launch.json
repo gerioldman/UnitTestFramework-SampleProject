@@ -94,6 +94,18 @@
             },
             "showDevDebugOutput": "none",
             "preLaunchTask": "Software build"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "IMU_Handler/.pre/IMU_Handler.i",
+                "IMU_Handler/UnitTest"
+            ]
         }
     ]
 }
