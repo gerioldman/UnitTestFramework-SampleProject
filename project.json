@@ -108,6 +108,38 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "CommHandler",
+            "testsuites": [
+                {
+                    "name": "Suite1",
+                    "testcases": [
+                        {
+                            "name": "TS2_Test1"
+                        },
+                        {
+                            "name": "TS2_Test2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "IMU_Handler",
+            "testsuites": [
+                {
+                    "name": "Suite1",
+                    "testcases": [
+                        {
+                            "name": "TS2_Test1"
+                        },
+                        {
+                            "name": "TS2_Test2"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "platform-include-paths": [
