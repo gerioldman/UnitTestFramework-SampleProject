@@ -501,6 +501,8 @@ def main():
     create_tree(cwd, project)
     # Create .vscode folder
     create_vscode_folder(cwd, project)
+    # Create database makefile
+    create_db_mk(cwd,project)
 
 
 if __name__ == '__main__':
