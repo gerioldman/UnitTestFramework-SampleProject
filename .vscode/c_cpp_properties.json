@@ -9,6 +9,8 @@
                 "${workspaceFolder}/Complementary_Filter/Unit/include",
                 "${workspaceFolder}/Graphics/Unit/include",
                 "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
                 "${workspaceFolder}/Platform/Core/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -41,6 +43,8 @@
                 "${workspaceFolder}/Complementary_Filter/Unit/include",
                 "${workspaceFolder}/Graphics/Unit/include",
                 "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
                 "${workspaceFolder}/Platform/Core/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -73,6 +77,8 @@
                 "${workspaceFolder}/Complementary_Filter/Unit/include",
                 "${workspaceFolder}/Graphics/Unit/include",
                 "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
                 "${workspaceFolder}/Platform/Core/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -105,6 +111,8 @@
                 "${workspaceFolder}/Complementary_Filter/Unit/include",
                 "${workspaceFolder}/Graphics/Unit/include",
                 "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
                 "${workspaceFolder}/Platform/Core/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
@@ -129,6 +137,74 @@
             "intelliSenseMode": "windows-gcc-x64"
         },
         {
+            "name": "CommHandler UnitTest",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/Graphics/Unit/include",
+                "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include",
+                "${workspaceFolder}/CommHandler/UnitTest/include",
+                "${workspaceFolder}/CommHandler/UnitTest/include/stubs"
+            ],
+            "defines": [
+                "UNITTEST=1",
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "customConfigurationVariables": {
+                "UNIT": "CommHandler"
+            },
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "IMU_Handler UnitTest",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/UnitTestRunner/include",
+                "${workspaceFolder}/LCD_Driver/Unit/include",
+                "${workspaceFolder}/Complementary_Filter/Unit/include",
+                "${workspaceFolder}/Graphics/Unit/include",
+                "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
+                "${workspaceFolder}/Platform/Core/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Platform/Drivers/CMSIS/DSP/Include",
+                "C:\\msys64\\mingw64\\arm-none-eabi\\include",
+                "${workspaceFolder}/IMU_Handler/UnitTest/include",
+                "${workspaceFolder}/IMU_Handler/UnitTest/include/stubs"
+            ],
+            "defines": [
+                "UNITTEST=1",
+                "USE_HAL_DRIVER",
+                "STM32F446xx"
+            ],
+            "customConfigurationVariables": {
+                "UNIT": "IMU_Handler"
+            },
+            "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
             "name": "sample_project",
             "includePath": [
                 "${workspaceFolder}/**",
@@ -137,6 +213,8 @@
                 "${workspaceFolder}/Complementary_Filter/Unit/include",
                 "${workspaceFolder}/Graphics/Unit/include",
                 "${workspaceFolder}/Application/Unit/include",
+                "${workspaceFolder}/CommHandler/Unit/include",
+                "${workspaceFolder}/IMU_Handler/Unit/include",
                 "${workspaceFolder}/Platform/Core/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Platform/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",

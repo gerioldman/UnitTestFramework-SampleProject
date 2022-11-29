@@ -1,5 +1,5 @@
 /**
- * @file LCD_BSP_Interface.h
+ * @file LCD_HWI.h
  * @brief Defines interface for LCD_Driver to interact with hardware dependant calls
  * @date 2022-11-21-15:40:17
 */

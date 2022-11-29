@@ -20,7 +20,9 @@
 
 /* Function declarations -----------------------------------------------------*/
 
+void Application_ToggleUI();
 
+void Application_Refresh();
 
 
 
