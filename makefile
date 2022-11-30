@@ -426,10 +426,10 @@ coverage: unittest_x86_x64_build
 	@gcovr -r . -s
 
 # Rule for generating coverage information in html format
-coverage-html: unittest_x86_x64_build | $(UNITPATH)/$(COV)
+coverage-html: unittest_x86_x64_build | $(UNIT)/$(COV)
 	@echo "Running coverage analysis with html output"
 	@.\.obj\unittest_x86_x64\main.exe
-	@gcovr -r . --html --html-details -o $(UNITPATH)/$(COV)/index.html
+	gcovr -r . --html --html-details -o $(UNIT)/$(COV)/index.html
 
 #    ████████  ██████  ██████   ██████
 #       ██    ██    ██ ██   ██ ██    ██
@@ -457,7 +457,7 @@ unittest_platform_flash: unittest_platform_build
 	@JLink.exe -commanderscript .\Platform\downloadUnitTest.jlink
 
 # run rule: invoke jrun to run Unit Test on target
-unittest_platform_run: unittest_platform_flash
+unittest_platform_run: unittest_platform_build
 	@jrun -device STM32F446RE -if SWD -speed 4000 --quit --verbose .\.obj\unittest_platform\unittest_platform.elf
 
 # unittest build rule
@@ -523,7 +523,7 @@ $(BUILD_DIR)/$(PLATFORM_DIR)/%.o: %.s | $(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR
 	@$(BIN) $< $@
 
 # Rule for creating folders
-$(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV) $(UNIT)/$(PRE):
+$(BUILD_DIR) $(BUILD_DIR)/$(PLATFORM_DIR) $(BUILD_DIR)/$(PLATFORM_UNITTEST_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNIT)/$(COV) $(UNIT)/$(PRE):
 	@$(MKDIR) -p $@
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
