@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 
 typedef enum{
     LOG_SCREEN,
@@ -290,7 +291,7 @@ typedef unsigned char   boolean;
                 AssertImplementationWithFormat(((uint64_t)expected) == ((uint64_t)actual),"error: Actual:("#actual": 0x%016X) was not (Expected: 0x%016X)",__FILE__,__LINE__,2,((uint64_t)expected),((uint64_t)actual)); \
         }
 
-#define ASSERT_FLOAT(actual, expected, tolerance) \
+#define ASSERT_FLOAT_EQUAL(actual, expected, tolerance) \
         if(((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance))))) \
         { \
                 AssertImplementationWithFormat(((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"note: Actual:("#actual": %f) was within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
@@ -300,6 +301,25 @@ typedef unsigned char   boolean;
                 AssertImplementationWithFormat(((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"error: Actual:("#actual": %f) was not within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
         }
 
+#define ASSERT_FLOAT_NOT_EQUAL(actual, expected, tolerance) \
+        if(!((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance))))) \
+        { \
+                AssertImplementationWithFormat(!((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"note: Actual:("#actual": %f) was not within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
+        } \
+        else \
+        { \
+                AssertImplementationWithFormat(!((((float)expected - (float)tolerance) <= ((float)actual)) && (((float)actual) <= (((float)expected) + ((float)tolerance)))),"error: Actual:("#actual": %f) was within tolerance (Expected: [ %f , %f ])",__FILE__,__LINE__,3,((float)actual),(((float)expected) - ((float) tolerance)),(((float)expected) + ((float) tolerance))); \
+        }
+
+#define ASSERT_STRING_EQUAL(actual, expected, maxlength) \
+        if(strncmp(actual, expected, maxlength) == 0) \
+        { \
+                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"note: Actual:("#actual": %s) was (Expected: %s)",__FILE__,__LINE__,2,,); \
+        } \
+        else \
+        { \
+                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"error: Actual:("#actual": %s) was not (Expected: %s)",__FILE__,__LINE__,2,,); \
+        }
 
 void AssertImplementationWithFormat(boolean condition, char *format, char *file, int line,int argc, ...);
 void SetModifier(ModifierCode modifier);
