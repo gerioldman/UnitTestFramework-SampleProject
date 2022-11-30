@@ -9,8 +9,16 @@
 
 #include "LCD_Driver.h"
 #include "LCD_HWI.h"
-#include "font8x8_basic.h"
 #include <math.h>
+
+/* Private macros ------------------------------------------------------------*/
+
+#define LCD_COMMAND_DISPLAY_ON 0x3F
+#define LCD_COMMAND_DISPLAY_OFF 0x3E
+#define LCD_PAGE_NUMBER 8
+#define LCD_SETYADDRESS 0x40
+#define LCD_SETPAGE 0xB8
+#define LCD_DISPLAY_START_LINE 0xC0
 
 /* Private variables ---------------------------------------------------------*/
 
