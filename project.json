@@ -32,24 +32,13 @@
             "name": "Complementary_Filter",
             "testsuites": [
                 {
-                    "name": "Suite1",
+                    "name": "TS_Complementary_Filter",
                     "testcases": [
                         {
-                            "name": "TS1_Test1"
+                            "name": "InitFunctionTest"
                         },
                         {
-                            "name": "TS1_Test2"
-                        }
-                    ]
-                },
-                {
-                    "name": "Suite2",
-                    "testcases": [
-                        {
-                            "name": "TS2_Test1"
-                        },
-                        {
-                            "name": "TS2_Test2"
+                            "name": "UpdateFunctionTest"
                         }
                     ]
                 }

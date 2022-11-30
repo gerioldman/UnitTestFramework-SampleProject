@@ -19,11 +19,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 
-extern TestSuite Suite1;
-extern TestSuite Suite2;
+extern TestSuite TS_Complementary_Filter;
 
 TestSuite* testSuites[] = {
-	&Suite1,
-	&Suite2,
+	&TS_Complementary_Filter,
 	TEST_SUITE_END
 };
