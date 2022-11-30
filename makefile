@@ -411,7 +411,7 @@ $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/$(EXE): $(OBJS_FOR_X86_X64_UNITTEST) | $(BU
 	@$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 # Compilation rule, for Unit source files tested, they are compiled with coverage flags, so coverage information is generated for only those files.
-$(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNITPATH)/$(COV)
+$(BUILD_DIR)/$(X86_X64_UNITTEST_DIR)/%.o: %.c | $(BUILD_DIR) $(BUILD_DIR)/$(X86_X64_UNITTEST_DIR) $(UNIT)/$(COV)
 	@echo Building file: $<
 	@if [ ! -z "$(findstring $(UNITSRC),$<)" ]; then \
 		$(CC) $(CFLAGS) $(C_DEFS) $(COVFLAGS) $(UNIT_INCLUDE_FOLDERS) $(PLATFORM_INCLUDE_FOLDERS) $(UNITTESTRUNNERINCLUDE) $(UNITTESTSTUBINCLUDE) $(UNITTESTINCLUDE) -DUNITTEST=1 -DPLATFORM=0 -c $< -o $@; \
