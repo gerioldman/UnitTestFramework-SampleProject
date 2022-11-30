@@ -2,7 +2,7 @@
 # Unit build for unit test
 ###########################
 
-FOUNDSTRING = $(findstring unittest_x86_x64,$(MAKECMDGOALS))$(findstring unittest_platform,$(MAKECMDGOALS))$(findstring stubgen,$(MAKECMDGOALS))
+FOUNDSTRING = $(findstring unittest_x86_x64,$(MAKECMDGOALS))$(findstring unittest_platform,$(MAKECMDGOALS))$(findstring stubgen,$(MAKECMDGOALS)$(findstring coverage,$(MAKECMDGOALS)))
 
 ifneq (,$(FOUNDSTRING))
 
