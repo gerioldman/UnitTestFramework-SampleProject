@@ -68,7 +68,7 @@ void InitFunctionTest()
  */
 void UpdateFunctionTest()
 {
-
+	
 }
 
 TestSuite TS_Complementary_Filter = {
