@@ -39,7 +39,6 @@ def create_launch(path : str, project : dict):
                     }
                 ],
                 "args": [
-                    "-a",
                     "--colour",
                     "-s"
                 ],

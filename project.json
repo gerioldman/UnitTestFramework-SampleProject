@@ -106,9 +106,6 @@
                     "testcases": [
                         {
                             "name": "TS2_Test1"
-                        },
-                        {
-                            "name": "TS2_Test2"
                         }
                     ]
                 }

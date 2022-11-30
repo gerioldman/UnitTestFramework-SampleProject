@@ -23,7 +23,6 @@
             "command": ".\\.obj\\unittest_x86_x64\\main.exe",
             "args": [
                 "--colour",
-                "-a",
                 "-s"
             ],
             "type": "shell",
