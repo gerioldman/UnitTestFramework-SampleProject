@@ -225,8 +225,7 @@ def makeTypeStubHeader(ast, header_list):
                         funcspec= None,
                         type= c_ast.PtrDecl(
                             quals= [],
-                            type= c_ast.PtrDecl(
-                                quals= [],
+                            type= c_ast.ArrayDecl(
                                 type= c_ast.TypeDecl(
                                     declname= "trace_buffer",
                                     quals=[],
@@ -234,6 +233,11 @@ def makeTypeStubHeader(ast, header_list):
                                     type=c_ast.IdentifierType(names=["char"], coord=None),
                                     coord=None
                                 ),
+                                dim= c_ast.Constant(
+                                    type = "int",
+                                    value = "101"
+                                ),
+                                dim_quals = [],
                                 coord= None
                             ),
                             coord= None
@@ -384,7 +388,7 @@ def isVoidType(type):
 # create stub function definition
 def makeStubCompound(entity, test_call):
     blockItems = []
-    index = 2
+    index = 3
 
     #############################################
     #               STUB FUNCTION               #
@@ -392,7 +396,7 @@ def makeStubCompound(entity, test_call):
     
     if not test_call:
         if not isVoidType(entity.type.type):
-            index = 3
+            index = index + 1
             blockItems.append(c_ast.Decl(
                 name = "returnValue",
                 align=None,
@@ -416,6 +420,33 @@ def makeStubCompound(entity, test_call):
                 )
             ))
         blockItems.append(c_ast.UnaryOp(op='p++', expr=c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID(entity.name)), type='.',field= c_ast.ID(name ='callcount'))))
+        blockItems.append(
+            c_ast.Decl(
+                name= "trace_string",
+                quals=[],
+                align=None,
+                storage=[],
+                bitsize=None,
+                funcspec=[],
+                coord=None,
+                init=c_ast.Constant(
+                    type='char',
+                    value= "\"" + entity.name + "\""
+                ),
+                type=c_ast.ArrayDecl(
+                    type=c_ast.TypeDecl(
+                        declname= 'trace_string',
+                        quals = [],
+                        align = None,
+                        type = c_ast.IdentifierType(
+                        names= ['char']
+                        )
+                    ),
+                    dim = None,
+                    dim_quals= []
+                )
+            )
+        )
         blockItems.append(
             c_ast.If(
                 cond= c_ast.BinaryOp(
@@ -443,15 +474,62 @@ def makeStubCompound(entity, test_call):
                     ),
                     iftrue= c_ast.Compound(
                         block_items=[
-                            c_ast.Assignment(
-                                op="=",
-                                lvalue= c_ast.ArrayRef(
-                                    name= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer')),
-                                    subscript= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')),
+                            c_ast.For(
+                                init=c_ast.Decl(
+                                    name='i',
+                                    quals=[],
+                                    align=None,
+                                    storage=[],
+                                    funcspec=[],
+                                    type=c_ast.TypeDecl(
+                                        declname='i',
+                                        quals=[],
+                                        align=None,
+                                        type=c_ast.IdentifierType(names=['int']),
+                                        coord=None
+                                    ),
+                                    init=c_ast.Constant(type='int', value='0'),
+                                    bitsize=None,
                                     coord=None
                                 ),
-                                rvalue= c_ast.ID(name="\""+ entity.name +"\""),
-                                coord=None
+                                cond=c_ast.BinaryOp(
+                                    op = '&&',
+                                    left = c_ast.BinaryOp(
+                                        op='<',
+                                        left=c_ast.ID(name='i'),
+                                        right=c_ast.Constant(type='int', value=len(entity.name) + 1)
+                                    ),
+                                    right= c_ast.BinaryOp(
+                                        op = '<',
+                                        left = c_ast.ID(name = 'i'),
+                                        right=c_ast.Constant(type = 'int', value = 100)
+                                    )
+                                ),
+                                next=c_ast.UnaryOp(
+                                    expr=c_ast.ID(name='i'),
+                                    op='++',
+                                    coord=None
+                                ),
+                                stmt = c_ast.Compound(
+                                    block_items=[
+                                        c_ast.Assignment(
+                                            op="=",
+                                            lvalue= c_ast.ArrayRef(
+                                                name = c_ast.ArrayRef(
+                                                        name= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer')),
+                                                        subscript= c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')),
+                                                        coord=None
+                                                ),
+                                                subscript= c_ast.ID(name = "i")
+                                            ),
+                                            rvalue= c_ast.ArrayRef(
+                                                name= c_ast.ID(name="trace_string"),
+                                                subscript= c_ast.ID(name="i")
+                                            ),
+                                            coord=None
+                                        )
+                                    ]
+                                )
                             ),
                             c_ast.UnaryOp(op='p++', expr=c_ast.StructRef(name= c_ast.StructRef( name = c_ast.ID(name='TEST_STUB'), type= '.' , field= c_ast.ID("TEST_TRACE")), type='.',field= c_ast.ID(name ='trace_buffer_index')))
                         ],
