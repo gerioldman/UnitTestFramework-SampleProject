@@ -66,7 +66,7 @@ void TS2_Test1()
 
 	/* Test if HandleCommEvent responds to characters other than 's' */
 
-	for (unsigned char i = 0u; i <= 255u; i++)
+	for (unsigned int i = 0u; i <= 255u; i++)
 	{
 		if (i != 's')
 		{
@@ -81,11 +81,6 @@ void TS2_Test1()
 			ASSERT_UINT32_EQUAL(TEST_STUB.CRC_HWI_Calculate.callcount, 0u);
 			ASSERT_UINT32_EQUAL(TEST_STUB.UART_HWI_Transmit_IT.callcount, 0u);
 		}
-
-		if (i == 255u)
-			break;
-
-		
 	}
 
 	/* Test if HandleCommEvent responds to 's' character */
