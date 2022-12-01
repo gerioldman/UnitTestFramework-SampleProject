@@ -44,8 +44,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-#define COMP_FILT_ALPHA 0.025f
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,13 +55,8 @@
 
 /* USER CODE BEGIN PV */
 
-
-
 uint8_t RX_Buffer;
 
-float_t degPhi;
-float_t degTheta;
-uint32_t crc;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
