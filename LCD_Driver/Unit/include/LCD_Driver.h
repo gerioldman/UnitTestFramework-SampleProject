@@ -21,6 +21,12 @@
 #define LCD_PIXEL_RESET 0
 #define LCD_HEIGHT 64
 #define LCD_WIDTH 128
+#define LCD_COMMAND_DISPLAY_ON 0x3F
+#define LCD_COMMAND_DISPLAY_OFF 0x3E
+#define LCD_PAGE_NUMBER 8
+#define LCD_SETYADDRESS 0x40
+#define LCD_SETPAGE 0xB8
+#define LCD_DISPLAY_START_LINE 0xC0
 
 /* Global variables ----------------------------------------------------------*/
 

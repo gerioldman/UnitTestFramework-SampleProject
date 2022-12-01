@@ -30,8 +30,8 @@ void CommHandler_HandleCommEvent(uint8_t receivedByte)
 {
     if ('s' == receivedByte)
     {
-        IMU_Handler_Data data = IMU_Handler_GetData();
-        Orientation_Data_t orientation = Complementary_Filter_GetOrientationData();
+        IMU_Handler_Data 	data 		= IMU_Handler_GetData();
+        Orientation_Data_t 	orientation = Complementary_Filter_GetOrientationData();
 
         float degPhi    = orientation.phiHat    * 180.0f / M_PI;
         float degTheta  = orientation.thetaHat  * 180.0f / M_PI;
