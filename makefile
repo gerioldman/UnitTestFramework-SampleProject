@@ -429,7 +429,7 @@ coverage: unittest_x86_x64_build
 coverage-html: unittest_x86_x64_build | $(UNIT)/$(COV)
 	@echo "Running coverage analysis with html output"
 	@.\.obj\unittest_x86_x64\main.exe
-	gcovr -r . --html --html-details -o $(UNIT)/$(COV)/index.html
+	@gcovr -r . --html --html-details -o $(UNIT)/$(COV)/index.html
 
 #    ████████  ██████  ██████   ██████
 #       ██    ██    ██ ██   ██ ██    ██
