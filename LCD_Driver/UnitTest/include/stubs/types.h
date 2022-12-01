@@ -1,11 +1,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "LCD_Driver.h"
 #include "math.h"
 #include "LCD_HWI.h"
 #include "stdint.h"
-#include "font8x8_basic.h"
+#include "LCD_Driver.h"
 typedef enum 
     {
       STUB_OPTION_VALUE,
@@ -24,7 +23,7 @@ typedef enum
 typedef struct TEST_STUB_Trace
     {
       stub_trace_option_t trace_enabled;
-      char **trace_buffer;
+      char (*trace_buffer)[101];
       unsigned long trace_buffer_length;
       unsigned long trace_buffer_index;
     } TEST_STUB_Trace;
@@ -92,8 +91,8 @@ typedef struct
       unsigned long callcount;
       stub_option_t stub_option;
       LCD_HWI_Status returnValue;
-      uint8_t state;
-      LCD_HWI_Status (*redirectFuncPtr)(uint8_t state);
+      LCD_HWI_Instruction_Data_State state;
+      LCD_HWI_Status (*redirectFuncPtr)(LCD_HWI_Instruction_Data_State state);
     } TEST_STUB_LCD_HWI_SetDILine_TYPE;
 typedef struct 
     {

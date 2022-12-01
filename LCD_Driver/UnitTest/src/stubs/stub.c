@@ -11,10 +11,15 @@ LCD_HWI_Status LCD_HWI_SetRWLine(LCD_HWI_RW_State state)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetRWLine.callcount++;
+  char trace_string[] = "LCD_HWI_SetRWLine";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetRWLine";
+    for (int i = 0; (i < 18) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetRWLine.stub_option)
@@ -40,10 +45,15 @@ LCD_HWI_Status LCD_HWI_SetDataLines(uint8_t value)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetDataLines.callcount++;
+  char trace_string[] = "LCD_HWI_SetDataLines";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetDataLines";
+    for (int i = 0; (i < 21) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetDataLines.stub_option)
@@ -69,10 +79,15 @@ LCD_HWI_Status LCD_HWI_SetCSLines(LCD_HWI_CS_Lines_State state)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetCSLines.callcount++;
+  char trace_string[] = "LCD_HWI_SetCSLines";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetCSLines";
+    for (int i = 0; (i < 19) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetCSLines.stub_option)
@@ -94,14 +109,19 @@ LCD_HWI_Status LCD_HWI_SetCSLines(LCD_HWI_CS_Lines_State state)
   return returnValue;
 }
 
-LCD_HWI_Status LCD_HWI_SetDILine(uint8_t state)
+LCD_HWI_Status LCD_HWI_SetDILine(LCD_HWI_Instruction_Data_State state)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetDILine.callcount++;
+  char trace_string[] = "LCD_HWI_SetDILine";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetDILine";
+    for (int i = 0; (i < 18) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetDILine.stub_option)
@@ -127,10 +147,15 @@ LCD_HWI_Status LCD_HWI_SetEnable(LCD_HWI_Enable_State enable)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetEnable.callcount++;
+  char trace_string[] = "LCD_HWI_SetEnable";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetEnable";
+    for (int i = 0; (i < 18) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetEnable.stub_option)
@@ -156,10 +181,15 @@ LCD_HWI_Status LCD_HWI_SetLatch(LCD_HWI_Latch_State enable)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetLatch.callcount++;
+  char trace_string[] = "LCD_HWI_SetLatch";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetLatch";
+    for (int i = 0; (i < 17) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetLatch.stub_option)
@@ -185,10 +215,15 @@ LCD_HWI_Status LCD_HWI_SetReset(LCD_HWI_RST_State state)
 {
   LCD_HWI_Status returnValue = {0};
   TEST_STUB.LCD_HWI_SetReset.callcount++;
+  char trace_string[] = "LCD_HWI_SetReset";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_SetReset";
+    for (int i = 0; (i < 17) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_SetReset.stub_option)
@@ -213,10 +248,15 @@ LCD_HWI_Status LCD_HWI_SetReset(LCD_HWI_RST_State state)
 void LCD_HWI_Delay(uint32_t us)
 {
   TEST_STUB.LCD_HWI_Delay.callcount++;
+  char trace_string[] = "LCD_HWI_Delay";
   if ((TEST_STUB.TEST_TRACE.trace_enabled == STUB_OPTION_TRACE_ON) && (TEST_STUB.TEST_TRACE.trace_buffer != NULL))
     if (TEST_STUB.TEST_TRACE.trace_buffer_index < TEST_STUB.TEST_TRACE.trace_buffer_length)
   {
-    TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index] = "LCD_HWI_Delay";
+    for (int i = 0; (i < 14) && (i < 100); ++i)
+    {
+      TEST_STUB.TEST_TRACE.trace_buffer[TEST_STUB.TEST_TRACE.trace_buffer_index][i] = trace_string[i];
+    }
+
     TEST_STUB.TEST_TRACE.trace_buffer_index++;
   }
   switch (TEST_STUB.LCD_HWI_Delay.stub_option)
