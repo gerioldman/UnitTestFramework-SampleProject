@@ -89,7 +89,7 @@ LCD_HWI_Status LCD_HWI_SetCSLines(LCD_HWI_CS_Lines_State state)
  * @param state
  * @return LCD_HWI_Status, returns success of the function call
  */
-LCD_HWI_Status LCD_HWI_SetDILine(uint8_t state)
+LCD_HWI_Status LCD_HWI_SetDILine(LCD_HWI_Instruction_Data_State state)
 {
     LCD_HWI_Status returnValue;
 
