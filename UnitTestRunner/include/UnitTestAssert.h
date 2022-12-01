@@ -314,11 +314,11 @@ typedef unsigned char   boolean;
 #define ASSERT_STRING_EQUAL(actual, expected, maxlength) \
         if(strncmp(actual, expected, maxlength) == 0) \
         { \
-                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"note: Actual:("#actual": %s) was (Expected: %s)",__FILE__,__LINE__,2,,); \
+                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"note: Actual:("#actual": %s) was (Expected: %s)",__FILE__,__LINE__,2,actual,expected); \
         } \
         else \
         { \
-                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"error: Actual:("#actual": %s) was not (Expected: %s)",__FILE__,__LINE__,2,,); \
+                AssertImplementationWithFormat(strncmp(actual, expected, maxlength) == 0,"error: Actual:("#actual": %s) was not (Expected: %s)",__FILE__,__LINE__,2,actual,expected); \
         }
 
 void AssertImplementationWithFormat(boolean condition, char *format, char *file, int line,int argc, ...);
